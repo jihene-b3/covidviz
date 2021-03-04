@@ -1,0 +1,4 @@
+.vscode
+temp
+.ipynb_checkpoints
+*.pyc
