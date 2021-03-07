@@ -1,11 +1,5 @@
 import pandas as pd
 import numpy as np
-from scipy.stats.stats import pearsonr  
-from pandas.tseries.holiday import USFederalHolidayCalendar
-from pandas.tseries.offsets import CustomBusinessDay
-from datetime import datetime
-from sklearn.model_selection import train_test_split
-import math
 import matplotlib.pyplot as plt
 from download import download 
 
@@ -15,7 +9,4 @@ path_target = "./covid.csv"
 download(url1, path_target, replace=True)
 df_covid = pd.read_csv("covid.csv")
 df_covid.head(n=100)
-path_target = "./covid.csv"
-download(url1, path_target, replace=True)
-df_covid = pd.read_csv("covid.csv")
-df_covid.head(n=100)
+print(df_covid)
