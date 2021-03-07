@@ -1,4 +1,8 @@
+*~
+*.swp
+*.idea
 .vscode
-temp
-.ipynb_checkpoints
-*.pyc
+
+__pycache__
+.coverage
+htmlcov
