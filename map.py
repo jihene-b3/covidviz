@@ -37,14 +37,15 @@ cities['dep'] = cities.insee.str[:2]
 
 # dataframe of the metropolitan French departments
 departments = cities[cities.dep != "97"].dissolve(by='dep')
-# departments.plot()
+departments.plot()
 
 # dataframe of overseas French departments
 overseas = cities[cities.dep == "97"].dissolve(by='dep')
 # overseas.plot()
 
 all_dep = cities.dissolve(by='dep')
-all_dep.plot()
+# all_dep.plot()
+
 plt.tight_layout(pad=0)
 plt.show()
 
