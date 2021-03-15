@@ -10,3 +10,5 @@ download(url1, path_target, replace=True)
 df_covid = pd.read_csv("covid.csv")
 df_covid.head(n=100)
 print(df_covid)
+df_covid
+import sys !{sys.executable} -m pip install (pandas)
