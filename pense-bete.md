@@ -27,24 +27,31 @@ https://www.data.gouv.fr/en/datasets/chiffres-cles-concernant-lepidemie-de-covid
     - region : Nouvelle-Aquitaine
     - departement : Charente
     - collectivite-outremer : Saint-Barthélemy
-- cas_confirmes
+- cas_confirmes : total cumulé des cas testés positivement au test RT-PCR ou antigénique
 - cas_ehpad
 - cas_confirmes_ehpad
-- cas_possibles_ehpad
-- deces
+- cas_possibles_ehpad : toute personne (ici provenant d'ehpad) présentant des symptômes.
+- deces (par jour)
 - deces_ehpad
-- reanimation
-- hospitalises
-- nouvelles_hospitalisations
-- nouvelles_reanimations
-- gueris,depistes
+- reanimation (cumul - sorties de reanimation, au total)
+- hospitalises (cumul - sorties, au total)
+- nouvelles_hospitalisations (jour)
+- nouvelles_reanimations (jour)
+- gueris (cumul)
+- depistes : sur un dataframe (départements) de 38594 lignes, il y a seulement 6 données numériques (le reste est `nan`). On n'utilisera donc pas cette colonne non plus.
 - source_nom
 - source_url
 - source_archive
 - source_type
 
+Remarque : pour les départements, il n'y a pas de données concernant la propagation du virus dans les ehpad. On supprimera donc ces colonnes. De même pour la colonne cas_confirmes, il y a seulement 4% de données numériques (1649/38694).
+
+Donc les indicateurs à prendre en compte dans notre dataframe seront : `deces`, `reanimation`, `hospitalises`, `nouvelles_hospitalisations`, 
+`nouvelles_reanimations`, `gueris`.
+
 # IDÉE : 
 
-On veut modéliser l'évolution du virus à travers le temps, jour par jour à partir du 1er janvier 2020 jusqu'à aujourd'hui, et l'espace sur une carte départementale de la France. Donc pour cette première carte, on créera un nouveau tableau de données à partir du fichier `covid.csv` en affichant seulement les indicateurs `date`, `granularite`, `maille_code`,`maille_nom` et `cas_confirmes`, et en filtrant `granularite = departement`. Il s'agira du fichier `covid_map1.csv`.
+On veut modéliser l'évolution du virus à travers le temps, jour par jour à partir du 1er janvier 2020 jusqu'à aujourd'hui, et l'espace sur une carte départementale de la France. Donc pour cette première carte, on créera un nouveau tableau de données à partir du fichier `covid.csv` en affichant seulement certains indicateurs `date`, `granularite`, `maille_code`,`maille_nom` et `cas_confirmes`, et en filtrant `granularite = departement` .
+
 
 ## PACKAGES UTILES :
