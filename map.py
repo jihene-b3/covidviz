@@ -1,6 +1,6 @@
 
 import geopandas as gpd
-import contextily as ctx
+#import contextily as ctx
 import matplotlib.pyplot as plt
 import string
 import pandas as pd
