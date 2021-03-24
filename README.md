@@ -13,3 +13,16 @@ Many sources provide a counting of Covid19 cases such as [data.gouv.fr dataset](
 + Stephani Ujka : stephani.ujka@etu.umontpellier.fr
 + Chloé Serre-Combe : chloe.serre-combe@etu.umontpellier.fr
 + Zakaria Laabsi : zakaria.laabsi@etu.umontpellier.fr
+
+## Tasks repartition 
++ Data treatment: 
++ Data loading:
++ Create map: 
++ Animate the map: 
++ Unit Test CI Deploy: 
++ How to create a gif:
++ Documentation:
++ Beamer:
++ Improve time and memory efficiency:	
+
+
