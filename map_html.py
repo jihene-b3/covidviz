@@ -8,9 +8,6 @@ df_covid = pd.read_csv(".\covidmap\data\data_covid_clean.csv")
 #%%
 # change the format of "maille_code" 
 # "DEP-33" in "33" for example
-for i in range(df_covid.shape[0]) :
-    df_covid["maille_code"][i] = df_covid["maille_code"][i][4:]
-#%%
 df_covid = cm.format_dep(df_covid)
 
 #%%
