@@ -16,12 +16,11 @@ df_covid_raw = pd.read_csv("covidmap/data/data_covid_clean.csv")
 df_covid = cm.format_dep(df_covid_raw)
 
 #%%
-cases_dep = pd.DataFrame(df_covid.sort_values(['date']))
-date_list= df_covid.groupby(['date']).size()
+death_dep = pd.DataFrame(df_covid.sort_values(['date']))
+date_list = df_covid.groupby(['date']).size()
 
-df_jour = cases_dep.loc[cases_dep['date']=='2021-03-11']
-#%%
-DATA_URL = "https://raw.githubusercontent.com/visgl/deck.gl-data/master/examples/geojson/vancouver-blocks.json"
+df_jour = death_dep.loc[death_dep['date'] == '2021-03-11']
+
 #%%
 init_view = pdk.ViewState(latitude=50.01200, longitude=3.17270, zoom=6, max_zoom=16, pitch=45, bearing=0)
 
@@ -46,9 +45,7 @@ map_covid_layer = pdk.Layer(
 
 #%%
 
-
-#%%
-
+# Slider widget 
 time_slider  = IntSlider(value=2010, min=2010, max=2021, step=1)
 play = Play(value=2010, min=2010, max=2021, step=1, description="Press play", interval=1_000)
 jslink((play,'value'), (time_slider, 'value'))
@@ -66,10 +63,8 @@ def update_plot(code):
 
 
 #%%
-#interaction = interactive_output(update_plot, {'code': time_slider})
-#display(layout, interaction)
-
-#%%
+# interaction = interactive_output(update_plot, {'code': time_slider})
+# display(layout, interaction)
 
 #%%
 map_covid.to_html("geojson_layer.html")
