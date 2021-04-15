@@ -18,7 +18,7 @@ Many sources provide a counting of Covid19 cases such as [data.gouv.fr dataset](
 ## Tasks repartition 
 
 + Jihène : connect map and data, statistic diagrams
-+ Zakaria : map animation, charts
++ Zakaria : map animation, dashboard creation
 + Chloé : map creation, map animation
 + Stephani : data treatement, statistic diagrams
 
