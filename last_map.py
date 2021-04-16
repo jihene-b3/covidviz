@@ -13,8 +13,20 @@ url_reg = 'https://france-geojson.gregoiredavid.fr/repo/regions.geojson'
 #%%
 departments = gpd.read_file(url_dep)
 regions = gpd.read_file(url_reg)
-df_covid_raw = pd.read_csv("data_covid_clean.csv")
-df_covid = cm.format_dep(df_covid_raw)
+
+#%%
+# import covid data 
+df_covid_raw = cm.Load_db().save_as_df()
+
+# columns we want to keep 
+columns = ['date', 'granularite', 'maille_code', 'maille_nom','cas_confirmes', 'hospitalises','deces']
+df_covid_cleaned = cm.choose_columns(df_covid_raw, columns)
+
+# keep only departements
+df_covid_cleaned_dep = cm.choose_granularity(df_covid_cleaned,"departement")
+
+# format departements
+df_covid = cm.format_dep(df_covid_cleaned_dep)
 
 #%%
 death_dep = pd.DataFrame(df_covid.sort_values(['date']))
