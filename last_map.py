@@ -3,6 +3,7 @@ import pydeck as pdk
 import covidmap as cm
 import pandas as pd
 import geopandas as gpd
+import ipywidgets
 from ipywidgets import interact, interactive_output, Play, jslink, HBox, IntSlider
 
 #%%
@@ -12,7 +13,7 @@ url_reg = 'https://france-geojson.gregoiredavid.fr/repo/regions.geojson'
 #%%
 departments = gpd.read_file(url_dep)
 regions = gpd.read_file(url_reg)
-df_covid_raw = pd.read_csv("covidmap/data/data_covid_clean.csv")
+df_covid_raw = pd.read_csv("data_covid_clean.csv")
 df_covid = cm.format_dep(df_covid_raw)
 
 #%%
@@ -27,7 +28,7 @@ init_view = pdk.ViewState(latitude=50.01200, longitude=3.17270, zoom=6, max_zoom
 #%%
 departments = departments.assign(deces=0)
 for i in df_jour.index :
-    departments.loc[departments["code"]==df_jour.loc[i,"maille_code"],"deces"] = df_jour.loc[i,"deces"]
+    departments.loc[departments["code"] == df_jour.loc[i, "maille_code"], "deces"] = df_jour.loc[i, "deces"]
 #%%
 map_covid_layer = pdk.Layer(
     "GeoJsonLayer",
@@ -46,10 +47,10 @@ map_covid_layer = pdk.Layer(
 #%%
 
 # Slider widget 
-time_slider  = IntSlider(value=2010, min=2010, max=2021, step=1)
-play = Play(value=2010, min=2010, max=2021, step=1, description="Press play", interval=1_000)
-jslink((play,'value'), (time_slider, 'value'))
-layout = HBox([time_slider, play])
+#time_slider  = IntSlider(value=2010, min=2010, max=2021, step=1)
+#play = Play(value=2010, min=2010, max=2021, step=1, description="Press play", interval=1_000)
+#jslink((play,'value'), (time_slider, 'value'))
+#layout = HBox([time_slider, play])
 
 #%%
 map_covid = pdk.Deck(layers=[map_covid_layer], initial_view_state=init_view)
@@ -57,15 +58,32 @@ map_covid = pdk.Deck(layers=[map_covid_layer], initial_view_state=init_view)
 
 #%%
 
-def update_plot(code):
-    map_covid_layer.data = departments[departments['code'] == code]
+def update_plot(date_index):
+    date = date_list.index[date_index]
+    df_jour = death_dep.loc[death_dep['date'] == date]
+    
+    for i in departments.index :
+        departments.loc[i,"deces"] = 0
+    for i in df_jour.index :
+        departments.loc[departments["code"] == df_jour.loc[i,"maille_code"],"deces"] = df_jour.loc[i,"deces"]
+    print(date)
+    map_covid_layer.data = departments
     return map_covid.update()
 
+#%%
+# widgets
+time_slider = ipywidgets.IntSlider(value=0, min=0, max=date_list.size-1, step=1)
+play = ipywidgets.Play(value=0, min=0, max=date_list.size-1, step=1, description='Press play', interval=50)
+ipywidgets.jslink((play, 'value'), (time_slider, 'value'))
+layout = ipywidgets.HBox([time_slider, play])
+
 
 #%%
-# interaction = interactive_output(update_plot, {'code': time_slider})
-# display(layout, interaction)
+interaction = interactive_output(update_plot, {'date_index': time_slider})
 
 #%%
-map_covid.to_html("geojson_layer.html")
-#map_covid.show()
+#map_covid.to_html("geojson_layer.html")
+display(layout, interaction)
+map_covid.update()
+map_covid.show()
+# %%
