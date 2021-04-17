@@ -5,13 +5,12 @@
 
 # In[1]:
 
-
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-from demography_covid import io
-from demography_covid import preprocess
+from demog_covid import io
+from demog_covid import preprocess
 from ipywidgets import interact  # widget manipulation
 from download import download
 import plotly.express as px
@@ -34,8 +33,6 @@ df_raw = pd.read_csv("classes_âges.csv", sep=';')
 df_soc=df_raw.rename(columns={"cl_age90": "age", "jour": "date","hosp":"nb_hosp","rea":"nb-rea","HospConv":"nb_hospconv","rad":"rad_Tot","dc":"dec_Tot"})
 df_soc.drop(['autres'], axis = 1, inplace = True) 
 df=df_soc[df_soc['nb_hosp'] > 0]
-df
-
 
 # 
 

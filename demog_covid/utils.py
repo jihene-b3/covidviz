@@ -2,8 +2,8 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-from demography_covid import io
-from demography_covid import preprocess
+from demog_covid import io
+from demog_covid import preprocess
 from download import download
 import plotly.express as px
 import folium
