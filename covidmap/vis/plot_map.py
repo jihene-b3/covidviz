@@ -4,9 +4,6 @@ import geopandas as gpd
 import ipywidgets
 from ipywidgets import interact, interactive_output, Play, jslink, HBox, IntSlider
 
-
-#def plot_map():
-
 class Map_covid:
     """Creates an animated map
     :param df_covid: dataframe with covid data
