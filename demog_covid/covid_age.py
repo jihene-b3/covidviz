@@ -19,7 +19,7 @@ import plotly.graph_objects as go
 import seaborn as sns
 import ipywidgets as widgets
 import kaleido
-
+import demography_covid as dm 
 
 # Importation data
 
