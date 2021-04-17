@@ -34,3 +34,10 @@ df_covid = cm.format_dep(df_covid_cleaned_dep)
 #%%
 map = cm.Map_covid(df_covid, departments, "deces")
 map.plot_all()
+
+#%%
+map = cm.Map_covid(df_covid, departments, "hospitalises")
+map.plot_all()
+
+
+# %%
