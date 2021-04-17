@@ -81,6 +81,9 @@ for dep_code in dep_fr['maille_code'].tolist():
 for dep_code in dep_fr['maille_code'].tolist() :
     depis_department_grand_public[f'{dep_code}'].fillna('-', inplace=True)
 
+for dep_code in dep_acces_restreint_list :
+    depis_department_acces_restreint[f'{dep_code}'].fillna('-', inplace=True)
+
 for dep_code in dep_fr['maille_code'].tolist():
     for i in range(len(depis_department_grand_public[f'{dep_code}'])):
 
