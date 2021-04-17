@@ -41,3 +41,16 @@ map.plot_all()
 
 
 # %%
+
+df_covid_cleaned_reg = cm.choose_granularity(df_covid_cleaned,"region")
+
+# format regions
+df_covid = cm.format_dep(df_covid_cleaned_dep)
+
+
+df_covid_reg = cm.format_dep(df_covid_cleaned_reg)
+
+# %%
+map = cm.Map_covid(df_covid_reg, regions, "deces")
+map.plot_all()
+# %%
