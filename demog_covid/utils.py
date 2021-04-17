@@ -2,8 +2,6 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-from demog_covid import io
-from demog_covid import preprocess
 from download import download
 import plotly.express as px
 import folium
@@ -22,6 +20,7 @@ def df_rea(df) :
         title_text="Nombre de patients en réanimation par classe d'âge")
     fig.show()
     return(fig.show())
+
 # In[34]:
 def df_hosp(df) :
     fig = px.bar(df, x="AgeGroup", y="nb_hosp", color="AgeGroup",
