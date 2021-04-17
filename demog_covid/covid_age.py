@@ -8,8 +8,9 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-from demog_covid.utils import df_rea,df_dec,df_hosp
-from demog_covid.format_data import clean_age,format_age
+from demog_covid.preprocess.utils  import df_rea,df_dec,df_hosp
+from demog_covid import preprocess
+from demog_covid.preprocess.format_data import clean_age,format_age
 from ipywidgets import interact  # widget manipulation
 from download import download
 import plotly.express as px
