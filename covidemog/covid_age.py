@@ -9,7 +9,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 from covidemog.preprocess.utils  import df_rea,df_dec,df_hosp
-from covidemog import preprocess
+import covidemog as cg
 from covidemog.preprocess.format_data import clean_age,format_age
 from ipywidgets import interact  # widget manipulation
 from download import download
@@ -23,9 +23,9 @@ import kaleido
 
 # In[2]:
 url1 ='https://www.data.gouv.fr/fr/datasets/r/08c18e08-6780-452d-9b8c-ae244ad529b3'
-path_target = "demog_covid/AgeGroups.csv"
+path_target = "covidemog/data/AgeGroups.csv"
 download(url1, path_target, replace=True)
-df_raw = pd.read_csv("AgeGroups.csv", sep=';')
+df_raw = pd.read_csv("covidemog/data/AgeGroups.csv", sep=';')
 
 # In[2]:
 
@@ -48,8 +48,9 @@ def remove_nan(df):
 
 # In[5]:reformat and clean data
 dfc = clean_age(df_raw)
-dfc1 = format_age(dfc)
-dfc.to_csv(r'demog_covid/data/AgeGroups_cleaned.csv', index = False)
+dfc1 = remove_nan(dfc)
+dfC = format_age(dfc1)
+dfC.to_csv(r'covidemog/data/AgeGroups_cleaned.csv', index = False)
 
 # In[6]: Display charts
 df_rea(dfc)
