@@ -10,6 +10,8 @@ Welcome to ProjetCovid's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   Installation/install
+   API/doc
 
 
 Indices and tables
