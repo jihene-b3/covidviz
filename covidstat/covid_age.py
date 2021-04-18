@@ -8,9 +8,9 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-from covidestat.preprocess.utils  import df_rea,df_dec,df_hosp
-import covidestat as ct
-from covidestat.preprocess.format_data import clean_age,format_age
+from covidstat.preprocess.utils import df_rea,df_dec,df_hosp
+import covidstat as ct
+from covidstat.preprocess.format_data import clean_age,format_age
 from ipywidgets import interact  # widget manipulation
 from download import download
 import plotly.express as px
@@ -23,9 +23,9 @@ import kaleido
 
 # In[2]:
 url1 ='https://www.data.gouv.fr/fr/datasets/r/08c18e08-6780-452d-9b8c-ae244ad529b3'
-path_target = "covidemog/data/AgeGroups.csv"
+path_target = "covidstat/data/agegroups.csv"
 download(url1, path_target, replace=True)
-df_raw = pd.read_csv("covidemog/data/AgeGroups.csv", sep=';')
+df_raw = pd.read_csv("covidstat/data/agegroups.csv", sep=';')
 
 # In[2]:
 
@@ -56,5 +56,3 @@ dfC.to_csv(r'covidemog/data/AgeGroups_cleaned.csv', index = False)
 df_rea(dfc)
 df_dec(dfc)
 df_hosp(dfc)
-
-
