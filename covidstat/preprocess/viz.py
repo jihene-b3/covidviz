@@ -38,7 +38,6 @@ def data_preparation(
     if maille_code == "FRA":
         fra = data.loc[
             (data["maille_code"] == maille_code)
-            # & ((data["source_nom"] != "OpenCOVID19-fr") | (data.index > "2021-02-19"))
         ]
         rows = [*rows, "cas_confirmes"]
 
@@ -284,28 +283,7 @@ def plot_field_loops(
     return axs
 
 
-def state_tracking(
-    timeseries: pd.DataFrame, time_state_start: int, time_state_end: int
-):
-    """Approximate the number of people in a given state.
 
-    This is a very coarse approximation defined to track the number of people carrying
-    the coronavirus disease.
-
-    Args:
-        timeseries : A pandas timeseries, or array like object.
-        time_state_start : The number of days before a recorded event at which
-            the state being approximated has started.
-        time_state_end : the number of days after the recorded event at which the
-            state being approximated ends.
-    """
-    delta_start = pd.to_timedelta(time_state_start, unit="days",)
-    delta_end = pd.to_timedelta(time_state_end, unit="days",)
-
-    state = timeseries.rolling(delta_end - delta_start, center=False).sum()
-    state.index = state.index + delta_start
-
-    return state
 
 
 

@@ -8,7 +8,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-from covidstat.preprocess.utils import df_rea,df_dec,df_hosp
+from covidstat.preprocess import df_rea,df_dec,df_hosp
 import covidstat as ct
 from covidstat.preprocess.format_data import clean_age,format_age
 from ipywidgets import interact  # widget manipulation
@@ -50,7 +50,7 @@ def remove_nan(df):
 dfc = clean_age(df_raw)
 dfc1 = remove_nan(dfc)
 dfC = format_age(dfc1)
-dfC.to_csv(r'covidemog/data/AgeGroups_cleaned.csv', index = False)
+dfC.to_csv(r'covidstat/data/ageGroups_cleaned.csv', index = False)
 
 # In[6]: Display charts
 df_rea(dfc)

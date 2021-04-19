@@ -2,6 +2,7 @@ import pandas as pd
 from download import download
 import plotly.express as px
 import kaleido
+import matplotlib.pyplot as plt 
 
 def df_rea(df) :
     fig = px.bar(df, x="AgeGroup",
@@ -31,7 +32,7 @@ def df_hosp(df) :
 # In[38]:
 def df_dec(df) : 
     datefrom='2020-04-01'
-    fig = px.line(df, x="date", y="dec_Tot", color="AgeGroup",range_x=[datefrom,'2021-04-15'])
+    fig = px.line(df, x="date", y="dec_Tot", color="AgeGroup",range_x=[datefrom,'2021-04-19'])
 # fig.update_layout(hovermode='x unified')
     fig.update_layout(
     height=600,
@@ -39,3 +40,17 @@ def df_dec(df) :
 )
     fig.show()
     return(fig.show())
+# In[38]:import matplotlib.pyplot as plt 
+def df_plot_gender(df) :
+    w=0.3
+    x=df.AgeGroup
+    boys=df.num_h
+    girls=df.num_f
+    plt.bar(x,boys,w,label="boys")
+    plt.bar(x,girls,w,bottom=boys,label="girls")
+    plt.xlabel("AgeGroups")
+    plt.ylabel("Number of people tested positive")
+    plt.title("Distribution of tested postive people for coronavirus per gender")
+    plt.legend()
+    plt.show()
+    return(plt.show())
