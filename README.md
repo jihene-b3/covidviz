@@ -8,6 +8,11 @@ The goal of this project is to analyze the spreading of the covid19 disease in F
 
 Many sources provide a counting of Covid19 cases such as [data.gouv.fr dataset](https://www.data.gouv.fr/en/datasets/chiffres-cles-concernant-lepidemie-de-covid19-en-france/).
 
+### Data on people vaccinated against Covid-19 :
+https://www.data.gouv.fr/fr/datasets/donnees-relatives-aux-personnes-vaccinees-contre-la-covid-19-1/
+
+#### Source : Santé Publique France
+
 
 ## Members
 + Jihène Belgaied : jihene.belgaied@etu.umontpellier.fr
