@@ -3,7 +3,10 @@ import numpy as np
 
 
 def clean_age(df): 
-    #
+    """
+    This function reads "AgeGroups.csv" file and reformate data.
+
+    """  
     df = pd.read_csv("data/AgeGroups.csv", sep=';')
     df=df.rename(columns={"cl_age90": "age", "jour": "date","hosp":"nb_hosp","rea":"nb-rea","HospConv":"nb_hospconv","rad":"rad_Tot","dc":"dec_Tot"})
     df.drop(['autres'], axis = 1, inplace = True) 

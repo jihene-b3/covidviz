@@ -4,7 +4,7 @@ import plotly.express as px
 import kaleido
 import matplotlib.pyplot as plt 
 
-def df_rea(df) :
+def df_plot_rea(df) :
     fig = px.bar(df, x="AgeGroup",
         y="nb-rea",
         color="AgeGroup",
@@ -14,11 +14,10 @@ def df_rea(df) :
     fig.update_layout(
         height=600,
         title_text="Nombre de patients en réanimation par classe d'âge")
-    fig.show()
     return(fig.show())
 
-# In[34]:
-def df_hosp(df) :
+
+def df_plot_hosp(df) :
     fig = px.bar(df, x="AgeGroup", y="nb_hosp", color="AgeGroup",
          animation_frame="date", animation_group="AgeGroup", 
          range_y=[0,150])
@@ -26,11 +25,9 @@ def df_hosp(df) :
     height=600,
     title_text="Nombre de patients hospitalisés par classe d'âge"
 )
-    fig.show()
     return(fig.show())
 
-# In[38]:
-def df_dec(df) : 
+def df_plot_dec(df) : 
     datefrom='2020-04-01'
     fig = px.line(df, x="date", y="dec_Tot", color="AgeGroup",range_x=[datefrom,'2021-04-19'])
 # fig.update_layout(hovermode='x unified')
@@ -38,9 +35,8 @@ def df_dec(df) :
     height=600,
     title_text="Nombre de patients décédès par classes d'âges"
 )
-    fig.show()
     return(fig.show())
-# In[38]:import matplotlib.pyplot as plt 
+
 def df_plot_gender(df) :
     w=0.3
     x=df.AgeGroup
@@ -52,5 +48,4 @@ def df_plot_gender(df) :
     plt.ylabel("Number of people tested positive")
     plt.title("Distribution of tested postive people for coronavirus per gender")
     plt.legend()
-    plt.show()
     return(plt.show())
