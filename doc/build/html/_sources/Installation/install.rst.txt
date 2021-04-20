@@ -4,13 +4,13 @@ How to install
 On Windows 
 -----------
 
-To install biketrauma on Windows...
+To install covidmap on Windows...
 
 On Linux 
 -----------
 
-To install biketrauma....
+To install covidmap on Linux...
 
 .. code:: bash
 
-    $ git clone https://fnsnf
+    $ git clone https://github.com/jihene-b3/ProjetCovid.git

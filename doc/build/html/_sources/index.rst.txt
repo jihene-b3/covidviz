@@ -10,8 +10,20 @@ Welcome to ProjetCovid's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Installation
+
    Installation/install
-   API/doc
+
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Maps
+
+   Maps/maps
+
 
 
 Indices and tables
