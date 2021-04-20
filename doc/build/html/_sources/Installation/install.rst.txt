@@ -1,0 +1,16 @@
+How to install
+==============
+
+On Windows 
+-----------
+
+To install biketrauma on Windows...
+
+On Linux 
+-----------
+
+To install biketrauma....
+
+.. code:: bash
+
+    $ git clone https://fnsnf
