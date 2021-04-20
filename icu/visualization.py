@@ -87,7 +87,7 @@ def icu_dep_conf1():
         title='Intensive care beds occupied during the 1st confinement in french departments',
         height=500, width=800)
     fig2.update_xaxes(dtick='M1', tickformat="%d\n%b")
-    return(fig2.show)
+    return(fig2.show())
 
 
 def icu_dep_dec():
