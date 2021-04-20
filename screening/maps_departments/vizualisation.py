@@ -24,16 +24,14 @@ depis_grand_public.loc[1828, 'latitude'] = 46.1502923
 depis_grand_public.loc[2595, 'longitude'] = 2.1660581
 depis_grand_public.loc[2595, 'latitude'] = 48.6789083
 
-depis_grand_public.loc[2595, 'adresse'] =
-depis_grand_public.loc[2595, 'cpl_loc']
+depis_grand_public.loc[2595, 'adresse'] = depis_grand_public.loc[2595, 'cpl_loc']
 
 depis_grand_public.loc[2595, 'cpl_loc'] = np.nan
 
 depis_grand_public.loc[2844, 'longitude'] = 0.16686641335383762
 depis_grand_public.loc[2844, 'latitude'] = 46.63853367849356
 
-depis_grand_public.loc[3093, 'adresse'] =
-'286 Av. des Grésillons, 92600 Asnières-sur-Seine'
+depis_grand_public.loc[3093, 'adresse'] = '286 Av. des Grésillons, 92600 Asnières-sur-Seine'
 
 depis_grand_public.loc[3093, 'tel_rdv'] = '01 85 78 53 43'
 depis_grand_public.loc[3093, 'longitude'] = 2.3141661

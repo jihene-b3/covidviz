@@ -174,8 +174,10 @@ rea_all_regions['Île-de-France'] = rea_all_Ile_de_France
 rea_all_regions['Nouvelle-Aquitaine'] = rea_all_Nouvelle_Aquitaine
 rea_all_regions['Auvergne-Rhône-Alpes'] = rea_all_Auvergne_Rhone_Alpes
 rea_all_regions['Occitanie'] = rea_all_Occitanie
+
 rea_all_regions["Provence-Alpes-Côte-d'Azur"] =
 rea_all_Provence_Alpes_Côte_Azur
+
 rea_all_regions['Corse'] = rea_all_Corse
 rea_all_regions["Régions d'Outre Mer"] = rea_all_Outre_Mer
 
