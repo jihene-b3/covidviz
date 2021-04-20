@@ -1,14 +1,15 @@
 import pandas as pd 
+import numpy as np 
 
 def clean_age(df): 
 
-    df = pd.read_csv("AgeGroups.csv", sep=';')
+    df = pd.read_csv("demog_covid/data/AgeGroups.csv", sep=';')
     df=df.rename(columns={"cl_age90": "age", "jour": "date","hosp":"nb_hosp","rea":"nb-rea","HospConv":"nb_hospconv","rad":"rad_Tot","dc":"dec_Tot"})
     df.drop(['autres'], axis = 1, inplace = True) 
     df=df[df['nb_hosp'] > 0]
     return(df)
 
-def class_age(df):
+def format_age(df):
     df.loc[(df.age < 10),  'AgeGroup'] = '[0,9]'
     df.loc[(df.age > 9) & (df.age < 20),  'AgeGroup'] = '[10,19]'
     df.loc[(df.age > 19) & (df.age < 30),  'AgeGroup'] = '[20,39]'
@@ -19,6 +20,12 @@ def class_age(df):
     df.loc[(df.age > 69) & (df.age < 80),  'AgeGroup'] = '[70,79]'
     df.loc[(df.age > 79) & (df.age < 90),  'AgeGroup'] = '[80,89]'
     df.loc[(df.age > 89),  'AgeGroup'] = '[90,+]'
+    return(df)
+
+def remove_nan(df):
+    numeric = df.select_dtypes(include=np.number)
+    numeric_columns = numeric.columns
+    df[numeric_columns] = df[numeric_columns].interpolate(method ='linear', limit_direction ='forward')
     return(df)
 
 
