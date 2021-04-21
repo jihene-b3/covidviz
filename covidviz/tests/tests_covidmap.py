@@ -42,4 +42,4 @@ def test_choose_granularity():
 
 def test_Map_covid():
     test = cvz.Map_covid(df_covid, departments, "deces")
-    assert type(test) == cm.vis.plot_map.Map_covid
+    assert type(test) == cvz.vis.plot_map.Map_covid
