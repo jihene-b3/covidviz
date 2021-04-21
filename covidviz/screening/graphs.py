@@ -3,7 +3,7 @@ import plotly.express as px
 import numpy as np
 
 screening_daily = pd.read_csv(
-    'screening/data/sp-pos-quot-dep-2021-04-16-19h05.csv',
+    '../covidviz/data/sp-pos-quot-dep-2021-04-16-19h05.csv',
     delimiter=';',
     low_memory=False)
 
