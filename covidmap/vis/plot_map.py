@@ -8,7 +8,8 @@ def get_name(self):
     return self.name
 
 class Map_covid:
-    """Creates an animated map
+    """Creates an animated map.
+
     :param df_covid: dataframe with covid data
     :type df_covid: dataframe
     :param granularity: dep or region
@@ -45,6 +46,8 @@ class Map_covid:
         
     def update_plot(self, date_index):
         """
+        Update the map plot accordign to a slider widget.
+
         :param date_index: time slider with all the date in df_covid
         :type date_index: ipywidgets.IntSlider
         Update the map
@@ -61,7 +64,7 @@ class Map_covid:
     
     def widget(self):
         """
-        Create a widget with time slider with every date
+        Create a widget with time slider with every date.
         """
         time_slider = ipywidgets.IntSlider(value=0, min=0, max=self.date_record.size-1, step=1)
         play = ipywidgets.Play(value=0, min=0, max=self.date_record.size-1, step=1, description='Press play', interval=50)
@@ -72,7 +75,7 @@ class Map_covid:
 
     def plot_all(self):
         """
-        Display the animated map with the widget 
+        Display the animated map with the widget.
         """
         layout, interaction = self.widget()
         self.map_covid.update()

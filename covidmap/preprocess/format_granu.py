@@ -1,9 +1,14 @@
 
 def format_granularity(df_covid, granularity):
     """
-    Format the dataframe by changing 'maille_code' with the format 'DEP-XX' in the format 'XX'.
-    For instance, "DEP-33" becomes "33".
+    Format the dataframe by changing 'maille_code' with the format '___-XX' in the format 'XX',
+    according to the granularity.
+    For instance, "DEP-33" becomes "33" or "REG-11" becomes "11".
+
     :param df_covid: dataframe with covid data
+    :type df_covid: dataframe
+    :param granularity: region or departement
+    :type granularity: str
     """
     df = df_covid.copy()
     if granularity == "region":
