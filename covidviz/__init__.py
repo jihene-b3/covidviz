@@ -5,5 +5,5 @@ from .covidmap.plot_map import Map_covid
 from .preprocess.format_granu import format_granularity
 from .preprocess.clean_df import choose_columns, choose_granularity
 from .icu.link_dep_reg import link_dep_reg
-import .screening.plot_map as spm
-from .screening.plot_map import map_screening
+from .screening.plot_map import map_dep, map_screening
+from .screening.graphs import daily_test, daily_test_age, daily_test_dep

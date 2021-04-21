@@ -2,17 +2,9 @@ import pandas as pd
 import numpy as np
 import folium
 
-grand_public_path = 'covidviz/data/scr_public_centers.csv'
-acces_restreint_path = 'covidviz/data/scr_private_centers.csv'
-depis_grand_public = pd.read_csv(grand_public_path)
-depis_acces_restreint = pd.read_csv(acces_restreint_path)
-dep_fr = pd.read_csv('screening/data/depart_fr_coord.csv', delimiter=';')
-
-
 """
  Clean the dataframe of public screening centers in France
 """
-
 
 def get_public_centers(depis_grand_public):
 
