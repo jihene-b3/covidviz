@@ -28,5 +28,12 @@ screening_daily.rename(
     inplace=True)
 
 #%%
+DEP = pd.DataFrame(screening_daily['dep'].unique())
+DEP.set_axis(['code'], axis=1, inplace=True)
+
+AGE = pd.DataFrame(screening_daily['cl_age'].unique())
+AGE.set_axis(['classe'], axis=1, inplace=True)
+
+#%%
 
 cvz.daily_test(90,'29')
