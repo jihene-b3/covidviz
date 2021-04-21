@@ -2,13 +2,12 @@ import pandas as pd
 import plotly.express as px
 import numpy as np
 
-AGE = pd.DataFrame(screening_daily['cl_age'].unique())
-AGE.set_axis(['classe'], axis=1, inplace=True)
-DEP = pd.DataFrame(screening_daily['dep'].unique())
-DEP.set_axis(['code'], axis=1, inplace=True)
+
 
 def screen_age_dep(screening_daily):
     screening_daily_age_dep = {}
+    AGE = pd.DataFrame(screening_daily['cl_age'].unique())
+    AGE.set_axis(['classe'], axis=1, inplace=True)
     for age in AGE['classe'].tolist():
         screening_daily_age_dep[age] = screening_daily[screening_daily['cl_age'] == age]
 
@@ -25,6 +24,8 @@ def screen_age_dep(screening_daily):
 
 def screen_age(screening_daily):
     screening_daily_age = {}
+    AGE = pd.DataFrame(screening_daily['cl_age'].unique())
+    AGE.set_axis(['classe'], axis=1, inplace=True)
     for age in AGE['classe'].tolist():
         screening_daily_age[age] = screening_daily[screening_daily['cl_age'] == age]
 
@@ -46,6 +47,8 @@ def screen_age(screening_daily):
 
 def screen_dep(screening_daily):
     screening_daily_dep = {}
+    DEP = pd.DataFrame(screening_daily['dep'].unique())
+    DEP.set_axis(['code'], axis=1, inplace=True)
     for dep_code in DEP['code'].tolist():
         screening_daily_dep[dep_code] = screening_daily[screening_daily['dep'] == dep_code]
 
