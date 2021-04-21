@@ -1,6 +1,7 @@
+import pandas as pd
 
 
-def link_dep_reg(df_all_dep, ):
+def link_dep_reg(df_all_dep):
     """
     We generate a new DataFrame for each region with departments
     """

@@ -10,6 +10,8 @@ import plotly.express as px
  We generate a first DataFrame of ICU in french departments,
  with keeping one source : 'Santé publique France Data',
 """
+
+
 def format_df_dep(df_with_just_dep):
     df_dep = df_with_just_dep.copy()
     df_dep.drop('granularite', axis=1, inplace=True)
@@ -22,7 +24,7 @@ def format_df_dep(df_with_just_dep):
     df_dep['reanimation'] = df_dep['reanimation'].astype(int)
     return df_dep
 
-#%%
+# %%
 
 
 def regroup_by_dep(df_dep):
@@ -39,7 +41,7 @@ def regroup_by_dep(df_dep):
     return dict_dep
 
 
-#%%
+# %%
 
 def create_df_all_dep(df_dep, dict_dep):
     """
@@ -54,7 +56,9 @@ def create_df_all_dep(df_dep, dict_dep):
     df_all_dep = df_all_dep.reset_index()
     return df_all_dep
 
-#%%
+# %%
+
+
 def icu_dep_all(df_all_dep):
     """
     return the lineplot of intensive care beds occupied
@@ -142,4 +146,3 @@ def icu_dep_conf3(df_all_dep):
         title='Intensive care beds occupied during the 3rd confinement in french departments',
         height=500, width=800)
     return(fig6.show())
-

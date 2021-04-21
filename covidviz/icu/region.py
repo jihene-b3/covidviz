@@ -9,6 +9,8 @@ import plotly.express as px
  We generate a second DataFrame of ICU in french regions,
  with keeping one source : 'OpenCOVID19-fr',
 """
+
+
 def format_df_reg(df):
     df_reg = df.copy()
     df_reg.drop(['granularite', 'maille_code'], axis=1, inplace=True)
@@ -21,6 +23,7 @@ def format_df_reg(df):
     df_reg['reanimation'] = df_reg['reanimation'].astype(int)
     return df_reg
 
+
 def regroup_by_reg(df_reg):
     """
     We regroup the data by region using dictionary type
@@ -29,10 +32,11 @@ def regroup_by_reg(df_reg):
     for region in df_reg['maille_nom'].unique().tolist():
         dict_reg[region] = pd.DataFrame(
             df_reg.loc[df_reg['maille_nom'] == region,
-                    'reanimation']).resample("1D").sum()
+                       'reanimation']).resample("1D").sum()
         dict_reg[region] = dict_reg[region].rename(
-            columns = {"reanimation": region})
+            columns={"reanimation": region})
     return dict_reg
+
 
 def create_df_all_reg(df_reg, dict_reg):
     """
@@ -202,9 +206,6 @@ def icu_by_reg_conf3(region, icu_by_reg):
     return(fig6.show())
 
 
-
-
-
 def icu_all_reg(df_all_reg):
     """
     see the title
@@ -220,6 +221,7 @@ def icu_all_reg(df_all_reg):
         height=500, width=800)
     return(fig.show())
 
+
 def change_format_reg(df_all_reg):
     df_all_reg["Régions d'Outre Mer"] = df_all_reg["Guadeloupe"] + df_all_reg['Martinique'] + df_all_reg['Guyane'] + df_all_reg['La Réunion'] + df_all_reg['Mayotte']
     df_all_reg_tot = df_all_reg['Total']
@@ -230,12 +232,12 @@ def change_format_reg(df_all_reg):
                             "Centre-Val de Loire": 'Centre-Val-de-Loire',
                             "Grand Est": "Grand-Est"}, inplace=True)
 
+
 def create_reg_total(df_all_reg):
     df_all_reg = change_format_reg(df_all_reg)
     icu_reg_total = pd.DataFrame(np.sum(df_all_reg.iloc[:, 1:15], axis=0))
     icu_reg_total.columns = ['Total number']
     return icu_reg_total
-    
 
 
 def icu_reg_repartition(icu_reg_total):
