@@ -4,6 +4,9 @@ import geopandas as gpd
 import ipywidgets
 from ipywidgets import interact, interactive_output, Play, jslink, HBox, IntSlider
 
+def get_name(self):
+    return self.name
+
 class Map_covid:
     """Creates an animated map
     :param df_covid: dataframe with covid data
@@ -73,6 +76,7 @@ class Map_covid:
         """
         layout, interaction = self.widget()
         self.map_covid.update()
+        display = get_name()
         display(layout, interaction)
         display(self.map_covid.show())
 
