@@ -1,6 +1,8 @@
 import pandas as pd
 import plotly.express as px
 import numpy as np
+import folium
+
 import warnings
 warnings.filterwarnings("ignore", category=RuntimeWarning)
 
