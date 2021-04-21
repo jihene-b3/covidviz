@@ -1,14 +1,17 @@
 import pandas as pd
 import numpy as np
 import datetime
+
+import warnings
+warnings.filterwarnings("ignore", category=RuntimeWarning)
+
+sys.path.append(os.path.dirname(os.path.abspath(__file__)) + (os.path.sep + '..')*2)
+
 import covidmap as cm
 from covidviz.preprocess.clean_df import choose_columns, choose_granularity
 from coviviz.io.load_db import Load_db
 import plotly.express as px
 import icu
-
-import warnings
-warnings.filterwarnings("ignore", category=RuntimeWarning)
 
 df = choose_columns(
     Load_db.save_as_df(),
