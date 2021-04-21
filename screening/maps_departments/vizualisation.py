@@ -40,12 +40,10 @@ depis_grand_public.loc[3093, 'latitude'] = 48.9202844
 depis_grand_public = depis_grand_public.reset_index()
 
 for row in range(len(depis_grand_public)):
-    depis_grand_public.loc[row, 'dep'] =
-    depis_grand_public.loc[row, 'id_ej'][:2]
+    depis_grand_public.loc[row, 'dep'] = depis_grand_public.loc[row, 'id_ej'][:2]
 
 for row in range(len(depis_acces_restreint)):
-    depis_acces_restreint.loc[row, 'dep'] =
-    str(depis_acces_restreint.loc[row, 'id_ej'])[:2]
+    depis_acces_restreint.loc[row, 'dep'] = str(depis_acces_restreint.loc[row, 'id_ej'])[:2]
 
 # depis_acces_restreint[depis_acces_restreint['latitude'].isnull() == True]
 
