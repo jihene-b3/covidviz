@@ -102,8 +102,7 @@ for dep_code in dep_acces_restreint_list:
 for dep_code in dep_fr['maille_code'].tolist():
     for i in range(len(depis_department_grand_public[f'{dep_code}'])):
 
-        tooltip =
-        f"<strong>{depis_department_grand_public[dep_code].loc[i, 'adresse']}</strong>"
+        tooltip = f"<strong>{depis_department_grand_public[dep_code].loc[i, 'adresse']}</strong>"
 
         popup = folium.Popup(
             '<h4><b><p style="text-align:center;">{}</p></b></h4><br>'.format(
