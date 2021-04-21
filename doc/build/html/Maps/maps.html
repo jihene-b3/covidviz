@@ -1,0 +1,310 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Covidmap &mdash; Covid Visualization 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css\custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="How to install" href="../Installation/install.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Covid Visualization
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Installation/install.html">How to install</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Maps</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Covidmap</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-covidmap.preprocess.clean_df">Clean dataframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#format-dataframe">Format dataframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-covidmap.vis.plot_map">Plot map</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Covid Visualization</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Covidmap</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/Maps/maps.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="covidmap">
+<h1>Covidmap<a class="headerlink" href="#covidmap" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-covidmap.preprocess.clean_df">
+<span id="clean-dataframe"></span><h2>Clean dataframe<a class="headerlink" href="#module-covidmap.preprocess.clean_df" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="covidmap.preprocess.clean_df.choose_columns">
+<code class="sig-name descname"><span class="pre">choose_columns</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_covid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_names</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidmap.preprocess.clean_df.choose_columns" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a dataframe with only the chosen columns,
+exctract only interresting columns of df_covid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df_covid</strong> (<em>dataframe</em>) – dataframe with covid data</p></li>
+<li><p><strong>col_names</strong> (<em>list of str</em>) – column names from df_covid</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="covidmap.preprocess.clean_df.choose_granularity">
+<code class="sig-name descname"><span class="pre">choose_granularity</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_covid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">granularity</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidmap.preprocess.clean_df.choose_granularity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a dataframe with only the chosen granularity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df_covid</strong> (<em>dataframe</em>) – dataframe with covid data</p></li>
+<li><p><strong>granularity</strong> (<em>str</em>) – element in [“departement”, “region”, “pays”, “monde”]</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="format-dataframe">
+<h2>Format dataframe<a class="headerlink" href="#format-dataframe" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-covidmap.preprocess.format_granu"></span><dl class="py function">
+<dt id="covidmap.preprocess.format_granu.format_granularity">
+<code class="sig-name descname"><span class="pre">format_granularity</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_covid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">granularity</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidmap.preprocess.format_granu.format_granularity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Format the dataframe by changing ‘maille_code’ with the format ‘___-XX’ in the format ‘XX’,
+according to the granularity.
+For instance, “DEP-33” becomes “33” or “REG-11” becomes “11”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df_covid</strong> (<em>dataframe</em>) – dataframe with covid data</p></li>
+<li><p><strong>granularity</strong> (<em>str</em>) – region or departement</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-covidmap.vis.plot_map">
+<span id="plot-map"></span><h2>Plot map<a class="headerlink" href="#module-covidmap.vis.plot_map" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="covidmap.vis.plot_map.Map_covid">
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">Map_covid</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_covid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">granularity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cases</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidmap.vis.plot_map.Map_covid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates an animated map.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df_covid</strong> (<em>dataframe</em>) – dataframe with covid data</p></li>
+<li><p><strong>granularity</strong> (<em>dataframe</em>) – dep or region</p></li>
+<li><p><strong>cases</strong> (<em>str</em>) – column from df_covid</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="covidmap.vis.plot_map.Map_covid.plot_all">
+<code class="sig-name descname"><span class="pre">plot_all</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#covidmap.vis.plot_map.Map_covid.plot_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display the animated map with the widget.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="covidmap.vis.plot_map.Map_covid.update_plot">
+<code class="sig-name descname"><span class="pre">update_plot</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date_index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidmap.vis.plot_map.Map_covid.update_plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the map plot accordign to a slider widget.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>date_index</strong> (<em>ipywidgets.IntSlider</em>) – time slider with all the date in df_covid</p>
+</dd>
+</dl>
+<p>Update the map</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="covidmap.vis.plot_map.Map_covid.widget">
+<code class="sig-name descname"><span class="pre">widget</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#covidmap.vis.plot_map.Map_covid.widget" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a widget with time slider with every date.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../Installation/install.html" class="btn btn-neutral float-left" title="How to install" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Jihène Belgaied, Zakaria Laabsi, Chloé Serre-Combe, Stephani Ujka.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

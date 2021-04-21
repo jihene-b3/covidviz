@@ -40,12 +40,10 @@ depis_grand_public.loc[3093, 'latitude'] = 48.9202844
 depis_grand_public = depis_grand_public.reset_index()
 
 for row in range(len(depis_grand_public)):
-    depis_grand_public.loc[row, 'dep'] =
-    depis_grand_public.loc[row, 'id_ej'][:2]
+    depis_grand_public.loc[row, 'dep'] = depis_grand_public.loc[row, 'id_ej'][:2]
 
 for row in range(len(depis_acces_restreint)):
-    depis_acces_restreint.loc[row, 'dep'] =
-    str(depis_acces_restreint.loc[row, 'id_ej'])[:2]
+    depis_acces_restreint.loc[row, 'dep'] = str(depis_acces_restreint.loc[row, 'id_ej'])[:2]
 
 # depis_acces_restreint[depis_acces_restreint['latitude'].isnull() == True]
 
@@ -71,22 +69,18 @@ for dep_code in dep_fr['maille_code'].tolist():
 
 depis_department_grand_public = {}
 for dep_code in dep_fr['maille_code'].tolist():
-    depis_department_grand_public[f'{dep_code}'] =
-    depis_grand_public[depis_grand_public['dep'] == f'{dep_code}']
+    depis_department_grand_public[f'{dep_code}'] = depis_grand_public[depis_grand_public['dep'] == f'{dep_code}']
 
-    depis_department_grand_public[f'{dep_code}'] =
-    depis_department_grand_public[f'{dep_code}'].reset_index()
+    depis_department_grand_public[f'{dep_code}'] = depis_department_grand_public[f'{dep_code}'].reset_index()
 
     depis_department_grand_public[f'{dep_code}'].drop(['level_0', 'index'],
                                                       axis=1, inplace=True)
 
 depis_department_acces_restreint = {}
 for dep_code in dep_fr['maille_code'].tolist():
-    depis_department_acces_restreint[f'{dep_code}'] =
-    depis_acces_restreint[depis_acces_restreint['dep'] == f'{dep_code}']
+    depis_department_acces_restreint[f'{dep_code}'] = depis_acces_restreint[depis_acces_restreint['dep'] == f'{dep_code}']
 
-    depis_department_acces_restreint[f'{dep_code}'] =
-    depis_department_acces_restreint[f'{dep_code}'].reset_index()
+    depis_department_acces_restreint[f'{dep_code}'] = depis_department_acces_restreint[f'{dep_code}'].reset_index()
 
     depis_department_acces_restreint[f'{dep_code}'].drop(['index'],
                                                          axis=1, inplace=True)
@@ -108,8 +102,7 @@ for dep_code in dep_acces_restreint_list:
 for dep_code in dep_fr['maille_code'].tolist():
     for i in range(len(depis_department_grand_public[f'{dep_code}'])):
 
-        tooltip =
-        f"<strong>{depis_department_grand_public[dep_code].loc[i, 'adresse']}</strong>"
+        tooltip = f"<strong>{depis_department_grand_public[dep_code].loc[i, 'adresse']}</strong>"
 
         popup = folium.Popup(
             '<h4><b><p style="text-align:center;">{}</p></b></h4><br>'.format(
@@ -153,7 +146,7 @@ for dep_code in dep_fr['maille_code'].tolist():
         folium.Marker(
             location=[
                 depis_department_grand_public[f'{dep_code}'].loc[i, 'latitude'],
-                depis_department_grand_public[f'{dep_code}'].loc[i,'longitude']
+                depis_department_grand_public[f'{dep_code}'].loc[i, 'longitude']
                 ],
             icon=icon,
             popup=popup,
@@ -162,8 +155,7 @@ for dep_code in dep_fr['maille_code'].tolist():
 for dep_code in dep_acces_restreint_list:
     for i in range(len(depis_department_acces_restreint[f'{dep_code}'])):
 
-        tooltip =
-        f"<strong>{depis_department_acces_restreint[dep_code].loc[i,'adresse']}</strong>"
+        tooltip = f"<strong>{depis_department_acces_restreint[dep_code].loc[i,'adresse']}</strong>"
 
         popup = folium.Popup(
             '<h4><b><p style="text-align:center;">{}</p></b></h4><br>'.format(
