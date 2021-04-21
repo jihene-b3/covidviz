@@ -32,6 +32,6 @@ jobs:
     - name: Test with pytest
       run: |
         pip install pytest
-        pytest ./covidmap/tests/tests_covidmap.py
-# pytest ./icu/tests/test_icu.py
-# pytest ./screening/tests/test_screening.py
+        pytest ./covidviz/tests/tests_covidmap.py
+# pytest ./covidviz/tests/test_icu.py
+# pytest ./covidviz/tests/test_screening.py
