@@ -28,12 +28,11 @@ screening_daily.rename(
     inplace=True)
 
 #%%
+screening_daily.rename(columns={'cl_age90' : 'cl_age', 'jour' : 'date', 'T' : 'Tests number', 'P' : 'Positive tests'}, inplace=True)
+
+#%%
 DEP = pd.DataFrame(screening_daily['dep'].unique())
 DEP.set_axis(['code'], axis=1, inplace=True)
 
-AGE = pd.DataFrame(screening_daily['cl_age'].unique())
-AGE.set_axis(['classe'], axis=1, inplace=True)
-
 #%%
-
 cvz.daily_test(90,'29')
