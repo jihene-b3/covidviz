@@ -39,3 +39,5 @@ jobs:
       run: |
         pip install pytest
         pytest ./covidmap/tests/tests_covidmap.py
+        pytest ./icu/tests/test_icu.py
+        pytest ./screening/tests/test_screening.py
