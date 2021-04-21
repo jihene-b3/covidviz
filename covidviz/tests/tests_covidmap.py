@@ -14,7 +14,7 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)) + (os.path.sep + '..'
 import covidviz as cvz
 
 # Global variables :
-df_covid = pd.read_csv("covidmap/data/df_covid.csv")
+df_covid = pd.read_csv("covidviz/data/df_covid.csv")
 url_dep = 'https://france-geojson.gregoiredavid.fr/repo/departements.geojson'
 url_reg = 'https://france-geojson.gregoiredavid.fr/repo/regions.geojson'
 departments = gpd.read_file(url_dep)
