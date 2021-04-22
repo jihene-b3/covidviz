@@ -20,9 +20,17 @@ Welcome to ProjetCovid's documentation!
 
 .. toctree::
    :maxdepth: 2
+   :caption: Format
+
+   format_data/format
+
+
+.. toctree::
+   :maxdepth: 2
    :caption: Maps
 
    Maps/maps
+
 
 .. toctree::
    :maxdepth: 2
