@@ -24,6 +24,13 @@ Welcome to ProjetCovid's documentation!
 
    Maps/maps
 
+.. toctree::
+   :maxdepth: 2
+   :caption: Statistics
+
+   Stats/covidtime
+   Stats/icu
+   Stats/screening
 
 
 Indices and tables
