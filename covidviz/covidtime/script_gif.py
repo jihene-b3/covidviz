@@ -1,4 +1,3 @@
-
 import pandas as pd
 import pandas_alive
 import covidviz
@@ -38,7 +37,7 @@ df=df[df['deces'] > 0]
 
 df.reset_index(inplace=True)
 df_clean = df.pivot(index="date", columns="maille_nom",values="deces").fillna(0)
-df_clean.plot_animated("covidviz/covidtime/output/covid-19-h-bar-deaths.gif", period_fmt="%Y-%m-%d", title="Covid-19 Departments number of deaths",n_visible=15)
+df_clean.plot_animated("covidviz/covidtime/output/covid-19-h-bar-deaths_departement.gif", period_fmt="%Y-%m-%d", title="Covid-19 Departments number of deaths",n_visible=15)
 
 ##compare les cas_confirmés entre départements : 
 
@@ -50,7 +49,7 @@ df_c=df_c[df_c['cas_confirmes'] > 0]
 
 df_c.reset_index(inplace=True)
 df_clean2 = df_c.pivot(index="date", columns="maille_nom",values="cas_confirmes").fillna(0)
-df_clean2.plot_animated("covidviz/covidtime/output/covid-19-h-bar-cases.gif", period_fmt="%Y-%m-%d", title="Covid-19 France Departments number of cases",n_visible=15)
+df_clean2.plot_animated("covidviz/covidtime/output/covid-19-h-bar-cases_departement.gif", period_fmt="%Y-%m-%d", title="Covid-19 France Departments number of cases",n_visible=15)
 
 ##comparaison des dèces entre les régions : 
 _data_region = choose_granularity(_data, 'region')
@@ -64,7 +63,7 @@ df_r.reset_index(inplace=True)
 df_clean_r = df_r.pivot(index="date", columns="maille_nom",values="deces").fillna(0)
 
 df_clean_r.plot_animated("covidviz/covidtime/output/covid-19-deaths-regions.gif", 
-                      title="Covid-19 Departments number of deaths", 
+                      title="Covid-19 number of deaths in French regions ", 
                       kind='line', 
                       period_fmt="%Y-%m-%d", 
                       period_label={ 
@@ -83,10 +82,10 @@ df_r_c=df_r_c.sort_values(['maille_nom','date'],ascending=True)
 df_r_c=df_r_c[df_r_c['cas_confirmes'] > 0]
 
 df_r_c.reset_index(inplace=True)
-df_clean_r = df_r_c.pivot(index="date", columns="maille_nom",values="deces").fillna(0)
+df_clean_r = df_r_c.pivot(index="date", columns="maille_nom",values="cas_confirmes").fillna(0)
 
-df_clean_r.plot_animated("covidviz/covidtime/output/covid-19-cases.gif-regions", 
-                      title="Covid-19 regions number of cases", 
+df_clean_r.plot_animated("covidviz/covidtime/output/covid-19-cases-region.gif", 
+                      title="Covid-19 number of cases in French regions ", 
                       kind='line', 
                       period_fmt="%Y-%m-%d", 
                       period_label={ 
@@ -95,3 +94,4 @@ df_clean_r.plot_animated("covidviz/covidtime/output/covid-19-cases.gif-regions",
                          'family': 'sans-serif', 
                          'color': 'darkred' 
                       })
+
