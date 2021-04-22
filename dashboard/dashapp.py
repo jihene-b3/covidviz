@@ -68,7 +68,14 @@ app.layout = html.Div(
               animate=True),
     dcc.Graph(id='ts_daily',
               config={'displayModeBar': False},
-              animate=True)          
+              animate=True),
+                    
+                    html.Div(className='div-for-charts', 
+                             children=[
+    html.Iframe(id='map', srcDoc =open('geojson_layer.html','r').read(), width='100%', height='600' ),
+    dcc.Graph(id='total_vacc',
+              config={'displayModeBar': False},
+              animate=True)         
  
                    
     
@@ -154,6 +161,46 @@ def update_ts_daily(selected_dropdown_value):
  
     return figure
  
+ 
+ # Callback for total number of vaccinations
+ 
+@app.callback(Output('total_vacc', 'figure'),
+              [Input('locselector', 'value')])
+
+def update_total_vacc(selected_dropdown_value):
+
+    #Draw traces of the feature 'cumul' based one the currently selected location
+    trace3 = []
+    df_sub = df
+    # Draw and append traces for each location
+    for codelocation in selected_dropdown_value:
+        trace3.append(go.Scatter(x=df_sub[df_sub['codelocation'] == codelocation].index,
+                                 y=df_sub[df_sub['codelocation'] == codelocation]['tot_vacc'],
+                                 mode='lines',
+                                 opacity=1,
+                                 name=codelocation,
+                                 textposition='bottom center'))
+    traces = [trace3]
+    data = [val for sublist in traces for val in sublist]
+ 
+    # Define Figure
+ 
+    figure = {'data': data,
+              'layout': go.Layout(
+                  colorway=["#5E0DAC", '#FF4F00', '#375CB1', '#FF7400', '#FFF400', '#FF0056'],
+                  template='plotly_dark',
+                  paper_bgcolor='rgba(0, 0, 0, 0)',
+                  plot_bgcolor='rgba(0, 0, 0, 0)',
+                  margin={'t': 50},
+                  height=500,
+                  hovermode='x',
+                  autosize=True,
+                  title={'text': 'Total number of vaccinations', 'font': {'color': 'white'}, 'x': 0.5},
+                  xaxis={'range': [df_sub.index.min(), df_sub.index.max()]},
+              ),
+              }
+ 
+    return figure
  
 # Lauching the app
   
