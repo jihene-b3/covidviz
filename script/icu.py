@@ -10,7 +10,7 @@ from covidviz.icu.department import *
 from covidviz.icu.region import *
 import plotly.express as px
 #%%
-# Load data 
+# Loading 'data_covid.csv' from covidmap
 df_raw = cvz.choose_columns(
     cvz.Load_db.save_as_df(),
     [
@@ -23,7 +23,8 @@ df_raw = cvz.choose_columns(
     ]
 )
 # %%
-df_dep = cvz.choose_granularity(df_raw,"departement")
+
+df_dep = cvz.choose_granularity(df_raw, "departement")
 df_reg = cvz.choose_granularity(df_raw, "region")
 
 #%%

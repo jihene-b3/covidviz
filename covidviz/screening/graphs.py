@@ -3,76 +3,20 @@ import plotly.express as px
 import numpy as np
 
 
-
-def screen_age_dep(screening_daily):
-    screening_daily_age_dep = {}
-    AGE = pd.DataFrame(screening_daily['cl_age'].unique())
-    AGE.set_axis(['classe'], axis=1, inplace=True)
-    for age in AGE['classe'].tolist():
-        screening_daily_age_dep[age] = screening_daily[screening_daily['cl_age'] == age]
-
-        screening_daily_age_dep[age].drop(['cl_age'], axis=1, inplace=True)
-        screening_daily_age_dep[age] = screening_daily_age_dep[age].reset_index()
-        screening_daily_age_dep[age].drop(['pop', 'index'], axis=1, inplace=True)
-
-        screening_daily_age_dep[age]['Tests cumul'] = screening_daily_age_dep[age]['Tests number'].cumsum()
-
-        screening_daily_age_dep[age]['% positive tests'] = (screening_daily_age_dep[age]['Positive tests']/screening_daily_age_dep[age]['Tests number'])*100
-
-        screening_daily_age_dep[age].fillna(0, inplace=True)
-    return screening_daily_age_dep 
-
-def screen_age(screening_daily):
-    screening_daily_age = {}
-    AGE = pd.DataFrame(screening_daily['cl_age'].unique())
-    AGE.set_axis(['classe'], axis=1, inplace=True)
-    for age in AGE['classe'].tolist():
-        screening_daily_age[age] = screening_daily[screening_daily['cl_age'] == age]
-
-        screening_daily_age[age].drop(['cl_age'], axis=1, inplace=True)
-        screening_daily_age[age] = screening_daily_age[age].reset_index()
-        screening_daily_age[age] = screening_daily_age[age].set_index('date')
-
-        screening_daily_age[age].index = pd.to_datetime(screening_daily_age[age].index, format="%Y-%m-%d")
-
-        screening_daily_age[age] = screening_daily_age[age].resample("1D").sum()
-        screening_daily_age[age].drop(['pop', 'index'], axis=1, inplace=True)
-
-        screening_daily_age[age]['Tests cumul'] = screening_daily_age[age]['Tests number'].cumsum()
-
-        screening_daily_age[age]['% positive tests'] = (screening_daily_age[age]['Positive tests']/screening_daily_age[age]['Tests number'])*100
-
-        screening_daily_age[age] = screening_daily_age[age].reset_index()
-    return screening_daily_age
-
-def screen_dep(screening_daily):
-    screening_daily_dep = {}
-    DEP = pd.DataFrame(screening_daily['dep'].unique())
-    DEP.set_axis(['code'], axis=1, inplace=True)
-    for dep_code in DEP['code'].tolist():
-        screening_daily_dep[dep_code] = screening_daily[screening_daily['dep'] == dep_code]
-
-        screening_daily_dep[dep_code].drop(['dep'], axis=1, inplace=True)
-        screening_daily_dep[dep_code] = screening_daily_dep[dep_code].reset_index()
-
-        screening_daily_dep[dep_code] = screening_daily_dep[dep_code].set_index('date')
-
-        screening_daily_dep[dep_code].index = pd.to_datetime(screening_daily_dep[dep_code].index, format="%Y-%m-%d")
-
-        screening_daily_dep[dep_code] = screening_daily_dep[dep_code].resample("1D").sum()
-
-        screening_daily_dep[dep_code].drop(['cl_age', 'pop', 'index'],
-                                        axis=1, inplace=True)
-
-        screening_daily_dep[dep_code]['Tests cumul'] = screening_daily_dep[dep_code]['Tests number'].cumsum()
-
-        screening_daily_dep[dep_code]['% positive tests'] = (screening_daily_dep[dep_code]['Positive tests']/screening_daily_dep[dep_code]['Tests number'])*100
-
-        screening_daily_dep[dep_code] = screening_daily_dep[dep_code].reset_index()
-    return screening_daily_dep
-
-
 def daily_test(age, department, screening_daily_age_dep):
+    """
+    daily_test 
+
+    displays the barplot of screenings performed per day by age group and department.
+    The more intense the color of the bar (towards yellow),
+    the higher the percentage of number of positive tests (the reference is placed to the right of the graph). 
+    The 'plotly' package allows you to zoom the desired period.
+
+    Args:
+        age (int): age class in [9, 19, 29, 39, 49, 59, 69, 79, 89, 90]
+        department (str): french department like '34' (for Hérault department)
+        screening_daily_age_dep (dict): data by age filtred then by department
+    """
     df = screening_daily_age_dep[age][screening_daily_age_dep[age]['dep'] == f'{department}']
     df.drop(['dep'], axis=1, inplace=True)
     df = df.reset_index()
@@ -88,6 +32,18 @@ def daily_test(age, department, screening_daily_age_dep):
 
 
 def daily_test_dep(department, screening_daily_dep):
+    """
+    daily_test_dep
+
+    displays the barplot of screenings performed per day by department.
+    The more intense the color of the bar (towards yellow),
+    the higher the percentage of number of positive tests (the reference is placed to the right of the graph). 
+    The 'plotly' package allows you to zoom the desired period.
+
+    Args:
+        department (str): french department like '34' (for Hérault department)
+        screening_daily_dep (dict): data by dep
+    """
     fig = px.bar(
         screening_daily_dep[department],
         x='date', y='Tests number',
@@ -99,6 +55,18 @@ def daily_test_dep(department, screening_daily_dep):
 
 
 def daily_test_age(age_class, screening_daily_age):
+    """
+    daily_test_age
+
+    displays the barplot of screenings performed per day by age group.
+    The more intense the color of the bar (towards yellow),
+    the higher the percentage of number of positive tests (the reference is placed to the right of the graph). 
+    The 'plotly' package allows you to zoom the desired period.
+
+    Args:
+        age (int): age class in [9, 19, 29, 39, 49, 59, 69, 79, 89, 90]
+        screening_daily_age (dict): data by age
+    """
     fig = px.bar(
         screening_daily_age[age_class],
         x='date', y='Tests number',

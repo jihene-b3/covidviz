@@ -35,3 +35,4 @@ jobs:
         pytest ./covidviz/tests/tests_covidmap.py
 # pytest ./covidviz/tests/test_icu.py
 # pytest ./covidviz/tests/test_screening.py
+# pytest ./covidviz/tests/test_sparse.py

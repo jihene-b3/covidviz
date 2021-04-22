@@ -17,6 +17,7 @@ class Map_covid:
     :type cases: str
     """
 
+
     def __init__(self, df_covid, granularity, cases):
         """
         Construction method.
@@ -28,20 +29,35 @@ class Map_covid:
         self.granularity = self.granularity.assign(cases=0)
         self.df_sort = pd.DataFrame(self.df_covid.sort_values(['date']))
         self.date_record = self.df_covid.groupby(['date']).size()
-        self.map_layer = pdk.Layer(
-                            "GeoJsonLayer",
-                            self.granularity,
-                            opacity=0.8,
-                            stroked=False,
-                            filled=True,
-                            extruded=True,
-                            wireframe=True,
-                            get_elevation="cases*100",
-                            get_fill_color="[255, cases/20, cases/20]",
-                            get_line_color=[255, 255, 255],
-                        )
+        if self.granularity.code[0] == '11':
+            self.map_layer = pdk.Layer(
+                                "GeoJsonLayer",
+                                self.granularity,
+                                opacity=0.8,
+                                stroked=False,
+                                filled=True,
+                                extruded=True,
+                                wireframe=True,
+                                get_elevation="cases*50",
+                                get_fill_color="[255, cases/20, cases/20]",
+                                get_line_color=[255, 255, 255],
+                            )
+        else:
+            self.map_layer = pdk.Layer(
+                                "GeoJsonLayer",
+                                self.granularity,
+                                opacity=0.8,
+                                stroked=False,
+                                filled=True,
+                                extruded=True,
+                                wireframe=True,
+                                get_elevation="cases*100",
+                                get_fill_color="[255, cases/20, cases/20]",
+                                get_line_color=[255, 255, 255],
+                            )
         init_view = pdk.ViewState(latitude=50.01200, longitude=3.17270, zoom=6, max_zoom=16, pitch=45, bearing=0)
         self.map_covid = pdk.Deck(layers=[self.map_layer], initial_view_state=init_view)
+
 
     def update_plot(self, date_index):
         """
@@ -49,7 +65,6 @@ class Map_covid:
 
         :param date_index: time slider with all the date in df_covid
         :type date_index: ipywidgets.IntSlider
-        Update the map
         """
         date = self.date_record.index[date_index]
         df_jour = self.df_sort.loc[self.df_sort['date'] == date]
@@ -61,6 +76,7 @@ class Map_covid:
         self.map_layer.data = self.granularity
         return self.map_covid.update()
     
+
     def widget(self):
         """
         Create a widget with time slider with every date.
@@ -71,6 +87,7 @@ class Map_covid:
         layout = ipywidgets.HBox([time_slider, play])
         interaction = interactive_output(self.update_plot, {'date_index': time_slider})
         return layout, interaction
+
 
     def plot_all(self):
         """
