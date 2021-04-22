@@ -3,6 +3,7 @@ import pandas as pd
 import pandas_alive
 from download import download 
 import covidviz
+from covidviz import *
 from preprocess.format_data import enable_time_series_plot
 
 #import data
