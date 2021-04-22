@@ -8,7 +8,7 @@ import plotly.express as px
 
 # Import datas
 
-df = pd.read_csv('df_vacc.csv', index_col=0, parse_dates=True)
+df = pd.read_csv('data\df_vacc.csv', index_col=0, parse_dates=True)
 df.index = pd.to_datetime(df['date'])
  
 
