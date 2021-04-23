@@ -41,7 +41,7 @@ def df_plot_gender(df):
     x = df.AgeGroup
     boys = df.num_h
     girls = df.num_f
-    plt.bar(x, boys, w, label = "boys")
+    plt.bar(x, boys, w, label= "boys")
     plt.bar(x, girls, w, bottom=boys, label="girls")
     plt.xlabel("AgeGroups")
     plt.ylabel("Number of people tested positive")

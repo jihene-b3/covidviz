@@ -38,9 +38,9 @@ cvz.plot_animation(df_clean_dep_cas_confirmes, "departement", "cas_confirmes")
 #%%
 df_clean_region_cas_deces = cvz.data_treatment_by_option(_data_department, "deces")
 
-cvz.plot_animation(df_clean_region_cas_confirmes, "departement", "deces")
+cvz.plot_animation(df_clean_region_cas_deces, "departement", "deces")
 
 #%%
-df_clean_region_cas_deces = cvz.data_treatment_by_option(_data_department, "cas_confirmes")
+df_clean_region_cas_confirmes = cvz.data_treatment_by_option(_data_department, "cas_confirmes")
 
 cvz.plot_animation(df_clean_region_cas_confirmes, "departement", "cas_confirmes")
