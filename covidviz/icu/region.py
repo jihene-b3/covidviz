@@ -9,13 +9,21 @@ import covidviz as cvz
 
 """
  ICU IN FRENCH REGIONS
-
- We generate a second DataFrame of ICU in french regions,
- with keeping one source : 'OpenCOVID19-fr',
 """
 
 
 def clean_df_reg(df_reg):
+    """
+    clean_df_reg 
+
+    We generate a DataFrame of ICU in french regions,
+    with keeping one source : 'OpenCOVID19-fr'
+
+    :param df_reg: data covid filtred by region
+    :type df_reg: dataframe
+    :return: data covid filtred by region cleaned
+    :rtype: dataframe
+    """
     df = df_reg.copy()
     df.drop(['granularite', 'maille_code'], axis=1, inplace=True)
     df.loc[df['source_nom'] == "OpenCOVID19-fr", :]
@@ -30,7 +38,14 @@ def clean_df_reg(df_reg):
 
 def regroup_by_reg(df_reg):
     """
+    regroup_by_reg
+
     We regroup the data by region using dictionary type
+
+    :param df_reg: data covid filtred by region
+    :type df_reg: dataframe
+    :return: data on UCI filtred by region
+    :rtype: dict
     """
     df_reg = clean_df_reg(df_reg)
     dict_reg = {}
@@ -42,10 +57,14 @@ def regroup_by_reg(df_reg):
             columns={"reanimation": region})
     return dict_reg
 
-
 def create_df_all_reg(df_reg):
     """
-    We create a DataFrame including all regions
+    create_df_all_reg 
+
+    :param df_reg: data covid filtred by region
+    :type df_reg: dataframe
+    :return: data ICU including all regions
+    :rtype: dataframe
     """
     dict_reg = regroup_by_reg(df_reg) 
     df_all_reg = pd.DataFrame()
@@ -60,8 +79,13 @@ def create_df_all_reg(df_reg):
 
 def icu_reg_all(df_reg):
     """
-    return the lineplot of intensive care beds occupied
-    since 1st confinement in french departments
+    icu_reg_all
+
+    regroup all the lineplot of intensive care beds occupied
+    for different periods in Covid crisis in french departments
+
+    :param df_reg: data covid filtred by region
+    :type df_reg: dataframe
     """
     df_all_reg = create_df_all_reg(df_reg)
     dict_plot_reg = {}
@@ -117,9 +141,9 @@ def icu_reg_all(df_reg):
 
 def icu_reg_display(period, df_reg):
     """
-    icu_dep_display [summary]
+    icu_dep_display
 
-    Return the lineplot of intensive care beds occupied 
+    Return the lineplot of intensive care beds occupied
     in french departments for period selected.
 
     :param period: period in ['since 1st confinement', 'during 1st confinement', 'during deconfinement', 'during 2nd confinement', 'during curfew', 'during 3rd confinement']
@@ -132,6 +156,15 @@ def icu_reg_display(period, df_reg):
 
 
 def icu_by_reg_all(region, df_dep):
+    """
+    icu_by_reg_all
+
+    regroup by region all the lineplot of intensive care beds occupied
+    for different periods in Covid crisis in french departments
+
+    :param df_reg: data covid filtred by region
+    :type df_reg: dataframe
+    """
     icu_by_reg = cvz.link_dep_reg(df_dep)
     dict_plot_by_reg = {}
 
@@ -186,7 +219,7 @@ def icu_by_reg_all(region, df_dep):
 
 def icu_by_reg_display(period, region, df_dep):
     """
-    icu_dep_display [summary]
+    icu_dep_display
 
     Return the lineplot of intensive care beds occupied
     in french departments for period selected.
@@ -202,7 +235,12 @@ def icu_by_reg_display(period, region, df_dep):
 
 def icu_all_reg_display(df_reg):
     """
-    see the title
+    icu_all_reg_display
+
+    Return the lineplot of ICU flux data by region since 1st confinement
+
+    :param df_reg: data covid filtred by region
+    :type df_reg: dataframe
     """
     df_all_reg = create_df_all_reg(df_reg)
     df_all_reg['Total'] = np.sum(df_all_reg.iloc[:, 1:], axis=1)
@@ -218,6 +256,16 @@ def icu_all_reg_display(df_reg):
 
 
 def change_format_reg(df_reg):
+    """
+    change_format_reg
+
+    df_reg cleaned in ICU data and we changed the DOM columns, and renamed some name region to be adaptable for later
+
+    :param df_reg: covid data filtred by region
+    :type df_reg: dataframe
+    :return: DOM regrouped in 'Région d'Outre Mer'
+    :rtype: dataframe
+    """
     df_all_reg = create_df_all_reg(df_reg)
     df_all_reg["Régions d'Outre Mer"] = df_all_reg["Guadeloupe"] + df_all_reg['Martinique'] + df_all_reg['Guyane'] + df_all_reg['La Réunion'] + df_all_reg['Mayotte']
     df_all_reg.drop(['Guadeloupe', 'Martinique', 'Guyane', 'La Réunion', 'Mayotte'], axis=1, inplace=True)

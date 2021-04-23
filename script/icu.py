@@ -9,9 +9,9 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)) + (os.path.sep + '..'
 import covidviz as cvz
 
 # %%
-    """
-     ICU by department
-    """
+"""
+ ICU by department
+"""
 # %%
 # Loading 'data_covid.csv' from covidmap
 df_raw = cvz.choose_columns(

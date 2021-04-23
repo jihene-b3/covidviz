@@ -46,5 +46,3 @@ screening_daily.rename(
 cvz.daily_test(9, '34', screening_daily)
 cvz.daily_test_dep('34', screening_daily)
 cvz.daily_test_age(9, screening_daily)
-
-# %%
