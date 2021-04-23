@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Format dataframe &mdash; Covid Visualization 0.0.1 documentation</title>
+  <title>Graph &mdash; Covid Visualization 0.0.1 documentation</title>
   
 
   
@@ -39,8 +39,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Covid Map" href="../Maps/maps.html" />
-    <link rel="prev" title="How to install" href="../Installation/install.html" /> 
+    <link rel="next" title="Covid time" href="../Stats/covidtime.html" />
+    <link rel="prev" title="Covid Map" href="../Maps/maps.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -90,20 +90,19 @@
 <li class="toctree-l1"><a class="reference internal" href="../Installation/install.html">How to install</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Format</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Format dataframe</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#module-covidviz.preprocess.clean_df">Clean dataframe</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id1">Format dataframe</a></li>
-</ul>
-</li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../format_data/format.html">Format dataframe</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Maps</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../Maps/maps.html">Covid Map</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Graph</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../sparse/graph.html">Graph</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Graph</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-covidviz.sparse.transfer_graph">Plot transfer graph</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">Statistics</span></p>
 <ul>
@@ -158,13 +157,13 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Format dataframe</li>
+      <li>Graph</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../_sources/format_data/format.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/sparse/graph.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -177,54 +176,44 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="format-dataframe">
-<h1>Format dataframe<a class="headerlink" href="#format-dataframe" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="module-covidviz.preprocess.clean_df">
-<span id="clean-dataframe"></span><h2>Clean dataframe<a class="headerlink" href="#module-covidviz.preprocess.clean_df" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="graph">
+<h1>Graph<a class="headerlink" href="#graph" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-covidviz.sparse.transfer_graph">
+<span id="plot-transfer-graph"></span><h2>Plot transfer graph<a class="headerlink" href="#module-covidviz.sparse.transfer_graph" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
-<dt id="covidviz.preprocess.clean_df.choose_columns">
-<code class="sig-name descname"><span class="pre">choose_columns</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_covid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_names</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.preprocess.clean_df.choose_columns" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return a dataframe with only the chosen columns,
-exctract only interresting columns of df_covid.</p>
+<dt id="covidviz.sparse.transfer_graph.create_transfer_graph">
+<code class="sig-name descname"><span class="pre">create_transfer_graph</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.sparse.transfer_graph.create_transfer_graph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a graph for covid patient’s transfer from covid
+transfer’s data.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>df_covid</strong> (<em>dataframe</em>) – dataframe with covid data</p></li>
-<li><p><strong>col_names</strong> (<em>list of str</em>) – column names from df_covid</p></li>
-</ul>
+<dt class="field-odd">Return G</dt>
+<dd class="field-odd"><p>graph of covid patient’s transfer</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="covidviz.preprocess.clean_df.choose_granularity">
-<code class="sig-name descname"><span class="pre">choose_granularity</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_covid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">granularity</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.preprocess.clean_df.choose_granularity" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return a dataframe with only the chosen granularity.</p>
+<dt id="covidviz.sparse.transfer_graph.plot_adjacency_matrix">
+<code class="sig-name descname"><span class="pre">plot_adjacency_matrix</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.sparse.transfer_graph.plot_adjacency_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot and return the adjacency matrix of the graph G.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>df_covid</strong> (<em>dataframe</em>) – dataframe with covid data</p></li>
-<li><p><strong>granularity</strong> (<em>str</em>) – element in [“departement”, “region”, “pays”, “monde”]</p></li>
-</ul>
+<dd class="field-odd"><p><strong>G</strong> (<em>networkx.classes.digraph.DiGraph</em>) – graph</p>
+</dd>
+<dt class="field-even">Return M_adj</dt>
+<dd class="field-even"><p>adjacency matrix</p>
 </dd>
 </dl>
 </dd></dl>
 
-</div>
-<div class="section" id="id1">
-<h2>Format dataframe<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="module-covidviz.preprocess.format_granu"></span><dl class="py function">
-<dt id="covidviz.preprocess.format_granu.format_granularity">
-<code class="sig-name descname"><span class="pre">format_granularity</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_covid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">granularity</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.preprocess.format_granu.format_granularity" title="Permalink to this definition">¶</a></dt>
-<dd><p>Format the dataframe by changing ‘maille_code’ with the format ‘___-XX’ in the format ‘XX’,
-according to the granularity.
-For instance, “DEP-33” becomes “33” or “REG-11” becomes “11”.</p>
+<dl class="py function">
+<dt id="covidviz.sparse.transfer_graph.plot_transfer_graph">
+<code class="sig-name descname"><span class="pre">plot_transfer_graph</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.sparse.transfer_graph.plot_transfer_graph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots a graph for covid patient’s transfer from covid
+transfer’s data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>df_covid</strong> (<em>dataframe</em>) – dataframe with covid data</p></li>
-<li><p><strong>granularity</strong> (<em>str</em>) – region or departement</p></li>
-</ul>
+<dd class="field-odd"><p><strong>G</strong> (<em>networkx.classes.digraph.DiGraph</em>) – graph of covid patient’s transfer</p>
 </dd>
 </dl>
 </dd></dl>
@@ -238,8 +227,8 @@ For instance, “DEP-33” becomes “33” or “REG-11” becomes “11”.</p
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../Maps/maps.html" class="btn btn-neutral float-right" title="Covid Map" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="../Installation/install.html" class="btn btn-neutral float-left" title="How to install" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../Stats/covidtime.html" class="btn btn-neutral float-right" title="Covid time" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../Maps/maps.html" class="btn btn-neutral float-left" title="Covid Map" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
