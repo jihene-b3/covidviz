@@ -8,11 +8,10 @@ class Load_db:
   :param url: url 
   :param target_name: path target
   """
-  def __init__(self, url=url_db, target_name=path_target):
-  """
-  Construction method
-  """
-    download(url, target_name, replace=False)
+  def __init__(self, url, target_name):
+    self.url = url_db
+    self.target_name = path_target
+    download(self.url, self.target_name, replace=False)
   
   @staticmethod
   def save_as_df():
