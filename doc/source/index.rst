@@ -31,6 +31,12 @@ Welcome to ProjetCovid's documentation!
 
    Maps/maps
 
+.. toctree::
+   :maxdepth: 2
+   :caption: Graph
+
+   sparse/graph
+
 
 .. toctree::
    :maxdepth: 2
