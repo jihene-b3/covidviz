@@ -60,6 +60,7 @@ def plot_transfer_graph(G):
     plt.title("French patient transfers' graph", fontsize=28)
     plt.show()
 
+
 def plot_adjacency_matrix(G):
     """Plot and return the adjacency matrix of the graph G.
     

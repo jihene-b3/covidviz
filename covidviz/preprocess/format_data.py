@@ -44,6 +44,7 @@ def format_age(df):
     df.loc[(df.age > 89),  'AgeGroup'] = '[90,+]'
     return(df)
 
+
 def remove_nan(df):
     """
     This function select numerical columns and remive NAN values with linear interpolation method.
@@ -53,6 +54,7 @@ def remove_nan(df):
     numeric_columns = numeric.columns
     df[numeric_columns] = df[numeric_columns].interpolate(method ='linear', limit_direction ='forward')
     return(df)
+
 
 def enable_time_series_plot(
     in_df, timein_field="time", timeseries_field_out="date", date_format="%Y-%m-%d",
