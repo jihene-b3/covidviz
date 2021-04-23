@@ -13,7 +13,7 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css\custom.css" type="text/css" />
 
   
   
@@ -33,7 +33,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -101,6 +100,10 @@
 <p class="caption"><span class="caption-text">Maps</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../Maps/maps.html">Covid Map</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Graph</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../sparse/graph.html">Graph</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Statistics</span></p>
 <ul>
@@ -180,7 +183,7 @@
 <span id="clean-dataframe"></span><h2>Clean dataframe<a class="headerlink" href="#module-covidviz.preprocess.clean_df" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="covidviz.preprocess.clean_df.choose_columns">
-<code class="sig-name descname">choose_columns</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df_covid</span></em>, <em class="sig-param"><span class="n">col_names</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.preprocess.clean_df.choose_columns" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">choose_columns</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_covid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_names</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.preprocess.clean_df.choose_columns" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a dataframe with only the chosen columns,
 exctract only interresting columns of df_covid.</p>
 <dl class="field-list simple">
@@ -195,7 +198,7 @@ exctract only interresting columns of df_covid.</p>
 
 <dl class="py function">
 <dt id="covidviz.preprocess.clean_df.choose_granularity">
-<code class="sig-name descname">choose_granularity</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df_covid</span></em>, <em class="sig-param"><span class="n">granularity</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.preprocess.clean_df.choose_granularity" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">choose_granularity</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_covid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">granularity</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.preprocess.clean_df.choose_granularity" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a dataframe with only the chosen granularity.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -212,7 +215,7 @@ exctract only interresting columns of df_covid.</p>
 <h2>Format dataframe<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <span class="target" id="module-covidviz.preprocess.format_granu"></span><dl class="py function">
 <dt id="covidviz.preprocess.format_granu.format_granularity">
-<code class="sig-name descname">format_granularity</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df_covid</span></em>, <em class="sig-param"><span class="n">granularity</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.preprocess.format_granu.format_granularity" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">format_granularity</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_covid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">granularity</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.preprocess.format_granu.format_granularity" title="Permalink to this definition">¶</a></dt>
 <dd><p>Format the dataframe by changing ‘maille_code’ with the format ‘___-XX’ in the format ‘XX’,
 according to the granularity.
 For instance, “DEP-33” becomes “33” or “REG-11” becomes “11”.</p>

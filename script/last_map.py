@@ -1,13 +1,9 @@
 #%%
-import pydeck as pdk
-import os
-import sys
+import os, sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + (os.path.sep + '..'))
 import covidviz as cvz
 import pandas as pd
 import geopandas as gpd
-import ipywidgets
-from ipywidgets import interact, interactive_output, Play, jslink, HBox, IntSlider
 
 #%%
 url_dep = 'https://france-geojson.gregoiredavid.fr/repo/departements.geojson'
@@ -32,25 +28,32 @@ df_covid_cleaned_dep = cvz.choose_granularity(df_covid_cleaned,"departement")
 df_covid = cvz.format_granularity(df_covid_cleaned_dep, "departement")
 
 #%%
+# Plot map with covid deads by department
 map = cvz.Map_covid(df_covid, departments, "deces")
 map.plot_all()
 
 #%%
+# Plot map with covid hospitalized by department
 map = cvz.Map_covid(df_covid, departments, "hospitalises")
 map.plot_all()
 
 
 # %%
 
+# keep only regions
 df_covid_cleaned_reg = cvz.choose_granularity(df_covid_cleaned,"region")
 
 # format regions
 df_covid_reg = cvz.format_granularity(df_covid_cleaned_reg, "region")
 
 # %%
+
+# Plot map with covid death by region
 map = cvz.Map_covid(df_covid_reg, regions, "deces")
 map.plot_all()
 # %%
+
+# Plot map with covid hospitalized by region
 map = cvz.Map_covid(df_covid_reg, regions, "hospitalises")
 map.plot_all()
 # %%

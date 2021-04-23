@@ -20,8 +20,9 @@ Welcome to ProjetCovid's documentation!
 
 .. toctree::
    :maxdepth: 2
-   :caption: Format
+   :caption: Data
 
+   loading_data/load_data
    format_data/format
 
 
@@ -30,6 +31,12 @@ Welcome to ProjetCovid's documentation!
    :caption: Maps
 
    Maps/maps
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Graph
+
+   sparse/graph
 
 
 .. toctree::

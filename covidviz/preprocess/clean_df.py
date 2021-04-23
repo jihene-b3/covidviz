@@ -15,6 +15,7 @@ def choose_columns(df_covid, col_names):
     df = df_covid.loc[:,col_names]
     return df
 
+
 def choose_granularity(df_covid, granularity):
     """
     Return a dataframe with only the chosen granularity.
