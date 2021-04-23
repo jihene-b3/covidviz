@@ -8,7 +8,7 @@ import plotly.express as px
  ICU IN FRENCH DEPARTMENTS
 
  We generate a first DataFrame of ICU in french departments,
- with keeping one source : 'Santé publique France Data',
+ with keeping one source : 'Santé publique France Data'
 """
 
 
