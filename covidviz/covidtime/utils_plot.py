@@ -48,3 +48,5 @@ def df_plot_gender(df):
     plt.title("Distribution of tested postive people for coronavirus per gender")
     plt.legend()
     return(plt.show())
+
+
