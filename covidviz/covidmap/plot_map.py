@@ -58,8 +58,8 @@ class Map_covid:
                                 get_line_color=[255, 255, 255],
                             )
 
-        init_view = pdk.ViewState(latitude=50.01200, longitude=3.17270, zoom=6, max_zoom=16, pitch=45, bearing=0)
-        self.map_covid = pdk.Deck(layers=[self.map_layer], initial_view_state=init_view)
+        self.init_view = pdk.ViewState(latitude=50.01200, longitude=3.17270, zoom=6, max_zoom=16, pitch=45, bearing=0)
+        self.map_covid = pdk.Deck(layers=[self.map_layer], initial_view_state=self.init_view)
 
 
     def update_plot(self, date_index):
@@ -100,6 +100,9 @@ class Map_covid:
         self.map_covid.update()
         display(layout, interaction)
         display(self.map_covid.show()) 
+    
+    def map_to_json(self):
+        self.map_covid.to_json("..data/test.json")
 
   
     
