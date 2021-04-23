@@ -39,7 +39,7 @@ class Map_covid:
                                 extruded=True,
                                 wireframe=True,
                                 get_elevation="cases*50",
-                                get_fill_color="[255, cases/20, cases/20]",
+                                get_fill_color="[255, cases/200, cases/20]",
                                 get_line_color=[255, 255, 255],
                             )
         else:
@@ -52,7 +52,7 @@ class Map_covid:
                                 extruded=True,
                                 wireframe=True,
                                 get_elevation="cases*100",
-                                get_fill_color="[255, cases/20, cases/20]",
+                                get_fill_color="[255, cases/200, cases/20]",
                                 get_line_color=[255, 255, 255],
                             )
         init_view = pdk.ViewState(latitude=50.01200, longitude=3.17270, zoom=6, max_zoom=16, pitch=45, bearing=0)
