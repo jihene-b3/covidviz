@@ -9,3 +9,4 @@ from .screening.plot_map import map_dep, map_screening
 from .screening.graphs import daily_test, daily_test_age, daily_test_dep
 from .sparse.propag_graph import create_propag_graph, plot_propag_graph
 from .sparse.transfer_graph import create_transfer_graph, plot_transfer_graph
+from .covidtime.time_gif import adapt_time, data_treatment_by_option, plot_animation

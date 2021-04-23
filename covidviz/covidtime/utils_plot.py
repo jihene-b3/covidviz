@@ -23,17 +23,17 @@ def df_plot_hosp(df):
     fig.update_layout(
     height = 600,
     title_text="Nombre de patients hospitalisés par classe d'âge"
-)
+    )
     return(fig.show())
 
 def df_plot_dec(df): 
     datefrom = '2020-04-01'
     fig = px.line(df, x="date", y="dec_Tot", color="AgeGroup",range_x=[datefrom,'2021-04-19'])
-# fig.update_layout(hovermode='x unified')
+    # fig.update_layout(hovermode='x unified')
     fig.update_layout(
     height = 600,
     title_text = "Nombre de patients décédès par classes d'âges"
-)
+    )
     return(fig.show())
 
 def df_plot_gender(df):
