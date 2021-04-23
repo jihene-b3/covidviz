@@ -7,7 +7,12 @@ import covidviz as cvz
 
 def link_dep_reg(df_dep):
     """
-    We generate a new DataFrame for each region with departments
+    link_dep_reg
+
+    :param df_dep: covid data filtred by department
+    :type df_dep: dataframe
+    :return: ICU data for each region with their departments
+    :rtype: dict
     """
     df_all_dep = cvz.create_df_all_dep(df_dep)
     icu_by_reg = {}

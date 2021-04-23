@@ -278,6 +278,16 @@ def change_format_reg(df_reg):
 
 
 def create_reg_total(df_reg):
+    """
+    create_reg_total 
+
+    [extended_summary]
+
+    :param df_reg: covid data filtred by region
+    :type df_reg: dataframe
+    :return: sum of rows, total number of patients in ICU since 1st confinement, by reg
+    :rtype: dataframe
+    """
     df_all_reg = change_format_reg(df_reg)
     icu_reg_total = pd.DataFrame(np.sum(df_all_reg.iloc[:, 1:15], axis=0))
     icu_reg_total.columns = ['Total number']
@@ -286,7 +296,12 @@ def create_reg_total(df_reg):
 
 def icu_reg_repartition(df_reg):
     """
-    see the title
+    icu_reg_repartition 
+
+    A pie chart whos shows the repartition of patients in ICU by regions
+
+    :param df_reg: covid data filtred by region
+    :type df_reg: dataframe
     """
     icu_reg_total = create_reg_total(df_reg)
     fig = px.pie(
@@ -300,6 +315,18 @@ def icu_reg_repartition(df_reg):
 
 
 def create_icu_beds_reg(df_reg):
+    """
+    create_icu_beds_reg 
+
+    Imports the data concerning the beds available in the intensive care unit by region.
+    The data is cleaned.
+    Then, we copy the data frame with all the data from the intensive care unit by region (column),
+    to divide each column by the number of beds available with the corresponding region.
+    This is then multiplied by 100 to return the percentage of occupied beds in intensive care unit.
+
+    :param df_reg: covid data filtred by region
+    :type df_reg: dataframe
+    """
     icu_beds_reg = pd.read_csv('../covidviz/data/bed_rea_reg.csv', delimiter=';')
 
     icu_beds_reg = icu_beds_reg.rename(columns={'Unnamed: 0': 'Région'})
@@ -324,7 +351,12 @@ def create_icu_beds_reg(df_reg):
 
 def heat_map_icu_reg(df_reg):
     """
-    see the title
+    heat_map_icu_reg
+
+    return a heatmap of the percentage of occupied beds in ICU.
+
+    :param df_reg: covid data filtred by region
+    :type df_reg: dataframe
     """
     icu_beds_reg_prop = create_icu_beds_reg(df_reg) 
     fig = px.imshow(
