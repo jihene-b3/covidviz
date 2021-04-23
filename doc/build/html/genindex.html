@@ -87,13 +87,18 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Installation/install.html">How to install</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Format</span></p>
+<p class="caption"><span class="caption-text">Data</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="loading_data/load_data.html">Load from database</a></li>
 <li class="toctree-l1"><a class="reference internal" href="format_data/format.html">Format dataframe</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Maps</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Maps/maps.html">Covid Map</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Graph</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sparse/graph.html">Graph</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Statistics</span></p>
 <ul>
@@ -171,6 +176,7 @@
 <div class="genindex-jumpbox">
  <a href="#C"><strong>C</strong></a>
  | <a href="#F"><strong>F</strong></a>
+ | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
  | <a href="#P"><strong>P</strong></a>
  | <a href="#U"><strong>U</strong></a>
@@ -191,6 +197,13 @@
         <li><a href="Maps/maps.html#module-covidviz.covidmap.plot_map">module</a>
 </li>
       </ul></li>
+      <li>
+    covidviz.io.load_db
+
+      <ul>
+        <li><a href="loading_data/load_data.html#module-covidviz.io.load_db">module</a>
+</li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li>
@@ -207,6 +220,15 @@
         <li><a href="format_data/format.html#module-covidviz.preprocess.format_granu">module</a>
 </li>
       </ul></li>
+      <li>
+    covidviz.sparse.transfer_graph
+
+      <ul>
+        <li><a href="sparse/graph.html#module-covidviz.sparse.transfer_graph">module</a>
+</li>
+      </ul></li>
+      <li><a href="sparse/graph.html#covidviz.sparse.transfer_graph.create_transfer_graph">create_transfer_graph() (in module covidviz.sparse.transfer_graph)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -214,6 +236,14 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="format_data/format.html#covidviz.preprocess.format_granu.format_granularity">format_granularity() (in module covidviz.preprocess.format_granu)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="L">L</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="loading_data/load_data.html#covidviz.io.load_db.Load_db">Load_db (class in covidviz.io.load_db)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -229,9 +259,13 @@
       <ul>
         <li><a href="Maps/maps.html#module-covidviz.covidmap.plot_map">covidviz.covidmap.plot_map</a>
 </li>
+        <li><a href="loading_data/load_data.html#module-covidviz.io.load_db">covidviz.io.load_db</a>
+</li>
         <li><a href="format_data/format.html#module-covidviz.preprocess.clean_df">covidviz.preprocess.clean_df</a>
 </li>
         <li><a href="format_data/format.html#module-covidviz.preprocess.format_granu">covidviz.preprocess.format_granu</a>
+</li>
+        <li><a href="sparse/graph.html#module-covidviz.sparse.transfer_graph">covidviz.sparse.transfer_graph</a>
 </li>
       </ul></li>
   </ul></td>
@@ -240,7 +274,13 @@
 <h2 id="P">P</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="sparse/graph.html#covidviz.sparse.transfer_graph.plot_adjacency_matrix">plot_adjacency_matrix() (in module covidviz.sparse.transfer_graph)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="Maps/maps.html#covidviz.covidmap.plot_map.Map_covid.plot_all">plot_all() (Map_covid method)</a>
+</li>
+      <li><a href="sparse/graph.html#covidviz.sparse.transfer_graph.plot_transfer_graph">plot_transfer_graph() (in module covidviz.sparse.transfer_graph)</a>
 </li>
   </ul></td>
 </tr></table>

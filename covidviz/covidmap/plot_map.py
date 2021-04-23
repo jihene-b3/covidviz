@@ -34,12 +34,13 @@ class Map_covid:
                                 "GeoJsonLayer",
                                 self.granularity,
                                 opacity=0.8,
+                                pickable=True,
                                 stroked=False,
                                 filled=True,
                                 extruded=True,
                                 wireframe=True,
                                 get_elevation="cases*50",
-                                get_fill_color="[255, cases/20, cases/20]",
+                                get_fill_color="[255, cases/200, cases/20]",
                                 get_line_color=[255, 255, 255],
                             )
         else:
@@ -47,14 +48,16 @@ class Map_covid:
                                 "GeoJsonLayer",
                                 self.granularity,
                                 opacity=0.8,
+                                pickable=True,
                                 stroked=False,
                                 filled=True,
                                 extruded=True,
                                 wireframe=True,
-                                get_elevation="cases*100",
-                                get_fill_color="[255, cases/20, cases/20]",
+                                get_elevation="cases*75",
+                                get_fill_color="[255, cases/200 cases/20]",
                                 get_line_color=[255, 255, 255],
                             )
+
         init_view = pdk.ViewState(latitude=50.01200, longitude=3.17270, zoom=6, max_zoom=16, pitch=45, bearing=0)
         self.map_covid = pdk.Deck(layers=[self.map_layer], initial_view_state=init_view)
 
@@ -96,7 +99,7 @@ class Map_covid:
         layout, interaction = self.widget()
         self.map_covid.update()
         display(layout, interaction)
-        display(self.map_covid.show())
+        display(self.map_covid.show()) 
 
   
     
