@@ -11,16 +11,16 @@ def ratio(gb_data, data_depcode, data_ratio_hospitalises,current_date, data_hosp
     fig, ax = plt.subplots(figsize=(12, 8))
 
     plt.title(f"Ratio of in-hospital deaths to hospitalizations : {current_date}", fontsize=20)
-    plt.ylabel("Nombre cumulé de décès / Nombre cumulé d'hospitalisations")
-    plt.xlabel("Nombre cumulé de patients hospitalisés")
+    plt.ylabel("Total number of deceases / Total number of hospitalized")
+    plt.xlabel("Total number of hospitalized")
 
     for i, txt in enumerate(data_depcode):
         if (data_hospitalises[i] > data_hospitalises.max() * 0.20):
             ax.annotate(txt, (data_hospitalises[i], data_ratio_hospitalises[i]), xytext=(data_hospitalises[i] + 20, data_ratio_hospitalises[i]))        
 
-    plt.axhline(data_ratio_hospitalises.mean(), color='green', linestyle='--', label=f'Ratio de décès moyen ({data_ratio_hospitalises.mean():.2f}%)')
+    plt.axhline(data_ratio_hospitalises.mean(), color='green', linestyle='--', label=f'average death ratio ({data_ratio_hospitalises.mean():.2f}%)')
 
-    plt.axvline(min_value_80p, color='pink', linestyle='-', label=f"80% du nb d'hospitalisés en France sont à droite de la ligne ({nbhospitalises_80p:.0f} hospitalisés)")
+    plt.axvline(min_value_80p, color='pink', linestyle='-', label=f"80% of the number of hospitalized people in France are on the right side of the line ({nbhospitalises_80p:.0f} hospitalized)")
 
     ax.scatter(data_hospitalises, data_ratio_hospitalises)
 

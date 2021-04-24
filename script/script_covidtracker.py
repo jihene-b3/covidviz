@@ -36,4 +36,6 @@ min_value_80p = data_hospitalises.loc[data_hospitalises[data_hospitalises.sort_v
 
 # %%
 
-ratio(gb_data, data_depcode, data_ratio_hospitalises,current_date, data_hospitalises, current_date_file, min_value_80p , nbhospitalises_80p) : 
+cvz.ratio(gb_data, data_depcode, data_ratio_hospitalises,current_date, data_hospitalises, current_date_file, min_value_80p , nbhospitalises_80p) 
+
+# %%

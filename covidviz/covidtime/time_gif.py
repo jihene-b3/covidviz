@@ -33,7 +33,7 @@ def plot_animation(df_clean, granu, option):
     elif granu == "departement" and option == "cas_confirmes":
         df_clean.plot_animated("../image/covid-19-h-bar-cases_departement.gif", period_fmt="%Y-%m-%d", title="Covid-19 : French departments'number of deaths",n_visible=15)
     elif granu == "region" and option == "deces":
-        df_clean.plot_animated("image/covid-19-deaths-regions.gif", 
+        df_clean.plot_animated("examples/covid-19-deaths-regions.gif", 
                             title="Covid-19 : Evolution of French regions deaths counts", 
                             kind='line', 
                             period_fmt="%Y-%m-%d", 
@@ -44,7 +44,7 @@ def plot_animation(df_clean, granu, option):
                                 'color': 'darkred' 
                             })
     elif granu == "region" and option == "cas_confirmes":
-        df_clean.plot_animated("image/covid-19-cases-region.gif", 
+        df_clean.plot_animated("exampels/covid-19-cases-region.gif", 
                             title="Covid-19 : Evoulution of French regions deaths counts", 
                             kind='line', 
                             period_fmt="%Y-%m-%d", 
