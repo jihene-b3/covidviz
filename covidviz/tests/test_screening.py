@@ -11,7 +11,7 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)) + (os.path.sep + '..'
 import covidviz as cvz
 
 screening_daily = pd.read_csv(
-    'covidviz/data/sp-pos-quot-dep-2021-04-16-19h05.csv',
+    'https://www.data.gouv.fr/fr/datasets/r/406c6a23-e283-4300-9484-54e78c8ae675',
     delimiter=';',
     low_memory=False
 )
