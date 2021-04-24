@@ -1,4 +1,4 @@
-# Spatial evolution of Covid19 cases in France
+# Spatio-temporal evolution of Covid19 cases in France
 
 ## Plot interactive maps
 
