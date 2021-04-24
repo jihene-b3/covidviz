@@ -2,8 +2,6 @@ import os.path, sys
 import numpy as np
 import geopandas as gpd
 import pandas as pd
-import ipywidgets
-from ipywidgets import interact, interactive_output, Play, jslink, HBox, IntSlider
 
 import warnings
 warnings.filterwarnings("ignore", category=RuntimeWarning)
@@ -13,10 +11,8 @@ import covidviz as cvz
 
 # Global variables :
 df_covid = pd.read_csv("covidviz/data/df_covid.csv")
-url_dep = 'https://france-geojson.gregoiredavid.fr/repo/departements.geojson'
-url_reg = 'https://france-geojson.gregoiredavid.fr/repo/regions.geojson'
-departments = gpd.read_file(url_dep)
-regions = gpd.read_file(url_reg)
+data_age = pd.read_csv('covidviz/data/AgeGroups.csv', sep=';')
+data_gender = pd.read_csv('covidviz/data/age_gender.csv', sep=';')
 
 
 def test_format_granularity():
@@ -40,6 +36,20 @@ def test_choose_granularity():
     assert list(test2.granularite.unique())[0] == "region"
 
 
-def test_Map_covid():
-    test = cvz.Map_covid(df_covid, departments, "deces")
-    assert type(test) == cvz.covidmap.plot_map.Map_covid
+def test_clean_age():
+    test = cvz.clean_age(data_age)
+    assert (test.loc[11, "nb_hosp"] >= 0)
+    assert (list(test.columns)[1] == "age")
+
+
+def test_clean_gender():
+    test = cvz.clean_gender(data_gender)
+    assert not('fra' in list(test.columns))
+    assert (list(test.columns)[0] == "week")
+
+
+def test_format_age():
+    test = cvz.format_age(cvz.clean_age(data_age))
+    print(test["AgeGroup"])
+    assert (test['AgeGroup'][11] == '[0,9]')
+

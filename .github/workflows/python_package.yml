@@ -32,9 +32,11 @@ jobs:
     - name: Test with pytest
       run: |
         pip install pytest
-        pytest ./covidviz/tests/test_format_and_map.py
+        pytest ./covidviz/tests/test_format.py
+        pytest ./covidviz/tests/test_map.py
         pytest ./covidviz/tests/test_sparse.py
         pytest ./covidviz/tests/test_loading.py
         pytest ./covidviz/tests/test_icu.py
         pytest ./covidviz/tests/test_screening.py
+        pytest ./covidviz/tests/test_covidtime.py
 
