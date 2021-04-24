@@ -1,7 +1,7 @@
 from typing import List
 import datetime
 import requests
-
+from IPython.display import display, Markdown
 from matplotlib import pyplot as plt
 from matplotlib.ticker import FuncFormatter
 from matplotlib.rcsetup import cycler
@@ -280,6 +280,26 @@ def plot_field_loops(
         max_date=datetime.datetime.now().strftime("%Y-%m-%d"),
     )
     return axs
+
+def plots_maille_code(maille_active='FRA', **kwargs):
+    fra = data_preproc(data, maille_active)
+    plt.close()
+    # plot_field_loops(fra, "deces_ehpad", center=False, maille_active=maille_active)
+    plot_field_loops(fra, "hospitalises_cumul", [7], center=True, maille_active=maille_active, **kwargs)
+    plot_field_loops(fra, "reanimation_cumul", [7], center=True, maille_active=maille_active, **kwargs)
+    plot_field_loops(fra, "deces", center=True, maille_active=maille_active, **kwargs)
+    if maille_active == "FRA":
+        plt.show()
+        display(Markdown(
+            "It's possible to analyse french cases"
+            + " the number of cases is smoothed over 14 days with a triangular window."
+        ))
+        plot_field_loops(
+            fra, "cas_confirmes", [14], center=True, maille_active=maille_active,
+            win_type='triang', **kwargs
+        )
+    return fra
+
 
 def state_tracking(
     timeseries: pd.DataFrame, time_state_start: int, time_state_end: int
