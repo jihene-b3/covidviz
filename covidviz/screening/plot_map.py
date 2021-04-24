@@ -9,8 +9,6 @@ import folium
 
 def clean_public_centers(depis_grand_public):
     """
-    clean_public_centers
-
     We clean and complete the dataframe 'depis_grand_public' by adding missing informations.
     We add a column who indicates the department code.
 
@@ -55,8 +53,6 @@ def clean_public_centers(depis_grand_public):
 
 def clean_dep(dep_fr):
     """
-    clean_dep
-
     We (quickly) clean the dataframe
 
     :param dep_fr: coordonates of french departments
@@ -74,7 +70,7 @@ def clean_dep(dep_fr):
 
 def map_dep(department, dep_fr):
     """
-    map_dep
+    Create a map with one department
 
     :param department: french department or DOM code
     :type department: str
@@ -136,9 +132,9 @@ def regroup_public_center_by_dep(depis_grand_public, dep_fr):
     return depis_department_grand_public
 
 
-"""
- SCREENING CENTERS IN RESTRICTED ACCESS
-"""
+
+# SCREENING CENTERS IN RESTRICTED ACCESS
+
 
 
 def clean_private_centers(depis_acces_restreint):
@@ -184,9 +180,8 @@ def regroup_private_center_by_dep(depis_acces_restreint, dep_fr):
     return (depis_department_acces_restreint)
 
 
-"""
- MAP VISUALIZATION (by department)
-"""
+# MAP VISUALIZATION (by department)
+
 
 
 def markers_set(dep_fr, depis_grand_public, depis_acces_restreint):

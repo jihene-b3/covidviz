@@ -5,15 +5,10 @@ import numpy as np
 
 def screening_by_age_dep(screening_daily):
     """
-    screening_by_age_dep
+    We regroup data by age (we will filter by department after). We add the columns :
 
-    We regroup data by age (we will filter by department after).
-    We add the columns :
-        - 'Tests cumul' :
-            indicates the number of cumulative screenings
-            since the first day (first line of data), per day.
-        - '% positive tests' :
-            indicates the percentage of positive screenings.
+        - 'Tests cumul' : indicates the number of cumulative screenings since the first day (first line of data), per day.
+        - '% positive tests' : indicates the percentage of positive screenings.
 
     :param screening_daily: data on the number of screenings carried out by age group and / or department
     :type screening_daily: dataframe
@@ -46,15 +41,10 @@ def screening_by_age_dep(screening_daily):
 
 def screening_by_age(screening_daily):
     """
-    screening_by_age
+    We regroup data by age. We add the columns :
 
-    We regroup data by age.
-    We add the columns :
-        - 'Tests cumul' :
-            indicates the number of cumulative screenings
-            since the first day (first line of data), per day.
-        - '% positive tests' :
-            indicates the percentage of positive screenings.
+        - 'Tests cumul' : indicates the number of cumulative screenings since the first day (first line of data), per day.
+        - '% positive tests' : indicates the percentage of positive screenings.
 
     :param screening_daily: data on the number of screenings carried out by age group and / or department
     :type screening_daily: dataframe
@@ -92,15 +82,10 @@ def screening_by_age(screening_daily):
 
 def screening_by_dep(screening_daily):
     """
-    screening_by_dep
+    We regroup data by dep. We add the columns :
 
-    We regroup data by dep.
-    We add the columns :
-        - 'Tests cumul' : 
-            indicates the number of cumulative screenings
-            since the first day (first line of data), per day.
-        - '% positive tests' :
-            indicates the percentage of positive screenings.
+        - 'Tests cumul' :indicates the number of cumulative screenings since the first day (first line of data), per day.
+        - '% positive tests' : indicates the percentage of positive screenings.
 
     :param screening_daily: data on the number of screenings carried out by age group and / or department
     :type screening_daily: dataframe
@@ -142,9 +127,7 @@ def screening_by_dep(screening_daily):
 
 def daily_test(age, department, screening_daily):
     """
-    daily_test
-
-    displays the barplot of screenings performed per day by age group and department.
+    Displays the barplot of screenings performed per day by age group and department.
     The more intense the color of the bar (towards yellow),
     the higher the percentage of number of positive tests (the reference is placed to the right of the graph). 
     The 'plotly' package allows you to zoom the desired period.
@@ -174,9 +157,7 @@ def daily_test(age, department, screening_daily):
 
 def daily_test_dep(department, screening_daily):
     """
-    daily_test_dep
-
-    displays the barplot of screenings performed per day by department.
+    Displays the barplot of screenings performed per day by department.
     The more intense the color of the bar (towards yellow),
     the higher the percentage of number of positive tests (the reference is placed to the right of the graph). 
     The 'plotly' package allows you to zoom the desired period.
@@ -200,9 +181,7 @@ def daily_test_dep(department, screening_daily):
 
 def daily_test_age(age_class, screening_daily):
     """
-    daily_test_age
-
-    displays the barplot of screenings performed per day by age.
+    Displays the barplot of screenings performed per day by age.
     The more intense the color of the bar (towards yellow),
     the higher the percentage of number of positive tests (the reference is placed to the right of the graph). 
     The 'plotly' package allows you to zoom the desired period.

@@ -10,6 +10,8 @@ def format_granularity(df_covid, granularity):
     :type df_covid: dataframe
     :param granularity: region or departement
     :type granularity: str
+    :return: dataframe formated
+    :rtype: dataframe
     """
     start = time.time()
     df = df_covid.copy()
