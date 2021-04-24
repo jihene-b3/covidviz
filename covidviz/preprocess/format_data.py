@@ -46,7 +46,7 @@ def format_age(df):
 
 
 def group(df1):
-    df_group = df1.groupby('AgeGroup')[['num_f','num_h','P']].aggregate(lambda x: x.mean())
+    df_group = df1.groupby('AgeGroup')[['num_f', 'num_h', 'P']].aggregate(lambda x: x.mean())
     df_group.reset_index(inplace=True)
     return df1
 

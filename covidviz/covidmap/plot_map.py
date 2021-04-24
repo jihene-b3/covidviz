@@ -59,7 +59,7 @@ class Map_covid:
                                 get_line_color=[255, 255, 255],
                             )
 
-        self.init_view = pdk.ViewState(latitude=50.01200, longitude=3.17270, zoom=6, max_zoom=16, pitch=45, bearing=0)
+        self.init_view = pdk.ViewState(latitude=47.493806, longitude=2.866679, zoom=4.5, max_zoom=16, pitch=45, bearing=0)
         self.map_covid = pdk.Deck(layers=[self.map_layer], initial_view_state=self.init_view)
         end = time.time()
         print("Time spent on Map_covid construction: {0:.5f} s.".format(end - start))

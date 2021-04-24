@@ -24,3 +24,10 @@ def test_adapt_time():
     test = cvz.adapt_time(df_covid)
     assert (type(test.date[1]) == pd._libs.tslibs.timestamps.Timestamp)
     
+
+def test_enable_time_series():
+    test = cvz.enable_time_series_plot(df_covid_clean, timein_field="date", timeseries_field_out="t")
+    assert ('t' in list(test.columns))
+
+
+
