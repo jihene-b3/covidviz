@@ -17,6 +17,7 @@ dependencies:
   - pydeck
   - download
   - ipympl
+  - time
   - scipy
   - networkx
 prefix: C:\Users\chloe\anaconda3\envs\covid_env
