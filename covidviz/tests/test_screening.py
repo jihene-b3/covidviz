@@ -5,23 +5,24 @@ import numpy as np
 import warnings
 warnings.filterwarnings("ignore", category=RuntimeWarning)
 
+import os.path, sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + (os.path.sep + '..')*2)
 
 import covidviz as cvz
 
 screening_daily = pd.read_csv(
-    '../covidviz/data/sp-pos-quot-dep-2021-04-16-19h05.csv',
+    'covidviz/data/sp-pos-quot-dep-2021-04-16-19h05.csv',
     delimiter=';',
     low_memory=False
 )
 
-grand_public_path = '../data/scr_public_centers.csv'
+grand_public_path = 'covidviz/data/scr_public_centers.csv'
 depis_grand_public = pd.read_csv(grand_public_path)
 
-acces_restreint_path = '../data/scr_private_centers.csv'
+acces_restreint_path = 'covidviz/data/scr_private_centers.csv'
 depis_acces_restreint = pd.read_csv(acces_restreint_path)
 
-dep_fr = pd.read_csv('../data/depart_fr_coord.csv', delimiter=';')
+dep_fr = pd.read_csv('covidviz/data/depart_fr_coord.csv', delimiter=';')
 
 
 def test_screening_by_age_dep():
@@ -31,7 +32,7 @@ def test_screening_by_age_dep():
 
 def test_screening_by_dep():
     df = cvz.screening_by_dep(screening_daily)
-    assert (df[90].loc[0, '% positive tests'] <= 100)
+    assert (df['90'].loc[0, '% positive tests'] <= 100)
 
 
 def test_screening_by_age():
@@ -41,7 +42,8 @@ def test_screening_by_age():
 
 def test_clean_public_centers():
     df = cvz.clean_public_centers(depis_grand_public)
-    assert (df.loc[3093, 'tel_rdv'] == '01 85 90 79 13')
+    print(df.loc[3093, 'tel_rdv'])
+    assert (df.loc[3093, 'tel_rdv'] == '0147696889')
 
 
 def test_regroup_public_center_by_dep():
@@ -59,5 +61,4 @@ def test_regroup_private_center_by_dep():
     assert (type(df['34']) == pd.core.frame.DataFrame)
  
 
-def test_screening_by_age_dep():
-    df = cvz.screening_by_age_dep(screening_daily)
+
