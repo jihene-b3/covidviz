@@ -1,0 +1,22 @@
+name: covid_env
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - matplotlib
+  - ipykernel
+  - conda-forge::fiona
+  - geopandas
+  - contextily
+  - pandas
+  - numpy
+  - ipywidgets
+  - voila
+  - plotly
+  - folium
+  - pydeck
+  - download
+  - ipympl
+  - scipy
+  - networkx
+prefix: C:\Users\chloe\anaconda3\envs\covid_env
