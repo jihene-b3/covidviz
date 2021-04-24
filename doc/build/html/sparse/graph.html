@@ -33,7 +33,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -102,7 +101,7 @@
 <p class="caption"><span class="caption-text">Graph</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Graph</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#plot-transfer-graph">Plot transfer graph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-covidviz.sparse.transfer_graph">Plot transfer graph</a></li>
 </ul>
 </li>
 </ul>
@@ -180,8 +179,46 @@
             
   <div class="section" id="graph">
 <h1>Graph<a class="headerlink" href="#graph" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="plot-transfer-graph">
-<h2>Plot transfer graph<a class="headerlink" href="#plot-transfer-graph" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-covidviz.sparse.transfer_graph">
+<span id="plot-transfer-graph"></span><h2>Plot transfer graph<a class="headerlink" href="#module-covidviz.sparse.transfer_graph" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="covidviz.sparse.transfer_graph.create_transfer_graph">
+<code class="sig-name descname"><span class="pre">create_transfer_graph</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.sparse.transfer_graph.create_transfer_graph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a graph for covid patient’s transfer from covid
+transfer’s data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return G</dt>
+<dd class="field-odd"><p>graph of covid patient’s transfer</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="covidviz.sparse.transfer_graph.plot_adjacency_matrix">
+<code class="sig-name descname"><span class="pre">plot_adjacency_matrix</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.sparse.transfer_graph.plot_adjacency_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot and return the adjacency matrix of the graph G.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>G</strong> (<em>networkx.classes.digraph.DiGraph</em>) – graph</p>
+</dd>
+<dt class="field-even">Return M_adj</dt>
+<dd class="field-even"><p>adjacency matrix</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="covidviz.sparse.transfer_graph.plot_transfer_graph">
+<code class="sig-name descname"><span class="pre">plot_transfer_graph</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.sparse.transfer_graph.plot_transfer_graph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots a graph for covid patient’s transfer from covid
+transfer’s data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>G</strong> (<em>networkx.classes.digraph.DiGraph</em>) – graph of covid patient’s transfer</p>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
 </div>
 
