@@ -42,9 +42,9 @@ def plot_transfer_graph(G):
     :param G: graph of covid patient's transfer
     :type G: networkx.classes.digraph.DiGraph
     """
-    plt.figure(figsize=(12, 12))
+    plt.figure(figsize=(10, 10))
     pos = nx.spring_layout(G, seed=12042021)
-    nx.draw_networkx(G, pos, with_labels=True, font_size=18,
+    nx.draw_networkx(G, pos, with_labels=True, font_size=10,
                     node_color='#528B8B', edge_color='#528B8B')
     labels_edge = nx.get_edge_attributes(G, "nombre_patients_transferes")
     nx.draw_networkx_edge_labels(G, pos, edge_labels=labels_edge)
