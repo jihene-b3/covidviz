@@ -5,6 +5,7 @@ from scipy.sparse import isspmatrix
 import numpy as np
 from covidviz.preprocess import clean_df
 import pandas as pd
+import time
 
 
 def create_transfer_graph():
@@ -14,6 +15,7 @@ def create_transfer_graph():
     :return G: graph of covid patient's transfer
     :type G: networkx.classes.digraph.DiGraph
     """
+    start = time.time()
     # Load data from data.gouv
     df_transf_raw = pd.read_csv("https://www.data.gouv.fr/fr/datasets/r/70cf1fd0-60b3-4584-b261-63fb2281359e")
     # Change "nan" in the column "region_arrivee" because "nan" are other countries in the column "pays"
@@ -28,6 +30,8 @@ def create_transfer_graph():
                                 'region_arrivee', 
                                 edge_attr="nombre_patients_transferes", 
                                 create_using=nx.DiGraph())
+    end = time.time()
+    print("Time spent to create graph: {0:.5f} s.".format(end - start)) 
     return G
 
 
@@ -69,9 +73,12 @@ def plot_adjacency_matrix(G):
     :return M_adj: adjacency matrix
     :type M_adj: scipy.sparse.csr.csr_matrix
     """
+    start = time.time()
     plt.figure(figsize=(12, 12))
     M_adj = nx.adjacency_matrix(G)
     fig,ax = plt.subplots()
     ax = plt.spy(M_adj, color="cadetblue") 
     plt.title("Adjacency matrix of transfer graph", fontsize=18)
+    end = time.time()
+    print("Time spent to create and plot adjacency matrix: {0:.5f} s.".format(end - start)) 
     return M_adj

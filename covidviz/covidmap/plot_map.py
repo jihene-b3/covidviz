@@ -3,7 +3,7 @@ import pandas as pd
 import geopandas as gpd
 import ipywidgets
 from ipywidgets import interact, interactive_output, Play, jslink, HBox, IntSlider
-
+import time
 
 
 class Map_covid:
@@ -23,6 +23,7 @@ class Map_covid:
         Construction method.
         Create an initial map.
         """
+        start = time.time()
         self.df_covid = df_covid
         self.granularity = granularity
         self.cases = cases
@@ -60,6 +61,8 @@ class Map_covid:
 
         self.init_view = pdk.ViewState(latitude=50.01200, longitude=3.17270, zoom=6, max_zoom=16, pitch=45, bearing=0)
         self.map_covid = pdk.Deck(layers=[self.map_layer], initial_view_state=self.init_view)
+        end = time.time()
+        print("Time spent on Map_covid construction: {0:.5f} s.".format(end - start))
 
 
     def update_plot(self, date_index):
@@ -96,13 +99,14 @@ class Map_covid:
         """
         Display the animated map with the widget.
         """
+        start = time.time()
         layout, interaction = self.widget()
         self.map_covid.update()
         display(layout, interaction)
-        display(self.map_covid.show()) 
+        display(self.map_covid.show())
+        end = time.time()
+        print("Time spent on Map_covid plot: {0:.5f} s.".format(end - start)) 
     
-    def map_to_json(self):
-        self.map_covid.to_json("..data/test.json")
 
   
     
