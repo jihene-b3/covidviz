@@ -28,12 +28,8 @@ df_raw = cvz.choose_columns(
     ]
 )
 
-<<<<<<< Updated upstream
+
 #we filtred data by department
-=======
-# %%
-# we filtred data by department
->>>>>>> Stashed changes
 df_dep = cvz.choose_granularity(df_raw, "departement")
 # we filtred data by region
 df_reg = cvz.choose_granularity(df_raw, "region")
@@ -56,6 +52,6 @@ cvz.icu_dep_display('during 3rd confinement', df_dep)
 # %%
 cvz.icu_reg_display('since 1st confinement', df_reg) # lineplot for all regions since 1st confinement 
 cvz.icu_by_reg_display('since 1st confinement', 'Occitanie', df_dep) # lineplot for Occitanie since 1st confinement 
-cvz.icu_all_reg_display(df_reg) #ICU flux in France (with all regions) since 1st confinement
-cvz.icu_reg_repartition(df_reg) #Regional repartition of ICU during Covid19 crisis
-cvz.heat_map_icu_reg(df_reg) #Regional saturation in % in ICU during Covid19 crisis
+cvz.icu_all_reg_display(df_reg) # ICU flux in France (with all regions) since 1st confinement
+cvz.icu_reg_repartition(df_reg) # Regional repartition of ICU during Covid19 crisis
+cvz.heat_map_icu_reg(df_reg) # Regional saturation in % in ICU during Covid19 crisis

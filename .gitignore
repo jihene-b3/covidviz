@@ -9,4 +9,8 @@ __pycache__
 *egg-info*
 *dist*
 
-.DS_Store
+*.DS_Store
+*.aux
+*.fls
+*.fdb_latexmk
+*.log
