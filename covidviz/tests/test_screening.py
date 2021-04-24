@@ -9,6 +9,7 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)) + (os.path.sep + '..'
 
 import covidviz as cvz
 
+<<<<<<< Updated upstream
 screening_daily = pd.read_csv(
     '../covidviz/data/sp-pos-quot-dep-2021-04-16-19h05.csv',
     delimiter=';',
@@ -58,3 +59,8 @@ def test_regroup_private_center_by_dep():
     df = cvz.regroup_private_center_by_dep(depis_acces_restreint, dep_fr)
     assert (type(df['34']) == pd.core.frame.DataFrame)
  
+=======
+
+def test_screening_by_age_dep():
+    df = cvz.screening_by_age_dep(screening_daily)
+>>>>>>> Stashed changes

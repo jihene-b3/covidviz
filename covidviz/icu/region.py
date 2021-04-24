@@ -14,7 +14,7 @@ import covidviz as cvz
 
 def clean_df_reg(df_reg):
     """
-    clean_df_reg 
+    clean_df_reg
 
     We generate a DataFrame of ICU in french regions,
     with keeping one source : 'OpenCOVID19-fr'
@@ -57,16 +57,17 @@ def regroup_by_reg(df_reg):
             columns={"reanimation": region})
     return dict_reg
 
+
 def create_df_all_reg(df_reg):
     """
-    create_df_all_reg 
+    create_df_all_reg
 
     :param df_reg: data covid filtred by region
     :type df_reg: dataframe
     :return: data ICU including all regions
     :rtype: dataframe
     """
-    dict_reg = regroup_by_reg(df_reg) 
+    dict_reg = regroup_by_reg(df_reg)
     df_all_reg = pd.DataFrame()
     for region in df_reg['maille_nom'].unique().tolist():
         df_all_reg = pd.concat([df_all_reg, dict_reg[region]], axis=1)
@@ -279,7 +280,7 @@ def change_format_reg(df_reg):
 
 def create_reg_total(df_reg):
     """
-    create_reg_total 
+    create_reg_total
 
     [extended_summary]
 
@@ -296,7 +297,7 @@ def create_reg_total(df_reg):
 
 def icu_reg_repartition(df_reg):
     """
-    icu_reg_repartition 
+    icu_reg_repartition
 
     A pie chart whos shows the repartition of patients in ICU by regions
 

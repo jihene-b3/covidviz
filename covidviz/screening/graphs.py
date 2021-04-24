@@ -20,12 +20,17 @@ def screening_by_age_dep(screening_daily):
     :return: screening_daily_age_dep
     :rtype: dict
     """
+<<<<<<< Updated upstream
     df = screening_daily.copy()
     df.rename(columns={
         'cl_age90': 'cl_age', 'jour': 'date', 'T': 'Tests number', 'P': 'Positive tests'
         },
         inplace=True)
     AGE = pd.DataFrame(df['cl_age'].unique())
+=======
+
+    AGE = pd.DataFrame(screening_daily['cl_age'].unique())
+>>>>>>> Stashed changes
     AGE.set_axis(['classe'], axis=1, inplace=True)
     screening_daily_age_dep = {}
 
@@ -50,7 +55,7 @@ def screening_by_age(screening_daily):
 
     We regroup data by age.
     We add the columns :
-        - 'Tests cumul' : 
+        - 'Tests cumul' :
             indicates the number of cumulative screenings
             since the first day (first line of data), per day.
         - '% positive tests' :

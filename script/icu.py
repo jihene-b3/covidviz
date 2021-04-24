@@ -28,9 +28,14 @@ df_raw = cvz.choose_columns(
     ]
 )
 
+<<<<<<< Updated upstream
 #we filtred data by department
+=======
+# %%
+# we filtred data by department
+>>>>>>> Stashed changes
 df_dep = cvz.choose_granularity(df_raw, "departement")
-#we filtred data by region
+# we filtred data by region
 df_reg = cvz.choose_granularity(df_raw, "region")
 
 # %%
