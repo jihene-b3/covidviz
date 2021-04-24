@@ -14,3 +14,10 @@ To install covidmap on Linux...
 .. code:: bash
 
     $ git clone https://github.com/jihene-b3/ProjetCovid.git
+
+
+On MAC 
+-----------
+.. code:: bash
+
+    % git clone https://github.com/jihene-b3/ProjetCovid.git
