@@ -42,7 +42,6 @@ def test_screening_by_age():
 
 def test_clean_public_centers():
     df = cvz.clean_public_centers(depis_grand_public)
-    print(df.loc[3093, 'tel_rdv'])
     assert (df.loc[3093, 'tel_rdv'] == '0147696889')
 
 
