@@ -13,7 +13,7 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css\custom.css" type="text/css" />
 
   
   
@@ -33,7 +33,6 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -193,11 +192,11 @@
 <p class="caption"><span class="caption-text">Data</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="loading_data/load_data.html">Load from database</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="loading_data/load_data.html#load-data">Load data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loading_data/load_data.html#module-covidviz.io.load_db">Load data</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="format_data/format.html">Format dataframe</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="format_data/format.html#clean-dataframe">Clean dataframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="format_data/format.html#module-covidviz.preprocess.clean_df">Clean dataframe</a></li>
 <li class="toctree-l2"><a class="reference internal" href="format_data/format.html#id1">Format dataframe</a></li>
 </ul>
 </li>
@@ -207,7 +206,7 @@
 <p class="caption"><span class="caption-text">Maps</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Maps/maps.html">Covid Map</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Maps/maps.html#plot-map">Plot map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Maps/maps.html#module-covidviz.covidmap.plot_map">Plot map</a></li>
 </ul>
 </li>
 </ul>
@@ -216,7 +215,7 @@
 <p class="caption"><span class="caption-text">Graph</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="sparse/graph.html">Graph</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="sparse/graph.html#plot-transfer-graph">Plot transfer graph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sparse/graph.html#module-covidviz.sparse.transfer_graph">Plot transfer graph</a></li>
 </ul>
 </li>
 </ul>
@@ -225,8 +224,17 @@
 <p class="caption"><span class="caption-text">Statistics</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Stats/covidtime.html">Covid time</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Stats/icu.html">ICU</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Stats/screening.html">Screening</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Stats/icu.html">ICU</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Stats/icu.html#module-covidviz.icu.department">Departement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Stats/icu.html#module-covidviz.icu.region">Region</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Stats/icu.html#module-covidviz.icu.link_dep_reg">Department &amp; Region</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Stats/screening.html">Screening</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Stats/screening.html#module-covidviz.screening.graphs">Graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Stats/screening.html#module-covidviz.screening.plot_map">Plot map</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>

@@ -7,9 +7,9 @@ dependencies:
   - ipykernel
   - conda-forge::fiona
   - geopandas
-  - contextily
   - pandas
   - numpy
+  - requests
   - ipywidgets
   - voila
   - plotly

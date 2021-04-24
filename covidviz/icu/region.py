@@ -7,9 +7,8 @@ import plotly.express as px
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + (os.path.sep + '..'))
 import covidviz as cvz
 
-"""
- ICU IN FRENCH REGIONS
-"""
+# ICU IN FRENCH REGIONS
+
 
 
 def clean_df_reg(df_reg):

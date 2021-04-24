@@ -13,7 +13,7 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css\custom.css" type="text/css" />
 
   
   
@@ -33,7 +33,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -98,7 +97,7 @@
 <p class="caption"><span class="caption-text">Maps</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Covid Map</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#plot-map">Plot map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-covidviz.covidmap.plot_map">Plot map</a></li>
 </ul>
 </li>
 </ul>
@@ -180,8 +179,46 @@
             
   <div class="section" id="covid-map">
 <h1>Covid Map<a class="headerlink" href="#covid-map" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="plot-map">
-<h2>Plot map<a class="headerlink" href="#plot-map" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-covidviz.covidmap.plot_map">
+<span id="plot-map"></span><h2>Plot map<a class="headerlink" href="#module-covidviz.covidmap.plot_map" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="covidviz.covidmap.plot_map.Map_covid">
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">Map_covid</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_covid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">granularity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cases</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.covidmap.plot_map.Map_covid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates an animated map.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df_covid</strong> (<em>dataframe</em>) – dataframe with covid data</p></li>
+<li><p><strong>granularity</strong> (<em>dataframe</em>) – dep or region</p></li>
+<li><p><strong>cases</strong> (<em>str</em>) – column from df_covid</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="covidviz.covidmap.plot_map.Map_covid.plot_all">
+<code class="sig-name descname"><span class="pre">plot_all</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.covidmap.plot_map.Map_covid.plot_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display the animated map with the widget.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="covidviz.covidmap.plot_map.Map_covid.update_plot">
+<code class="sig-name descname"><span class="pre">update_plot</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date_index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.covidmap.plot_map.Map_covid.update_plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the map plot accordign to a slider widget.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>date_index</strong> (<em>ipywidgets.IntSlider</em>) – time slider with all the date in df_covid</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="covidviz.covidmap.plot_map.Map_covid.widget">
+<code class="sig-name descname"><span class="pre">widget</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.covidmap.plot_map.Map_covid.widget" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a widget with time slider with every date.</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 </div>
 
