@@ -47,7 +47,7 @@ cvz.map_screening('34', dep_fr, depis_grand_public, depis_acces_restreint)
 # Loading of data on the number of screenings carried out by age group and / or department
 
 screening_daily = pd.read_csv(
-    '../covidviz/data/sp-pos-quot-dep-2021-04-16-19h05.csv',
+    'https://www.data.gouv.fr/fr/datasets/r/406c6a23-e283-4300-9484-54e78c8ae675',
     delimiter=';',
     low_memory=False)
 # %%
