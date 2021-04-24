@@ -16,6 +16,6 @@ from .screening.graphs import screening_by_age_dep, screening_by_age, screening_
 from .sparse.transfer_graph import create_transfer_graph, plot_transfer_graph, plot_adjacency_matrix
 from covidviz.preprocess.format_data import clean_gender,clean_age,format_age,remove_nan,group,enable_time_series_plot
 from covidviz.demographyfactors.utils_plot import df_plot_dec,df_plot_rea,df_plot_hosp,df_plot_gender
-from covidviz.covidtime.viz_epidemio import data_preparation,data_preproc,plot_field_loops,plots_maille_code
+from covidviz.covidtime.viz_epidemio import data_preparation,data_preproc,plot_field_loops, axis_date_limits,enable_time_series_plot
 from covidviz.covidtime.plot_covidtracker import ratio
 from .sparse.transfer_graph import create_transfer_graph, plot_transfer_graph, plot_adjacency_matrix

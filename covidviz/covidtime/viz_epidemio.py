@@ -1,11 +1,74 @@
 from typing import List
 import datetime
 import requests
-from IPython.display import display, Markdown
+
 from matplotlib import pyplot as plt
 from matplotlib.ticker import FuncFormatter
 from matplotlib.rcsetup import cycler
 import pandas as pd
+
+DATA_GOUV_2_OPEN = {
+    "date": "date",
+    "granularite": "granularite",
+    "maille_code": "maille_code",
+    "maille_nom": "maille_nom",
+    "rea": "reanimation",
+    "hosp": "hospitalises",
+    "dchosp": "deces",
+    "incid_hosp": "nouvelles_hospitalisations",
+    "incid_rea": "nouvelles_reanimations",
+    "conf": "cas_confirmes",
+    "esms_dc": "deces_ehpad",
+    "esms_cas": "cas_confirmes_ehpad",
+    "source_url": "source_url",
+}
+
+
+def download_france_data() -> pd.DataFrame:
+    """Download and merges data from OpenCovid19-fr and data.gouv.fr
+    """
+    oc19_file = "opencovid19-fr-chiffres-cles.csv"
+    gouv_file = "data-gouv-fr-chiffres-cles.csv"
+    oc19_url = "https://raw.githubusercontent.com/opencovid19-fr/data/master/dist/chiffres-cles.csv"
+    gouv_url = (
+        "https://www.data.gouv.fr/fr/datasets/r/f335f9ea-86e3-4ffa-9684-93c009d5e617"
+    )
+    # run requests to download and save the data
+    myfile = requests.get(oc19_url)
+    with open(oc19_file, "wb") as f:
+        f.write(myfile.content)
+    file = requests.get(gouv_url)
+    with open(gouv_file, "wb") as f:
+        f.write(file.content)
+    # Load both csv into pandas
+    data = pd.read_csv(oc19_file)
+    data_gouv = pd.read_csv(gouv_file)
+    # Fill in some of the metadata that is not present in the government data
+    data_gouv["granularite"] = "pays"
+    data_gouv["maille_code"] = "FRA"
+    data_gouv["maille_nom"] = "France"
+    data["source_nom"] = "Santé publique France Data"
+    data_gouv[
+        "source_url"
+    ] = "https://www.data.gouv.fr/fr/datasets/r/f335f9ea-86e3-4ffa-9684-93c009d5e617"
+    data_gouv.rename(DATA_GOUV_2_OPEN, axis="columns", inplace=True)
+    return pd.concat((data, data_gouv), join="outer")
+
+
+def enable_time_series_plot(
+    in_df, timein_field="time", timeseries_field_out="date", date_format="%Y-%m-%d",
+):
+    """
+    Small tool to add a field to a dataframe which can be used for time series
+    plotting
+    """
+    if timeseries_field_out not in in_df.columns:
+        # Drop the bad data row.
+        in_df = in_df.loc[in_df[timein_field] != "2020-11_11", :]
+        in_df[timeseries_field_out] = pd.to_datetime(
+            in_df[timein_field], format=date_format
+        )
+    return in_df
 
 
 def axis_date_limits(axs, min_date=None, max_date=None, format_date=None):
@@ -18,7 +81,6 @@ def axis_date_limits(axs, min_date=None, max_date=None, format_date=None):
             ax.set_xlim(right=pd.to_datetime(max_date, format=format_date))
         if not (min_date is None):
             ax.set_xlim(left=pd.to_datetime(min_date, format=format_date))
-
 
 
 def data_preparation(
@@ -38,6 +100,7 @@ def data_preparation(
     if maille_code == "FRA":
         fra = data.loc[
             (data["maille_code"] == maille_code)
+            # & ((data["source_nom"] != "OpenCOVID19-fr") | (data.index > "2021-02-19"))
         ]
         rows = [*rows, "cas_confirmes"]
 
@@ -72,7 +135,6 @@ def data_preparation(
             val_prev = fra.iloc[row_num - 1, col_num]
             if val < val_prev:
                 fra.iloc[row_num - 1, col_num] = val
-                
     # ajout des totaux par jours
     def par_jour(df):
         return df - [0, *(df[:-1])]
@@ -167,7 +229,6 @@ def plot_field_loops(
     **kwargs,
 ):
     """Plots the day on day delta of a field of 'fra' against 
-
     Args:
         fra ([type]): [description]
         field ([type]): [description]
@@ -281,25 +342,6 @@ def plot_field_loops(
     )
     return axs
 
-def plots_maille_code(maille_active='FRA', **kwargs):
-    fra = data_preproc(data, maille_active)
-    plt.close()
-    # plot_field_loops(fra, "deces_ehpad", center=False, maille_active=maille_active)
-    plot_field_loops(fra, "hospitalises_cumul", [7], center=True, maille_active=maille_active, **kwargs)
-    plot_field_loops(fra, "reanimation_cumul", [7], center=True, maille_active=maille_active, **kwargs)
-    plot_field_loops(fra, "deces", center=True, maille_active=maille_active, **kwargs)
-    if maille_active == "FRA":
-        plt.show()
-        display(Markdown(
-            "It's possible to analyse french cases"
-            + " the number of cases is smoothed over 14 days with a triangular window."
-        ))
-        plot_field_loops(
-            fra, "cas_confirmes", [14], center=True, maille_active=maille_active,
-            win_type='triang', **kwargs
-        )
-    return fra
-
 
 def state_tracking(
     timeseries: pd.DataFrame, time_state_start: int, time_state_end: int
@@ -321,9 +363,4 @@ def state_tracking(
     state.index = state.index + delta_start
 
     return state
-
-
-
-
-
 
