@@ -9,7 +9,7 @@ import folium
 
 def clean_public_centers(depis_grand_public):
     """
-    clean_public_centers [summary]
+    clean_public_centers
 
     We clean and complete the dataframe 'depis_grand_public' by adding missing informations.
     We add a column who indicates the department code.
@@ -19,37 +19,38 @@ def clean_public_centers(depis_grand_public):
     :return: depis_grand_public cleaned
     :rtype: dataframe
     """
-    depis_grand_public.drop(['ID', 'finess', 'date_modif'], 1, inplace=True)
-    depis_grand_public.drop([2388, 2742], inplace=True)
+    df = depis_grand_public.copy()
+    df.drop(['ID', 'finess', 'date_modif'], 1, inplace=True)
+    df.drop([2388, 2742], inplace=True)
 
-    depis_grand_public.loc[1269, 'adresse'] = '6 Rue St Hermeland 50260 SOTTEVAST'
-    depis_grand_public.loc[1269, 'longitude'] = -1.5945067
-    depis_grand_public.loc[1269, 'latitude'] = 49.5224947
+    df.loc[1269, 'adresse'] = '6 Rue St Hermeland 50260 SOTTEVAST'
+    df.loc[1269, 'longitude'] = -1.5945067
+    df.loc[1269, 'latitude'] = 49.5224947
 
-    depis_grand_public.loc[1828, 'longitude'] = 3.409963
-    depis_grand_public.loc[1828, 'latitude'] = 46.1502923
+    df.loc[1828, 'longitude'] = 3.409963
+    df.loc[1828, 'latitude'] = 46.1502923
 
-    depis_grand_public.loc[2595, 'longitude'] = 2.1660581
-    depis_grand_public.loc[2595, 'latitude'] = 48.6789083
+    df.loc[2595, 'longitude'] = 2.1660581
+    df.loc[2595, 'latitude'] = 48.6789083
 
-    depis_grand_public.loc[2595, 'adresse'] = depis_grand_public.loc[2595, 'cpl_loc']
+    df.loc[2595, 'adresse'] = df.loc[2595, 'cpl_loc']
 
-    depis_grand_public.loc[2595, 'cpl_loc'] = np.nan
+    df.loc[2595, 'cpl_loc'] = np.nan
 
-    depis_grand_public.loc[2844, 'longitude'] = 0.16686641335383762
-    depis_grand_public.loc[2844, 'latitude'] = 46.63853367849356
+    df.loc[2844, 'longitude'] = 0.16686641335383762
+    df.loc[2844, 'latitude'] = 46.63853367849356
 
-    depis_grand_public.loc[3093, 'adresse'] = '286 Av. des Grésillons, 92600 Asnières-sur-Seine'
+    df.loc[3093, 'adresse'] = '286 Av. des Grésillons, 92600 Asnières-sur-Seine'
 
-    depis_grand_public.loc[3093, 'tel_rdv'] = '01 85 78 53 43'
-    depis_grand_public.loc[3093, 'longitude'] = 2.3141661
-    depis_grand_public.loc[3093, 'latitude'] = 48.9202844
+    df.loc[3093, 'tel_rdv'] = '01 85 78 53 43'
+    df.loc[3093, 'longitude'] = 2.3141661
+    df.loc[3093, 'latitude'] = 48.9202844
 
-    depis_grand_public = depis_grand_public.reset_index()
+    df = df.reset_index()
 
-    for row in range(len(depis_grand_public)):
-        depis_grand_public.loc[row, 'dep'] = depis_grand_public.loc[row, 'id_ej'][: 2]
-    return depis_grand_public
+    for row in range(len(df)):
+        df.loc[row, 'dep'] = df.loc[row, 'id_ej'][: 2]
+    return df
 
 
 def clean_dep(dep_fr):
@@ -63,11 +64,12 @@ def clean_dep(dep_fr):
     :return: coordonates of french departments (cleaned)
     :rtype: dataframe
     """
-    dep_fr.drop(
+    df = dep_fr.copy()
+    df.drop(
         ['Unnamed: 4', 'Unnamed: 5', 'Unnamed: 6', 'Unnamed: 7'],
         axis=1,
         inplace=True)
-    return dep_fr
+    return df
 
 
 def map_dep(department, dep_fr):
@@ -81,10 +83,12 @@ def map_dep(department, dep_fr):
     :return: the french department (or DOM) map selected
     :rtype: Folium Map Object
     """
+    df = dep_fr.copy()
+    df = clean_dep(df)
     dep_map = folium.Map(
         location=[
-            dep_fr[dep_fr['maille_code'] == f'{department}']['Latitude'],
-            dep_fr[dep_fr['maille_code'] == f'{department}']['Longitude']
+            df[df['maille_code'] == department]['Latitude'],
+            df[df['maille_code'] == department]['Longitude']
             ], zoom_start=8)
     return dep_map
 
@@ -98,9 +102,11 @@ def regroup_map(dep_fr):
     :return: all french departments maps regrouped
     :rtype: dict
     """
+    df = dep_fr.copy()
+    df = clean_dep(df)
     all_map_dep = {}
-    for dep_code in dep_fr['maille_code'].tolist():
-        all_map_dep[f'{dep_code}'] = map_dep(f'{dep_code}', dep_fr)
+    for dep_code in df['maille_code'].tolist():
+        all_map_dep[f'{dep_code}'] = map_dep(f'{dep_code}', df)
     return all_map_dep
 
 
@@ -115,11 +121,14 @@ def regroup_public_center_by_dep(depis_grand_public, dep_fr):
     :return: screening centers in public access by department regrouped
     :rtype: dict
     """
-    depis_grand_public = clean_public_centers(depis_grand_public) 
+    df = depis_grand_public.copy()
+    df = clean_public_centers(df)
+    df1 = dep_fr.copy()
+    df1 = clean_dep(df1)
     depis_department_grand_public = {}
 
-    for dep_code in dep_fr['maille_code'].tolist():
-        depis_department_grand_public[f'{dep_code}'] = depis_grand_public[depis_grand_public['dep'] == f'{dep_code}']
+    for dep_code in df1['maille_code'].tolist():
+        depis_department_grand_public[f'{dep_code}'] = df[df['dep'] == f'{dep_code}']
 
         depis_department_grand_public[f'{dep_code}'] = depis_department_grand_public[f'{dep_code}'].reset_index()
 
@@ -144,10 +153,11 @@ def clean_private_centers(depis_acces_restreint):
     :return: the dataframe 'depis_acces_restreint' cleaned
     :rtype: dataframe
     """
-    depis_acces_restreint.drop(['ID', 'finess', 'date_modif'], 1, inplace=True)
-    for row in range(len(depis_acces_restreint)):
-        depis_acces_restreint.loc[row, 'dep'] = str(depis_acces_restreint.loc[row, 'id_ej'])[:2]
-    return depis_acces_restreint
+    df = depis_acces_restreint.copy()
+    df.drop(['ID', 'finess', 'date_modif'], 1, inplace=True)
+    for row in range(len(df)):
+        df.loc[row, 'dep'] = str(df.loc[row, 'id_ej'])[:2]
+    return df
 
 
 def regroup_private_center_by_dep(depis_acces_restreint, dep_fr):
@@ -161,10 +171,13 @@ def regroup_private_center_by_dep(depis_acces_restreint, dep_fr):
     :return: screening centers in restricted access by department regrouped
     :rtype: dict
     """
-    depis_acces_restreint = clean_private_centers(depis_acces_restreint)
+    df = depis_acces_restreint.copy()
+    df = clean_private_centers(df)
+    df1 = dep_fr.copy()
+    df1 = clean_dep(df1)
     depis_department_acces_restreint = {}
-    for dep_code in dep_fr['maille_code'].tolist():
-        depis_department_acces_restreint[f'{dep_code}'] = depis_acces_restreint[depis_acces_restreint['dep'] == f'{dep_code}']
+    for dep_code in df1['maille_code'].tolist():
+        depis_department_acces_restreint[f'{dep_code}'] = df[df['dep'] == f'{dep_code}']
 
         depis_department_acces_restreint[f'{dep_code}'] = depis_department_acces_restreint[f'{dep_code}'].reset_index()
 
@@ -195,12 +208,13 @@ def markers_set(dep_fr, depis_grand_public, depis_acces_restreint):
     :return: [description]
     :rtype: [type]
     """
-    dep_fr = clean_dep(dep_fr)
+    df = dep_fr.copy()
+    df = clean_dep(df)
     depis_department_grand_public = regroup_public_center_by_dep(depis_grand_public, dep_fr)
     all_map_dep = regroup_map(dep_fr)
     depis_department_acces_restreint = regroup_private_center_by_dep(depis_acces_restreint, dep_fr)
 
-    for dep_code in dep_fr['maille_code'].tolist():
+    for dep_code in df['maille_code'].tolist():
         for i in range(len(depis_department_grand_public[f'{dep_code}'])):
 
             tooltip1 = f"<strong>{depis_department_grand_public[dep_code].loc[i, 'adresse']}</strong>"
@@ -252,7 +266,7 @@ def markers_set(dep_fr, depis_grand_public, depis_acces_restreint):
                     tooltip=tooltip1).add_to(all_map_dep[f'{dep_code}'])
 
     dep_acces_restreint_list = []
-    for dep_code in dep_fr['maille_code'].tolist():
+    for dep_code in df['maille_code'].tolist():
         if (len(depis_department_acces_restreint[f'{dep_code}']) != 0):
             a = f'{dep_code}'
             dep_acces_restreint_list.append(a)

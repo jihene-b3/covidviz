@@ -46,3 +46,20 @@ screening_daily.rename(
 cvz.daily_test(9, '34', screening_daily)
 cvz.daily_test_dep('34', screening_daily)
 cvz.daily_test_age(9, screening_daily)
+<<<<<<< Updated upstream
+=======
+
+# %%
+screening_daily.head()
+
+# %%
+cvz.screening_by_age_dep(screening_daily)[90]['% positive tests'] <= 100
+# %%
+type(cvz.regroup_public_center_by_dep(depis_grand_public, dep_fr)['34']) == pd.core.frame.DataFrame
+# %%
+cvz.screening_by_age_dep(screening_daily)[90].loc[0,'% positive tests'] <= 100
+# %%
+cvz.clean_public_centers(depis_grand_public).loc[3094, 'tel_rdv'] == '01 85 90 79 13'
+
+# %%
+>>>>>>> Stashed changes
