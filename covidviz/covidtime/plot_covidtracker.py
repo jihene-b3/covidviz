@@ -7,9 +7,23 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import matplotlib.ticker as mtick
 
-
-
 def ratio(gb_data, data_depcode, data_ratio_hospitalises,current_date, data_hospitalises, current_date_file, min_value_80p , nbhospitalises_80p) : 
+    """Creates an updated chart of the ratio of in-hospital deaths to hospitalizations in french departments.
+
+    :param gb_data: dataframe with covid data
+    :type gb_data: dataframe
+    :param data_depcode: column 'maille_nom' of the dataframe
+    :type data_depcode: str
+    :param data_ratio_hospitalises: (gb_data['deces'] / (gb_data['hospitalises'] + gb_data['gueris'])) * 100
+    :type data_ratio_hospitalises: str
+    :param current_date : gives the maximum date of the dataframe
+    :type current_date : timestamp
+    :param min_value_80p 
+    :type min_value_80p
+    :param nbhospitalises_80p
+    :type nbhospitalises_80p
+    
+    """
     fig, ax = plt.subplots(figsize=(12, 8))
 
     plt.title(f"Ratio of in-hospital deaths to hospitalizations : {current_date}", fontsize=20)

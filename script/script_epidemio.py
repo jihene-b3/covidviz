@@ -27,8 +27,7 @@ def plots_maille_code(maille_active='FRA', **kwargs):
     if maille_active == "FRA":
         plt.show()
         display(Markdown(
-            "Pour la France le nombre de cas peut-être analysé. Contrairement aux autres"
-            + " quantités le nombre de cas est lissé sur 14 jours avec une fenêtre triangulaire."
+            "The number of cases is smoothed over 14 days with a triangular window"
         ))
         plot_field_loops(
             fra, "cas_confirmes", [14], center=True, maille_active=maille_active,

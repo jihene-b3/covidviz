@@ -2,7 +2,7 @@
 
 #### Covidtracker 
 
-The graphs are an overview of the current situation in France. It allows at a glance to follow the 
+The graphs are an overview of the current situation in France. It gices us a glance to follow the 
 the ratio of in-hospital deaths to hospitalizations in frech departments and to determin their evoulution of the number of in-hospital deaths vs. number of hospitalizations.
 
 #### Analysis of COVID-19 progression in France 
