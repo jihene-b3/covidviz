@@ -11,6 +11,8 @@ def choose_columns(df_covid, col_names):
     :type df_covid: dataframe
     :param col_names: column names from df_covid
     :type col_names: list of str
+    :return: dataframe with chosen columns
+    :rtype: dataframe
     """
     start = time.time()
     df = df_covid.loc[:,col_names]

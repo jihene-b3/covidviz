@@ -12,8 +12,8 @@ def create_transfer_graph():
     """Creates a graph for covid patient's transfer from covid
     transfer's data.
     
-    :return G: graph of covid patient's transfer
-    :type G: networkx.classes.digraph.DiGraph
+    :return: graph of covid patient's transfer
+    :rtype: networkx.classes.digraph.DiGraph
     """
     start = time.time()
     # Load data from data.gouv
@@ -70,8 +70,8 @@ def plot_adjacency_matrix(G):
     
     :param G: graph
     :type G: networkx.classes.digraph.DiGraph
-    :return M_adj: adjacency matrix
-    :type M_adj: scipy.sparse.csr.csr_matrix
+    :return: adjacency matrix
+    :rtype: scipy.sparse.csr.csr_matrix
     """
     start = time.time()
     plt.figure(figsize=(12, 12))
