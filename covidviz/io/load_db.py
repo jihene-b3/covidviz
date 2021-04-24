@@ -16,7 +16,7 @@ class Load_db:
     start = time.time()
     self.url = url_db
     self.target_name = path_target
-    download(self.url, self.target_name, replace=False)
+    download(self.url, self.target_name, replace=True)
     end = time.time()
     print("Time spent to load data: {0:.5f} s.".format(end - start)) 
   
