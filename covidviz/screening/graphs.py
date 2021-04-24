@@ -20,7 +20,11 @@ def screening_by_age_dep(screening_daily):
     :return: screening_daily_age_dep
     :rtype: dict
     """
-    df = screening_daily.copy() 
+    df = screening_daily.copy()
+    df.rename(columns={
+        'cl_age90': 'cl_age', 'jour': 'date', 'T': 'Tests number', 'P': 'Positive tests'
+        },
+        inplace=True)
     AGE = pd.DataFrame(df['cl_age'].unique())
     AGE.set_axis(['classe'], axis=1, inplace=True)
     screening_daily_age_dep = {}
@@ -58,6 +62,10 @@ def screening_by_age(screening_daily):
     :rtype: dict
     """
     df = screening_daily.copy()
+    df.rename(columns={
+        'cl_age90': 'cl_age', 'jour': 'date', 'T': 'Tests number', 'P': 'Positive tests'
+        },
+        inplace=True)    
     # Grouping all age classes
     AGE = pd.DataFrame(df['cl_age'].unique())
     AGE.set_axis(['classe'], axis=1, inplace=True)
@@ -100,6 +108,10 @@ def screening_by_dep(screening_daily):
     :rtype: dict
     """
     df = screening_daily.copy()
+    df.rename(columns={
+        'cl_age90': 'cl_age', 'jour': 'date', 'T': 'Tests number', 'P': 'Positive tests'
+        },
+        inplace=True)    
     # Grouping all departments
     DEP = pd.DataFrame(df['dep'].unique())
     DEP.set_axis(['code'], axis=1, inplace=True)

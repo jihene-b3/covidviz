@@ -50,11 +50,6 @@ screening_daily = pd.read_csv(
     '../covidviz/data/sp-pos-quot-dep-2021-04-16-19h05.csv',
     delimiter=';',
     low_memory=False)
-
-screening_daily.rename(
-    columns={'cl_age90': 'cl_age', 'jour': 'date', 'T': 'Tests number', 'P': 'Positive tests'},
-    inplace=True)
-
 # %%
 cvz.daily_test(9, '34', screening_daily)
 cvz.daily_test_dep('34', screening_daily)

@@ -103,7 +103,6 @@ def regroup_map(dep_fr):
     :rtype: dict
     """
     df = dep_fr.copy()
-    df = clean_dep(df)
     all_map_dep = {}
     for dep_code in df['maille_code'].tolist():
         all_map_dep[f'{dep_code}'] = map_dep(f'{dep_code}', df)
@@ -208,13 +207,11 @@ def markers_set(dep_fr, depis_grand_public, depis_acces_restreint):
     :return: [description]
     :rtype: [type]
     """
-    df = dep_fr.copy()
-    df = clean_dep(df)
     depis_department_grand_public = regroup_public_center_by_dep(depis_grand_public, dep_fr)
     all_map_dep = regroup_map(dep_fr)
     depis_department_acces_restreint = regroup_private_center_by_dep(depis_acces_restreint, dep_fr)
 
-    for dep_code in df['maille_code'].tolist():
+    for dep_code in dep_fr['maille_code'].tolist():
         for i in range(len(depis_department_grand_public[f'{dep_code}'])):
 
             tooltip1 = f"<strong>{depis_department_grand_public[dep_code].loc[i, 'adresse']}</strong>"
@@ -266,7 +263,7 @@ def markers_set(dep_fr, depis_grand_public, depis_acces_restreint):
                     tooltip=tooltip1).add_to(all_map_dep[f'{dep_code}'])
 
     dep_acces_restreint_list = []
-    for dep_code in df['maille_code'].tolist():
+    for dep_code in dep_fr['maille_code'].tolist():
         if (len(depis_department_acces_restreint[f'{dep_code}']) != 0):
             a = f'{dep_code}'
             dep_acces_restreint_list.append(a)
