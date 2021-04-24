@@ -3,6 +3,7 @@ from download import download
 import plotly.express as px
 import matplotlib.pyplot as plt 
 
+
 def df_plot_rea(df) :
     fig = px.bar(df, x="AgeGroup",
         y="nb-rea",
