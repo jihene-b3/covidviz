@@ -11,28 +11,41 @@ import covidviz as cvz
 
 
 # %%
+
+
+
 """
  Loading data on the screening map
 """
 
+
 # all informations about screening centers in public access in France
+
 grand_public_path = '../covidviz/data/scr_public_centers.csv'
 depis_grand_public = pd.read_csv(grand_public_path)
 
 # all informtations about screening centers in restricted access in France
+
 acces_restreint_path = '../covidviz/data/scr_private_centers.csv'
 depis_acces_restreint = pd.read_csv(acces_restreint_path)
 
 # coordonates of french departments
+
 dep_fr = pd.read_csv('../covidviz/data/depart_fr_coord.csv', delimiter=';')
 
 # %%
 cvz.map_screening('34', dep_fr, depis_grand_public, depis_acces_restreint)
 # %%
+
+
+
 """
  SCREENING VISUALIZATION BY GRAPHS
 """
+
+
 # Loading of data on the number of screenings carried out by age group and / or department
+
 screening_daily = pd.read_csv(
     '../covidviz/data/sp-pos-quot-dep-2021-04-16-19h05.csv',
     delimiter=';',
@@ -46,20 +59,3 @@ screening_daily.rename(
 cvz.daily_test(9, '34', screening_daily)
 cvz.daily_test_dep('34', screening_daily)
 cvz.daily_test_age(9, screening_daily)
-<<<<<<< Updated upstream
-=======
-
-# %%
-screening_daily.head()
-
-# %%
-cvz.screening_by_age_dep(screening_daily)[90]['% positive tests'] <= 100
-# %%
-type(cvz.regroup_public_center_by_dep(depis_grand_public, dep_fr)['34']) == pd.core.frame.DataFrame
-# %%
-cvz.screening_by_age_dep(screening_daily)[90].loc[0,'% positive tests'] <= 100
-# %%
-cvz.clean_public_centers(depis_grand_public).loc[3094, 'tel_rdv'] == '01 85 90 79 13'
-
-# %%
->>>>>>> Stashed changes

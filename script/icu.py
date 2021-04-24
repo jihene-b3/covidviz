@@ -9,11 +9,13 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)) + (os.path.sep + '..'
 import covidviz as cvz
 
 # %%
+
 """
  ICU by department
 """
-# %%
+
 # Loading 'data_covid.csv' from covidmap
+
 df_raw = cvz.choose_columns(
     cvz.Load_db.save_as_df(),
     [
@@ -26,7 +28,6 @@ df_raw = cvz.choose_columns(
     ]
 )
 
-# %%
 #we filtred data by department
 df_dep = cvz.choose_granularity(df_raw, "departement")
 #we filtred data by region
@@ -42,6 +43,7 @@ cvz.icu_dep_display('during curfew', df_dep)
 cvz.icu_dep_display('during 3rd confinement', df_dep)
 
 # %%
+
 """
  ICU by region
 """
