@@ -61,7 +61,7 @@ def plot_transfer_graph(G):
                         edge_color='#528B8B')
 
     plt.axis('off')
-    plt.title("French patient transfers' graph", fontsize=28)
+    plt.title("French patient transfers graph", fontsize=28)
     plt.show()
 
 

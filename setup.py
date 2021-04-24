@@ -1,4 +1,3 @@
-  
 from setuptools import setup
 from covidviz import __version__ as current_version
 
@@ -11,6 +10,6 @@ setup(
   author_email='chloe.serre-combe@etu.umontpellier.fr',
   license='MIT',
   packages=['covidviz', 'covidviz.io', 'covidviz.preprocess', 'covidviz.covidmap', 
-              'covidviz.icu', 'covidviz.sparse'],
+              'covidviz.icu', 'covidviz.sparse', 'covidviz.covidtime', 'covidviz.demofraphyfactors'],
   zip_safe=False
 )

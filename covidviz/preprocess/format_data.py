@@ -1,5 +1,6 @@
 import pandas as pd 
 import numpy as np 
+import covidviz
 
 
 def clean_age(df): 
@@ -7,7 +8,7 @@ def clean_age(df):
     This function reads "AgeGroups.csv" file and reformate data.
 
     """  
-    df = pd.read_csv("data/AgeGroups.csv", sep=';')
+    df = pd.read_csv("covidviz/data/AgeGroups.csv", sep=';')
     df=df.rename(columns={"cl_age90": "age", "jour": "date","hosp":"nb_hosp","rea":"nb-rea","HospConv":"nb_hospconv","rad":"rad_Tot","dc":"dec_Tot"})
     df.drop(['autres'], axis = 1, inplace = True) 
     df=df[df['nb_hosp'] > 0]
@@ -21,7 +22,7 @@ def clean_gender(df):
     - renaming columns, 
     - droping a column not needed for this case study,
     """
-    df = pd.read_csv("data/age_gender.csv", sep=';')
+    df = pd.read_csv("covidviz/data/age_gender.csv", sep=';')
     df=df.rename(columns={"cl_age90": "age","P_f":"num_f","P_h":"num_h","pop_f":"prooption_f","pop_h":"prooption_h"})
     df.drop(['fra'], axis = 1, inplace = True) 
     return(df)
@@ -43,6 +44,14 @@ def format_age(df):
     df.loc[(df.age > 79) & (df.age < 90),  'AgeGroup'] = '[80,89]'
     df.loc[(df.age > 89),  'AgeGroup'] = '[90,+]'
     return(df)
+
+
+def group(df1):
+    df_group = df1.groupby('AgeGroup')[['num_f','num_h','P']].aggregate(lambda x: x.mean())
+    df_group.reset_index(inplace=True)
+    return df1
+
+
 
 
 def remove_nan(df):

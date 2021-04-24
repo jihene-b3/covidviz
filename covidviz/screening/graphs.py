@@ -20,13 +20,17 @@ def screening_by_age_dep(screening_daily):
     :return: screening_daily_age_dep
     :rtype: dict
     """
-    
-    AGE = pd.DataFrame(screening_daily['cl_age'].unique())
+    df = screening_daily.copy()
+    df.rename(columns={
+        'cl_age90': 'cl_age', 'jour': 'date', 'T': 'Tests number', 'P': 'Positive tests'
+        },
+        inplace=True)
+    AGE = pd.DataFrame(df['cl_age'].unique())
     AGE.set_axis(['classe'], axis=1, inplace=True)
     screening_daily_age_dep = {}
 
     for age in AGE['classe'].tolist():
-        screening_daily_age_dep[age] = screening_daily[screening_daily['cl_age'] == age]
+        screening_daily_age_dep[age] = df[df['cl_age'] == age]
 
         screening_daily_age_dep[age].drop(['cl_age'], axis=1, inplace=True)
         screening_daily_age_dep[age] = screening_daily_age_dep[age].reset_index()
@@ -46,7 +50,7 @@ def screening_by_age(screening_daily):
 
     We regroup data by age.
     We add the columns :
-        - 'Tests cumul' : 
+        - 'Tests cumul' :
             indicates the number of cumulative screenings
             since the first day (first line of data), per day.
         - '% positive tests' :
@@ -57,12 +61,17 @@ def screening_by_age(screening_daily):
     :return: Daily screenings by age
     :rtype: dict
     """
+    df = screening_daily.copy()
+    df.rename(columns={
+        'cl_age90': 'cl_age', 'jour': 'date', 'T': 'Tests number', 'P': 'Positive tests'
+        },
+        inplace=True)    
     # Grouping all age classes
-    AGE = pd.DataFrame(screening_daily['cl_age'].unique())
+    AGE = pd.DataFrame(df['cl_age'].unique())
     AGE.set_axis(['classe'], axis=1, inplace=True)
     screening_daily_age = {}
     for age in AGE['classe'].tolist():
-        screening_daily_age[age] = screening_daily[screening_daily['cl_age'] == age]
+        screening_daily_age[age] = df[df['cl_age'] == age]
 
         screening_daily_age[age].drop(['cl_age'], axis=1, inplace=True)
         screening_daily_age[age] = screening_daily_age[age].reset_index()
@@ -79,7 +88,7 @@ def screening_by_age(screening_daily):
 
         screening_daily_age[age] = screening_daily_age[age].reset_index()
     return screening_daily_age
- 
+
 
 def screening_by_dep(screening_daily):
     """
@@ -98,13 +107,18 @@ def screening_by_dep(screening_daily):
     :return: Daily screenings by department
     :rtype: dict
     """
+    df = screening_daily.copy()
+    df.rename(columns={
+        'cl_age90': 'cl_age', 'jour': 'date', 'T': 'Tests number', 'P': 'Positive tests'
+        },
+        inplace=True)    
     # Grouping all departments
-    DEP = pd.DataFrame(screening_daily['dep'].unique())
+    DEP = pd.DataFrame(df['dep'].unique())
     DEP.set_axis(['code'], axis=1, inplace=True)
 
     screening_daily_dep = {}
     for dep_code in DEP['code'].tolist():
-        screening_daily_dep[dep_code] = screening_daily[screening_daily['dep'] == dep_code]
+        screening_daily_dep[dep_code] = df[df['dep'] == dep_code]
 
         screening_daily_dep[dep_code].drop(['dep'], axis=1, inplace=True)
         screening_daily_dep[dep_code] = screening_daily_dep[dep_code].reset_index()

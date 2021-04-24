@@ -136,7 +136,7 @@ def icu_dep_all(df_dep):
 
 def icu_dep_display(period, df_dep):
     """
-    icu_dep_display [summary]
+    icu_dep_display
 
     Return the lineplot of intensive care beds occupied 
     in french departments for period selected.
