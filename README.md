@@ -4,19 +4,30 @@
 
 ## Plot interactive maps
 
-The goal of this project is to analyze the spreading of the covid19 disease in France with a heatmap. It allows to visualize by day covid cases in French departments. Then we'll produce various charts to illustrate how the covid19 affect population, for instance by age (e.g. a dashboard with various statistical features). 
+The goal of this project is to analyze the spreading of the covid19 disease in France with an animated map. Which allows to visualize by day covid cases in French departments like that :
 
 [<img src="temp/map_departments.png" height="500">]()
 
 
+ 
+
+Then we'll produce various charts and gif to illustrate how the covid19 affect population, for instance by age (e.g. a dashboard with various statistical features). 
+
+
+[<img src="temp/covid-19-h-bar-cases_departement.gif" height="500">]()
+
+
+
+
 ## Dataset
 
-Many sources provide a counting of Covid19 cases such as [data.gouv.fr dataset](https://www.data.gouv.fr/en/datasets/chiffres-cles-concernant-lepidemie-de-covid19-en-france/).
+We mainly used data from data.gouv.fr [data.gouv.fr](https://www.data.gouv.fr/en/datasets) which provides a counting of Covid-19 such as :
 
-### Data on people vaccinated against Covid-19 :
-https://www.data.gouv.fr/fr/datasets/donnees-relatives-aux-personnes-vaccinees-contre-la-covid-19-1/
+> - [Data on people vaccinated against Covid-19](https://www.data.gouv.fr/fr/datasets/donnees-relatives-aux-personnes-vaccinees-contre-la-covid-19-1/)
 
-#### Source : Santé Publique France
+> - [Global Covid-19 data with deads and hospitalized](https://www.data.gouv.fr/en/datasets/chiffres-cles-concernant-lepidemie-de-covid19-en-france/)
+
+We also used geometry data used for maps are from [France geoJSON](https://france-geojson.gregoiredavid.fr).
 
 
 ## Members
@@ -27,12 +38,12 @@ https://www.data.gouv.fr/fr/datasets/donnees-relatives-aux-personnes-vaccinees-c
 
 ## Tasks repartition 
 
-+ Jihène : connect map and data, statistic diagrams
-+ Zakaria : map animation, dashboard creation
-+ Chloé : map creation, map animation
-+ Stephani : data treatement, statistic diagrams
++ Jihène : spatio-temporal covid19 evolution statistics
++ Zakaria : vaccine statistics and map on a dashboard 
++ Chloé : covid deaths and covid hospitalized widget maps, unit tests and wheel
++ Stephani : icu and screening statistic 
 
-+ Everyone : documentation, beamer, module architecture, unit tests, time and memory efficiency
++ Everyone : documentation, beamer, module architecture, time and memory efficiency...
 
 
 
