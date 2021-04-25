@@ -1,5 +1,7 @@
 [![Documentation Status](https://readthedocs.org/projects/covidviz/badge/?version=latest)](https://covidviz.readthedocs.io/en/latest/?badge=latest)
 
+[![Open In Colab](https://colab.research.google.com/github/jihene-b3/covidviz/blob/main/covidviz/dashboard/dashboard.ipynb)
+
 # Spatio-temporal evolution of Covid19 cases in France
 
 ## Plot interactive maps
