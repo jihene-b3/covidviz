@@ -1,6 +1,5 @@
 from typing import List
-import datetime
-import requests
+import datetime, requests, time
 
 from matplotlib import pyplot as plt
 from matplotlib.ticker import FuncFormatter
@@ -36,8 +35,9 @@ def download_france_data() -> pd.DataFrame:
      datasets:
       opencovid19-data-gouv-fr-chiffres-cles.csv
     
-     """
-    
+    """
+    start = time.time()
+
     stat_file = "opencovid19-fr-chiffres-cles.csv.csv"
     gouv_file = "data-gouv-fr-chiffres-cles.csv"
     stat_url = "https://raw.githubusercontent.com/opencovid19-fr/data/master/dist/chiffres-cles.csv"
@@ -63,4 +63,8 @@ def download_france_data() -> pd.DataFrame:
         "source_url"
     ] = "https://www.data.gouv.fr/fr/datasets/r/f335f9ea-86e3-4ffa-9684-93c009d5e617"
     data_gouv.rename(DATA_GOUV_2_OPEN, axis="columns", inplace=True)
+
+    end = time.time()
+    print("Time spent on download_france_data: {0:.5f} s.".format(end - start))
+
     return pd.concat((data, data_gouv), join="outer")

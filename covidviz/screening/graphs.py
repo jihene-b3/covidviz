@@ -1,6 +1,7 @@
 import pandas as pd
 import plotly.express as px
 import numpy as np
+import time
 
 
 def screening_by_age_dep(screening_daily):
@@ -15,6 +16,8 @@ def screening_by_age_dep(screening_daily):
     :return: screening_daily_age_dep
     :rtype: dict
     """
+    start = time.time()
+
     df = screening_daily.copy()
     df.rename(columns={
         'cl_age90': 'cl_age', 'jour': 'date', 'T': 'Tests number', 'P': 'Positive tests'
@@ -36,6 +39,10 @@ def screening_by_age_dep(screening_daily):
         screening_daily_age_dep[age]['% positive tests'] = (screening_daily_age_dep[age]['Positive tests']/screening_daily_age_dep[age]['Tests number'])*100
 
         screening_daily_age_dep[age].fillna(0, inplace=True)
+
+    end = time.time()
+    print("Time spent on screening_by_age_dep: {0:.5f} s.".format(end - start))
+
     return screening_daily_age_dep
 
 
@@ -51,6 +58,8 @@ def screening_by_age(screening_daily):
     :return: Daily screenings by age
     :rtype: dict
     """
+    start = time.time()
+
     df = screening_daily.copy()
     df.rename(columns={
         'cl_age90': 'cl_age', 'jour': 'date', 'T': 'Tests number', 'P': 'Positive tests'
@@ -77,6 +86,9 @@ def screening_by_age(screening_daily):
         screening_daily_age[age]['% positive tests'] = (screening_daily_age[age]['Positive tests']/screening_daily_age[age]['Tests number'])*100
 
         screening_daily_age[age] = screening_daily_age[age].reset_index()
+    end = time.time()
+    print("Time spent on screening_by_age: {0:.5f} s.".format(end - start))
+
     return screening_daily_age
 
 
@@ -92,6 +104,8 @@ def screening_by_dep(screening_daily):
     :return: Daily screenings by department
     :rtype: dict
     """
+    start = time.time()
+
     df = screening_daily.copy()
     df.rename(columns={
         'cl_age90': 'cl_age', 'jour': 'date', 'T': 'Tests number', 'P': 'Positive tests'
@@ -122,6 +136,10 @@ def screening_by_dep(screening_daily):
         screening_daily_dep[dep_code]['% positive tests'] = (screening_daily_dep[dep_code]['Positive tests']/screening_daily_dep[dep_code]['Tests number'])*100
 
         screening_daily_dep[dep_code] = screening_daily_dep[dep_code].reset_index()
+
+    end = time.time()
+    print("Time spent on screening_by_dep: {0:.5f} s.".format(end - start))
+
     return screening_daily_dep
 
 
@@ -140,6 +158,8 @@ def daily_test(age, department, screening_daily):
     :type screening_daily: dataframe
     :return: Daily screenings by age and department
     """
+    start = time.time()
+
     screening_daily_age_dep = screening_by_age_dep(screening_daily)
     df = screening_daily_age_dep[age][screening_daily_age_dep[age]['dep'] == f'{department}']
     df.drop(['dep'], axis=1, inplace=True)
@@ -152,6 +172,10 @@ def daily_test(age, department, screening_daily):
         title=f"Screening in department {department} for class age {age}",
         height=600, width=1000)
     fig.update_xaxes(rangeslider_visible=True)
+
+    end = time.time()
+    print("Time spent on daily_test: {0:.5f} s.".format(end - start))
+
     return(fig.show())
 
 
@@ -168,6 +192,8 @@ def daily_test_dep(department, screening_daily):
     :type screening_daily: dataframe
     :return: Daily screenings by department
     """
+    start = time.time()
+
     screening_daily_dep = screening_by_dep(screening_daily)
     fig = px.bar(
         screening_daily_dep[department],
@@ -176,6 +202,10 @@ def daily_test_dep(department, screening_daily):
         title=f"Covid Screening in department {department}",
         height=600, width=1000)
     fig.update_xaxes(rangeslider_visible=True)
+
+    end = time.time()
+    print("Time spent on daily_test_dep: {0:.5f} s.".format(end - start))
+
     return(fig.show())
 
 
@@ -192,6 +222,8 @@ def daily_test_age(age_class, screening_daily):
     :type screening_daily: dataframe
     :return: Daily screenings by age
     """
+    start = time.time()
+
     screening_daily_age = screening_by_age(screening_daily)
     fig = px.bar(
         screening_daily_age[age_class],
@@ -200,4 +232,8 @@ def daily_test_age(age_class, screening_daily):
         title=f"Covid Screening in France for the age class {age_class}",
         height=600, width=1000)
     fig.update_xaxes(rangeslider_visible=True)
+
+    end = time.time()
+    print("Time spent on daily_test_age: {0:.5f} s.".format(end - start))
+
     return(fig.show())

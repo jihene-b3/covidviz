@@ -1,11 +1,10 @@
 from typing import List
-import datetime
-import requests
-
+import datetime, requests, time
 from matplotlib import pyplot as plt
 from matplotlib.ticker import FuncFormatter
 from matplotlib.rcsetup import cycler
 import pandas as pd
+
 
 DATA_GOUV_2_OPEN = {
     "date": "date",
@@ -24,15 +23,14 @@ DATA_GOUV_2_OPEN = {
 }
 
 
-def download_france_data() -> pd.DataFrame:
+def download_france_data():
     """Download and merges data from OpenCovid19-fr and data.gouv.fr
     """
+    start = time.time()
     oc19_file = "opencovid19-fr-chiffres-cles.csv"
     gouv_file = "data-gouv-fr-chiffres-cles.csv"
     oc19_url = "https://raw.githubusercontent.com/opencovid19-fr/data/master/dist/chiffres-cles.csv"
-    gouv_url = (
-        "https://www.data.gouv.fr/fr/datasets/r/f335f9ea-86e3-4ffa-9684-93c009d5e617"
-    )
+    gouv_url = "https://www.data.gouv.fr/fr/datasets/r/f335f9ea-86e3-4ffa-9684-93c009d5e617"
     # run requests to download and save the data
     myfile = requests.get(oc19_url)
     with open(oc19_file, "wb") as f:
@@ -48,26 +46,25 @@ def download_france_data() -> pd.DataFrame:
     data_gouv["maille_code"] = "FRA"
     data_gouv["maille_nom"] = "France"
     data["source_nom"] = "Santé publique France Data"
-    data_gouv[
-        "source_url"
-    ] = "https://www.data.gouv.fr/fr/datasets/r/f335f9ea-86e3-4ffa-9684-93c009d5e617"
+    data_gouv["source_url"] = "https://www.data.gouv.fr/fr/datasets/r/f335f9ea-86e3-4ffa-9684-93c009d5e617"
     data_gouv.rename(DATA_GOUV_2_OPEN, axis="columns", inplace=True)
+    end = time.time()
+    print("Time spent on download_france_data: {0:.5f} s.".format(end - start)) 
     return pd.concat((data, data_gouv), join="outer")
 
 
-def enable_time_series_plot(
-    in_df, timein_field="time", timeseries_field_out="date", date_format="%Y-%m-%d",
-):
+def enable_time_series_plot(in_df, timein_field="time", timeseries_field_out="date", date_format="%Y-%m-%d",):
     """
     Small tool to add a field to a dataframe which can be used for time series
     plotting
     """
+    start = time.time()
     if timeseries_field_out not in in_df.columns:
         # Drop the bad data row.
         in_df = in_df.loc[in_df[timein_field] != "2020-11_11", :]
-        in_df[timeseries_field_out] = pd.to_datetime(
-            in_df[timein_field], format=date_format
-        )
+        in_df[timeseries_field_out] = pd.to_datetime(in_df[timein_field], format=date_format)
+    end = time.time()
+    print("Time spent on enable_time_series_plot: {0:.5f} s.".format(end - start)) 
     return in_df
 
 
@@ -75,6 +72,7 @@ def axis_date_limits(axs, min_date=None, max_date=None, format_date=None):
     """
     Tailor axis limits
     """
+    start = time.time()
     if type(axs) != type(list()):
         axs = [axs]
     for ax in axs:
@@ -83,22 +81,25 @@ def axis_date_limits(axs, min_date=None, max_date=None, format_date=None):
             ax.set_xlim(right=pd.to_datetime(max_date, format=format_date))
         if not (min_date is None):
             ax.set_xlim(left=pd.to_datetime(min_date, format=format_date))
+    end = time.time()
+    print("Time spent on axis_date_limits: {0:.5f} s.".format(end - start)) 
 
 
 def data_preparation(
-    data,
-    maille_code,
-    rows=[
-        "t",
-        "deces",
-        "deces_ehpad",
-        "reanimation",
-        "hospitalises",
-        "nouvelles_reanimations",
-        "nouvelles_hospitalisations",
-    ],
-    no_negatives=["deces", "deces_ehpad"],
-):
+                    data,
+                    maille_code,
+                    rows=[
+                        "t",
+                        "deces",
+                        "deces_ehpad",
+                        "reanimation",
+                        "hospitalises",
+                        "nouvelles_reanimations",
+                        "nouvelles_hospitalisations",
+                    ],
+                    no_negatives=["deces", "deces_ehpad"]
+                    ):
+    start = time.time()
     if maille_code == "FRA":
         fra = data.loc[
             (data["maille_code"] == maille_code)
@@ -125,8 +126,8 @@ def data_preparation(
                 else:
                     fra.loc[ind, f] = 0.0
     fra = fra.groupby(["t"]).aggregate(
-        {"t": "first", **{key: "max" for key in non_time_rows}}
-    )
+                            {"t": "first", **{key: "max" for key in non_time_rows}}
+                            )
     fra = fra.set_index("t")
     for i in range(fra.shape[0] - 1, 0, -1):
         row_num = i
@@ -135,12 +136,13 @@ def data_preparation(
             val = fra.iloc[row_num, col_num]
             val_prev = fra.iloc[row_num - 1, col_num]
             if val < val_prev:
-                fra.iloc[row_num - 1, col_num] = val
+                fra.iloc[row_num - 1, col_num] = val 
                 
-                
+
     # ajout des totaux par jours
     def par_jour(df):
         return df - [0, *(df[:-1])]
+
 
     fra["reanimation_cumul"] = fra["reanimation"].cumsum()
     non_time_rows.append("reanimation_cumul")
@@ -171,15 +173,18 @@ def data_preparation(
     fra[f + "_jour_prop"] = fra[f + "_jour_mma"] / fra["reanimation"]
     f = "deces_jour_mma"
     fra[f + "_jour_prop"] = fra[f + "_jour"] / fra["deces_jour_mma"]
+    end = time.time()
+    print("Time spent on data_preparation: {0:.5f} s.".format(end - start))
     return fra, region
 
 
 def data_preproc(
-    data,
-    maille_code,
-    rows=["t", "deces", "deces_ehpad", "reanimation", "hospitalises"],
-    no_negatives=["deces", "deces_ehpad"],
-):
+                data,
+                maille_code,
+                rows=["t", "deces", "deces_ehpad", "reanimation", "hospitalises"],
+                no_negatives=["deces", "deces_ehpad"],
+            ):
+    start = time.time()
     fra, region = data_preparation(data, maille_code, rows, no_negatives)
     fig, axs = get_new_fig()
     plot_quants = [
@@ -195,13 +200,15 @@ def data_preproc(
         axs[i].grid(which="major")
         axs[i].set_title(region)
         axis_date_limits(axs[i], min_date="2020-03-01")
+    end = time.time()
+    print("Time spent on data_preproc: {0:.5f} s.".format(end - start))
     return fra
 
 
 def get_new_fig():
     fig, axs = plt.subplots(1, 3)
     fig.set_size_inches((15, 5))
-
+    end = time.time()
     return fig, axs
 
 
@@ -223,14 +230,14 @@ def last_tuesday():
 
 
 def plot_field_loops(
-    fra: pd.DataFrame,
-    field: str,
-    smoothing: List[int] = [7, 2, 3],
-    maille_active="",
-    start_date="2020-03-09",
-    end_date=last_tuesday(),
-    **kwargs,
-):
+                    fra: pd.DataFrame,
+                    field: str,
+                    smoothing: List[int] = [7, 2, 3],
+                    maille_active="",
+                    start_date="2020-03-09",
+                    end_date=last_tuesday(),
+                    **kwargs,
+                ):
     """Plots the day on day delta of a field of 'fra' against 
     Args:
         fra ([type]): [description]
@@ -240,6 +247,8 @@ def plot_field_loops(
         start_date (str, optional): [description]. Defaults to "2020-03-09".
         end_date ([type], optional): [description]. Defaults to last_tuesday().
     """
+    start = time.time()
+    
     smooth_rol_val = lambda df: rol_val(df, smoothing, **kwargs)
 
     fra[field + "_smooth_acceleration"] = smooth_rol_val(fra[field + "_jour_jour"])
@@ -343,6 +352,8 @@ def plot_field_loops(
         min_date=start_date,
         max_date=datetime.datetime.now().strftime("%Y-%m-%d"),
     )
+    end = time.time()
+    print("Time spent on plot_fields_loop: {0:.5f} s.".format(end - start))
     return axs
 
 
