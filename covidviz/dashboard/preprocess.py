@@ -1,3 +1,6 @@
+import pandas as pd
+import geopandas as gpd
+
 
 def preprocess(df,gdf):
     """ Does the processing by concatenating a dataset and a geodataframe with the index(department code for example) in common. 
