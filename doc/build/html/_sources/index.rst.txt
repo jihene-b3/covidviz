@@ -49,6 +49,13 @@ Welcome to ProjetCovid's documentation!
    Stats/screening
 
 
+.. toctree::
+   :maxdepth: 2
+   :caption: Vaccine Dashboard
+
+   vaccine/dashboard.rst
+
+
 Indices and tables
 ==================
 

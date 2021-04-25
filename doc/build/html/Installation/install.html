@@ -33,7 +33,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -93,8 +92,7 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">How to install</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#on-windows">On Windows</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#on-linux">On Linux</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#on-mac">On MAC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#on-linux-and-mac">On Linux and MAC</a></li>
 </ul>
 </li>
 </ul>
@@ -117,6 +115,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../Stats/demographicfactors.html">Demographic factors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Stats/icu.html">ICU</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Stats/screening.html">Screening</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Vaccine Dashboard</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../vaccine/dashboard.html">Dashboard</a></li>
 </ul>
 
             
@@ -197,9 +199,10 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda env create -f environment.yml
 </pre></div>
 </div>
+<p>Finally, you can run files in <cite>covidviz/script</cite> or the notebook in <cite>covidviz/report</cite>.</p>
 </div>
-<div class="section" id="on-linux">
-<h2>On Linux<a class="headerlink" href="#on-linux" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="on-linux-and-mac">
+<h2>On Linux and MAC<a class="headerlink" href="#on-linux-and-mac" title="Permalink to this headline">¶</a></h2>
 <p>To install covidviz on Linux go to your terminal and type :</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/jihene-b3/covidviz.git
 </pre></div>
@@ -208,15 +211,11 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda env create -f environment.yml
 </pre></div>
 </div>
-</div>
-<div class="section" id="on-mac">
-<h2>On MAC<a class="headerlink" href="#on-mac" title="Permalink to this headline">¶</a></h2>
-<p>To install covidviz on MAC</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>% git clone https://github.com/jihene-b3/ProjetCovid.git
-</pre></div>
-</div>
-<p>Then go to the root of the covidviz project cloned and type :</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda env create -f environment.yml
+<p>Finally, you can run files in <cite>covidviz/script</cite> or the notebook in <cite>covidviz/report</cite>.</p>
+<p>If it doesn’t work you try to do the following steps :</p>
+<p>&gt; Create a new conda environment and go to it</p>
+<p>&gt; Type this command :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip install -r requirements.txt
 </pre></div>
 </div>
 </div>
