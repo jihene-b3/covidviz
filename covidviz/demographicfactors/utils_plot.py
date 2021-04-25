@@ -25,6 +25,9 @@ def df_plot_rea(df) :
 
 
 def df_plot_hosp(df):
+    """
+    Creates a chart for the number of patients hospitalized by age group.
+    """
     start = time.time()
     fig = px.bar(df, x="AgeGroup", y="nb_hosp", color="AgeGroup",
          animation_frame="date", animation_group="AgeGroup", 
@@ -38,19 +41,25 @@ def df_plot_hosp(df):
     return(fig.show())
 
 def df_plot_dec(df): 
+    """
+    Creates a chart for the number of patients who died because of coronavirus by age group.
+    """
     start = time.time()
     datefrom = '2020-04-01'
     fig = px.line(df, x="date", y="dec_Tot", color="AgeGroup",range_x=[datefrom,'2021-04-19'])
     # fig.update_layout(hovermode='x unified')
     fig.update_layout(
     height = 600,
-    title_text = "NNumber of patients who died because of coronavirus by age group"
+    title_text = "Number of patients who died because of coronavirus by age group"
     )
     end = time.time()
     print("Time spent on plot_dec: {0:.5f} s.".format(end - start))
     return(fig.show())
 
 def df_plot_gender(df):
+    """
+    Creates a barchart for the distribution of tested postive people for coronavirus per gender.
+    """
     start = time.time()
     w = 0.3
     x = df.AgeGroup

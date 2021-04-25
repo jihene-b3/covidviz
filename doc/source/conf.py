@@ -55,6 +55,8 @@ autodoc_mock_imports = ['pydeck', 'geopandas']
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
+html_logo = '_static/map_departments.png'
+
 html_theme = 'sphinx_rtd_theme'
 pygments_style = 'monokai' 
 

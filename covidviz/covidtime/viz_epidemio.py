@@ -99,6 +99,11 @@ def data_preparation(
                     ],
                     no_negatives=["deces", "deces_ehpad"]
                     ):
+    """
+    -Format data 
+    -Adds colummns : reanimation_cumul, hospitalises_cumul,reanimation_solde_vivant_jour,reanimation_solde_vivant_jour_jour
+    -Does a rolling average over data of hospitalization, deaths
+    """
     start = time.time()
     if maille_code == "FRA":
         fra = data.loc[

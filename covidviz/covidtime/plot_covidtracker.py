@@ -15,15 +15,15 @@ def ratio(gb_data, data_depcode, data_ratio_hospitalises,current_date, data_hosp
     :param gb_data: dataframe with covid data
     :type gb_data: dataframe
     :param data_depcode: column 'maille_nom' of the dataframe
-    :type data_depcode: str
+    :type data_depcode: list
     :param data_ratio_hospitalises: (gb_data['deces'] / (gb_data['hospitalises'] + gb_data['gueris'])) * 100
     :type data_ratio_hospitalises: str
     :param current_date : gives the maximum date of the dataframe
     :type current_date : timestamp
-    :param min_value_80p 
-    :type min_value_80p
-    :param nbhospitalises_80p
-    :type nbhospitalises_80p
+    :param min_value_80p : data_hospitalises.loc[data_hospitalises[data_hospitalises.sort_values(ascending=False).cumsum() <= nbhospitalises_80p].index].min()
+    :type min_value_80p : list 
+    :param nbhospitalises_80p : data_hospitalises.sum() * 0.80
+    :type nbhospitalises_80p : int 
     
     """
     start = time.time()

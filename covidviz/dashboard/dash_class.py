@@ -175,9 +175,9 @@ def update_ts_week(selected_dropdown_value):
               [Input('locselector', 'value')])
 
 def update_ts_daily(selected_dropdown_value):
-
-
-    #Draw traces of the feature 'daily' based one the currently selected location
+                
+    """Draw traces of the feature 'daily' based one the currently selected location"""
+                
     trace2 = []
     df_sub = df
     # Draw and append traces for each location
@@ -218,7 +218,7 @@ def update_ts_daily(selected_dropdown_value):
 
 def update_total_vacc(selected_dropdown_value):
 
-    #Draw traces of the feature 'cumul' based one the currently selected location
+    """ Draw traces of the feature 'cumul' based one the currently selected location """
     trace3 = []
     df_sub = df
     # Draw and append traces for each location
