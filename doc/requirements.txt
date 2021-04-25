@@ -5,3 +5,16 @@ matplotlib>=3.1.2
 numpy>=1.18.1
 pydeck>=0.6.1
 download>=0.3.5
+pydeck==0.6.1
+folium==0.12.1
+pandas==1.2.3
+numpy==1.19.5
+matplotlib==3.3.4
+plotly==4.14.3
+requests==2.25.1
+ipywidgets==7.6.3
+scipy==1.5.2
+networkx==2.5
+geopandas==0.9.0
+ipython==7.22.0
+pandas_alive==0.2.4
