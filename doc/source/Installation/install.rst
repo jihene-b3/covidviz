@@ -18,9 +18,10 @@ After that, go on Anaconda prompt, go to the root of the covidviz project cloned
 
     $ conda env create -f environment.yml 
 
+Finally, you can run files in `covidviz/script` or the notebook in `covidviz/report`.
 
-On Linux 
------------
+On Linux and MAC
+-----------------
 
 To install covidviz on Linux go to your terminal and type :
 
@@ -34,17 +35,16 @@ Then go to the root of the covidviz project cloned and type :
 
     $ conda env create -f environment.yml 
 
-On MAC 
------------
+Finally, you can run files in `covidviz/script` or the notebook in `covidviz/report`.
 
-To install covidviz on MAC
+If it doesn't work you try to do the following steps :
 
-.. code:: bash
+> Create a new conda environment and go to it
 
-    % git clone https://github.com/jihene-b3/ProjetCovid.git
-
-Then go to the root of the covidviz project cloned and type :
+> Type this command :
 
 .. code:: bash
 
-    $ conda env create -f environment.yml 
+    $ pip install -r requirements.txt
+
+

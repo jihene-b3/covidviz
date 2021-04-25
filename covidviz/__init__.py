@@ -16,5 +16,5 @@ from .covidtime.viz_epidemio import data_preparation,data_preproc,plot_field_loo
 from .covidtime.plot_covidtracker import ratio
 from .sparse.transfer_graph import create_transfer_graph, plot_transfer_graph, plot_adjacency_matrix
 from .screening.plot_map import clean_public_centers, clean_dep, map_dep, regroup_map, regroup_public_center_by_dep, clean_private_centers, regroup_private_center_by_dep, markers_set, map_screening
-
+from .dashboard.dash_class import Dashapp
 

@@ -80,6 +80,7 @@ class Dashapp:
                                                     ])
 
 
+
                               
 
 
@@ -111,6 +112,7 @@ def callback(id_input, prop_input, id_output, prop_output):
 
 @app.callback(Output('id of output component', 'property of output component'),
               [Input('id of input component', 'property of input component')])
+
 
 def arbitrary_function(value_of_first_input):
     '''

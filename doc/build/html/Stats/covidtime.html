@@ -33,7 +33,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -190,7 +189,7 @@
 <span id="covidtracker"></span><h2>Covidtracker<a class="headerlink" href="#module-covidviz.covidtime.plot_covidtracker" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="covidviz.covidtime.plot_covidtracker.ratio">
-<code class="sig-name descname">ratio</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">gb_data</span></em>, <em class="sig-param"><span class="n">data_depcode</span></em>, <em class="sig-param"><span class="n">data_ratio_hospitalises</span></em>, <em class="sig-param"><span class="n">current_date</span></em>, <em class="sig-param"><span class="n">data_hospitalises</span></em>, <em class="sig-param"><span class="n">current_date_file</span></em>, <em class="sig-param"><span class="n">min_value_80p</span></em>, <em class="sig-param"><span class="n">nbhospitalises_80p</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.covidtime.plot_covidtracker.ratio" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">ratio</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gb_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_depcode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_ratio_hospitalises</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_hospitalises</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_date_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_value_80p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nbhospitalises_80p</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.covidtime.plot_covidtracker.ratio" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates an updated chart of the ratio of in-hospital deaths to hospitalizations in french departments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -214,13 +213,13 @@
 <span id="analysis-of-covid-19-progression-in-france"></span><h2>Analysis of COVID-19 progression in France<a class="headerlink" href="#module-covidviz.covidtime.viz_epidemio" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="covidviz.covidtime.viz_epidemio.axis_date_limits">
-<code class="sig-name descname">axis_date_limits</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">axs</span></em>, <em class="sig-param"><span class="n">min_date</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">max_date</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">format_date</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.covidtime.viz_epidemio.axis_date_limits" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">axis_date_limits</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.covidtime.viz_epidemio.axis_date_limits" title="Permalink to this definition">¶</a></dt>
 <dd><p>Tailor axis limits</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="covidviz.covidtime.viz_epidemio.data_preparation">
-<code class="sig-name descname">data_preparation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">maille_code</span></em>, <em class="sig-param"><span class="n">rows</span><span class="o">=</span><span class="default_value">['t', 'deces', 'deces_ehpad', 'reanimation', 'hospitalises', 'nouvelles_reanimations', 'nouvelles_hospitalisations']</span></em>, <em class="sig-param"><span class="n">no_negatives</span><span class="o">=</span><span class="default_value">['deces', 'deces_ehpad']</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.covidtime.viz_epidemio.data_preparation" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">data_preparation</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maille_code</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rows</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['t',</span> <span class="pre">'deces',</span> <span class="pre">'deces_ehpad',</span> <span class="pre">'reanimation',</span> <span class="pre">'hospitalises',</span> <span class="pre">'nouvelles_reanimations',</span> <span class="pre">'nouvelles_hospitalisations']</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_negatives</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['deces',</span> <span class="pre">'deces_ehpad']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.covidtime.viz_epidemio.data_preparation" title="Permalink to this definition">¶</a></dt>
 <dd><p>-Format data 
 -Adds colummns : reanimation_cumul, hospitalises_cumul,reanimation_solde_vivant_jour,reanimation_solde_vivant_jour_jour
 -Does a rolling average over data of hospitalization, deaths</p>
@@ -228,20 +227,20 @@
 
 <dl class="py function">
 <dt id="covidviz.covidtime.viz_epidemio.download_france_data">
-<code class="sig-name descname">download_france_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.covidtime.viz_epidemio.download_france_data" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">download_france_data</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.covidtime.viz_epidemio.download_france_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Download and merges data from OpenCovid19-fr and data.gouv.fr</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="covidviz.covidtime.viz_epidemio.enable_time_series_plot">
-<code class="sig-name descname">enable_time_series_plot</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">in_df</span></em>, <em class="sig-param"><span class="n">timein_field</span><span class="o">=</span><span class="default_value">'time'</span></em>, <em class="sig-param"><span class="n">timeseries_field_out</span><span class="o">=</span><span class="default_value">'date'</span></em>, <em class="sig-param"><span class="n">date_format</span><span class="o">=</span><span class="default_value">'%Y-%m-%d'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.covidtime.viz_epidemio.enable_time_series_plot" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">enable_time_series_plot</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timein_field</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'time'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeseries_field_out</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'date'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'%Y-%m-%d'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.covidtime.viz_epidemio.enable_time_series_plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Small tool to add a field to a dataframe which can be used for time series
 plotting</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="covidviz.covidtime.viz_epidemio.plot_field_loops">
-<code class="sig-name descname">plot_field_loops</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fra</span><span class="p">:</span> <span class="n">pandas.core.frame.DataFrame</span></em>, <em class="sig-param"><span class="n">field</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">smoothing</span><span class="p">:</span> <span class="n">List<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">[7, 2, 3]</span></em>, <em class="sig-param"><span class="n">maille_active</span><span class="o">=</span><span class="default_value">''</span></em>, <em class="sig-param"><span class="n">start_date</span><span class="o">=</span><span class="default_value">'2020-03-09'</span></em>, <em class="sig-param"><span class="n">end_date</span><span class="o">=</span><span class="default_value">datetime.datetime(2021, 4, 20, 22, 47, 48, 748491)</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.covidtime.viz_epidemio.plot_field_loops" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">plot_field_loops</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fra</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smoothing</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">[7,</span> <span class="pre">2,</span> <span class="pre">3]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maille_active</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'2020-03-09'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">datetime.datetime(2021,</span> <span class="pre">4,</span> <span class="pre">20,</span> <span class="pre">23,</span> <span class="pre">12,</span> <span class="pre">56,</span> <span class="pre">259097)</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.covidtime.viz_epidemio.plot_field_loops" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plots the day on day delta of a field of ‘fra’ against 
 Args:</p>
 <blockquote>
@@ -259,21 +258,21 @@ end_date ([type], optional): [description]. Defaults to last_tuesday().</p>
 <span id="gifs"></span><h2>Gifs<a class="headerlink" href="#module-covidviz.covidtime.time_gif" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="covidviz.covidtime.time_gif.adapt_time">
-<code class="sig-name descname">adapt_time</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.covidtime.time_gif.adapt_time" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">adapt_time</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.covidtime.time_gif.adapt_time" title="Permalink to this definition">¶</a></dt>
 <dd><p>Removes the date given with a wrong foramt 
 Changes dates into timestamp format</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="covidviz.covidtime.time_gif.data_treatment_by_option">
-<code class="sig-name descname">data_treatment_by_option</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data_granu</span></em>, <em class="sig-param"><span class="n">option</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.covidtime.time_gif.data_treatment_by_option" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">data_treatment_by_option</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_granu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">option</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.covidtime.time_gif.data_treatment_by_option" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adjusts dataframe to set pandas_alive package requirements as arguments 
 Resamples data so we take into acount rows with option =! 0</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="covidviz.covidtime.time_gif.plot_animation">
-<code class="sig-name descname">plot_animation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df_clean</span></em>, <em class="sig-param"><span class="n">granu</span></em>, <em class="sig-param"><span class="n">option</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.covidtime.time_gif.plot_animation" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">plot_animation</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df_clean</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">granu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">option</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.covidtime.time_gif.plot_animation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates an animation with pandas_alive package.
 :param df_clean: dataframe with covid data
 :type gb_data: dataframe
