@@ -3,7 +3,7 @@ import os, sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + (os.path.sep + '..'))
 import covidviz as cvz
 from covidviz import data 
-from  covidviz.demographyfactors.utils_plot import df_plot_dec, df_plot_rea, df_plot_hosp, df_plot_gender
+from  covidviz.demographicfactors.utils_plot import df_plot_dec, df_plot_rea, df_plot_hosp, df_plot_gender
 import pandas as pd
 from covidviz.preprocess.format_data import clean_gender, clean_age, format_age,remove_nan, group
 # %%
