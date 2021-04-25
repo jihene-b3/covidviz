@@ -1,4 +1,4 @@
-__version__ = '0.0.2'
+__version__ = '0.0.1'
 
 from .io.load_db import Load_db
 from .covidmap.plot_map import Map_covid
