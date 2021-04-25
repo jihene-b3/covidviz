@@ -1,3 +1,5 @@
+[![Documentation Status](https://readthedocs.org/projects/covidviz/badge/?version=latest)](https://covidviz.readthedocs.io/en/latest/?badge=latest)
+
 # Spatio-temporal evolution of Covid19 cases in France
 
 ## Plot interactive maps
