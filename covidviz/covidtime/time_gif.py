@@ -13,7 +13,7 @@ import time
 def adapt_time(data):
     """
     Removes the date given with a wrong foramt 
-    Chnages dates into timestamp format 
+    Changes dates into timestamp format 
     """
     start = time.time()
     data = data[data.date != '2020-11_11']

@@ -13,7 +13,7 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css\custom.css" type="text/css" />
 
   
   
@@ -41,7 +41,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Screening" href="screening.html" />
-    <link rel="prev" title="Covid time" href="covidtime.html" /> 
+    <link rel="prev" title="Demographic factors" href="demographicfactors.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -106,10 +106,11 @@
 <p class="caption"><span class="caption-text">Statistics</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="covidtime.html">Covid time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="demographicfactors.html">Demographic factors</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">ICU</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#departement">Departement</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#region">Region</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#department-region">Department &amp; Region</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-covidviz.icu.department">Departement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-covidviz.icu.region">Region</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-covidviz.icu.link_dep_reg">Department &amp; Region</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="screening.html">Screening</a></li>
@@ -182,14 +183,307 @@
             
   <div class="section" id="icu">
 <h1>ICU<a class="headerlink" href="#icu" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="departement">
-<h2>Departement<a class="headerlink" href="#departement" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-covidviz.icu.department">
+<span id="departement"></span><h2>Departement<a class="headerlink" href="#module-covidviz.icu.department" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="covidviz.icu.department.clean_df_dep">
+<code class="sig-name descname">clean_df_dep</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df_dep</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.icu.department.clean_df_dep" title="Permalink to this definition">¶</a></dt>
+<dd><p>clean_df_dep : ICU IN FRENCH DEPARTMENTS</p>
+<p>We generate a first DataFrame of ICU in french departments,
+with keeping one source : ‘Santé publique France Data’,
+We also clean the data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>df_with_just_dep</strong> (<em>dataframe</em>) – data covid in french departments</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>df</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dataframe</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="covidviz.icu.department.create_df_all_dep">
+<code class="sig-name descname">create_df_all_dep</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df_dep</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.icu.department.create_df_all_dep" title="Permalink to this definition">¶</a></dt>
+<dd><p>all data on ICU in all departments (by columns)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df_dep</strong> (<em>dataframe</em>) – data on ICU in french departments</p></li>
+<li><p><strong>dict_dep</strong> (<em>dict</em>) – [description]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>df_all_dep</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dataframe</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="covidviz.icu.department.icu_dep_all">
+<code class="sig-name descname">icu_dep_all</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df_dep</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.icu.department.icu_dep_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Regroup all the lineplot of intensive care beds occupied
+in french departments for different periods
+in a dictionnary</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>df_dep</strong> (<em>dataframe</em>) – data on ICU in french departments</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="covidviz.icu.department.icu_dep_display">
+<code class="sig-name descname">icu_dep_display</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">period</span></em>, <em class="sig-param"><span class="n">df_dep</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.icu.department.icu_dep_display" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the lineplot of intensive care beds occupied 
+in french departments for period selected.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>period</strong> (<em>str</em>) – period in [‘since 1st confinement’, ‘during 1st confinement’, ‘during deconfinement’, ‘during 2nd confinement’, ‘during curfew’, ‘during 3rd confinement’]</p></li>
+<li><p><strong>df_dep</strong> (<em>dataframe</em>) – data on ICU in french departments</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="covidviz.icu.department.regroup_by_dep">
+<code class="sig-name descname">regroup_by_dep</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df_dep</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.icu.department.regroup_by_dep" title="Permalink to this definition">¶</a></dt>
+<dd><p>data regrouped by department in a dictionnary (one key is one department).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>df_dep</strong> (<em>dataframe</em>) – data on ICU in french departments</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>dict_dep</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
-<div class="section" id="region">
-<h2>Region<a class="headerlink" href="#region" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-covidviz.icu.region">
+<span id="region"></span><h2>Region<a class="headerlink" href="#module-covidviz.icu.region" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="covidviz.icu.region.change_format_reg">
+<code class="sig-name descname">change_format_reg</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df_reg</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.icu.region.change_format_reg" title="Permalink to this definition">¶</a></dt>
+<dd><p>df_reg cleaned in ICU data and we changed the DOM columns (regrouped in ‘Région d’Outre Mer’),
+and renamed some name region to be adaptable for later.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>df_reg</strong> (<em>dataframe</em>) – covid data filtred by region</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>df_all_reg</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dataframe</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="covidviz.icu.region.clean_df_reg">
+<code class="sig-name descname">clean_df_reg</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df_reg</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.icu.region.clean_df_reg" title="Permalink to this definition">¶</a></dt>
+<dd><p>We generate a DataFrame of ICU in french regions,
+with keeping one source : ‘OpenCOVID19-fr’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>df_reg</strong> (<em>dataframe</em>) – data covid filtred by region</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>df</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dataframe</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="covidviz.icu.region.create_df_all_reg">
+<code class="sig-name descname">create_df_all_reg</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df_reg</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.icu.region.create_df_all_reg" title="Permalink to this definition">¶</a></dt>
+<dd><p>We create a dataframe with ICU data including all regions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>df_reg</strong> (<em>dataframe</em>) – data covid filtred by region</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>df_all_reg</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dataframe</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="covidviz.icu.region.create_icu_beds_reg">
+<code class="sig-name descname">create_icu_beds_reg</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df_reg</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.icu.region.create_icu_beds_reg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Imports the data concerning the beds available in the intensive care unit by region.
+The data is cleaned.
+Then, we copy the data frame with all the data from the intensive care unit by region (column),
+to divide each column by the number of beds available with the corresponding region.
+This is then multiplied by 100 to return the percentage of occupied beds in intensive care unit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>df_reg</strong> (<em>dataframe</em>) – covid data filtred by region</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="covidviz.icu.region.create_reg_total">
+<code class="sig-name descname">create_reg_total</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df_reg</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.icu.region.create_reg_total" title="Permalink to this definition">¶</a></dt>
+<dd><p>sum of rows, total number of patients in ICU since 1st confinement, by reg</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>df_reg</strong> (<em>dataframe</em>) – covid data filtred by region</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>icu_reg_total</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dataframe</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="covidviz.icu.region.heat_map_icu_reg">
+<code class="sig-name descname">heat_map_icu_reg</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df_reg</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.icu.region.heat_map_icu_reg" title="Permalink to this definition">¶</a></dt>
+<dd><p>return a heatmap of the percentage of occupied beds in ICU.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>df_reg</strong> (<em>dataframe</em>) – covid data filtred by region</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="covidviz.icu.region.icu_all_reg_display">
+<code class="sig-name descname">icu_all_reg_display</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df_reg</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.icu.region.icu_all_reg_display" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the lineplot of ICU flux data by region since 1st confinement</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>df_reg</strong> (<em>dataframe</em>) – data covid filtred by region</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="covidviz.icu.region.icu_by_reg_all">
+<code class="sig-name descname">icu_by_reg_all</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">region</span></em>, <em class="sig-param"><span class="n">df_dep</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.icu.region.icu_by_reg_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>regroup by region all the lineplot of intensive care beds occupied
+for different periods in Covid crisis in french departments</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>df_reg</strong> (<em>dataframe</em>) – data covid filtred by region</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="covidviz.icu.region.icu_by_reg_display">
+<code class="sig-name descname">icu_by_reg_display</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">period</span></em>, <em class="sig-param"><span class="n">region</span></em>, <em class="sig-param"><span class="n">df_dep</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.icu.region.icu_by_reg_display" title="Permalink to this definition">¶</a></dt>
+<dd><p>icu_dep_display</p>
+<p>Return the lineplot of intensive care beds occupied
+in french departments for period selected.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>period</strong> (<em>str</em>) – period in [‘since 1st confinement’, ‘during 1st confinement’, ‘during deconfinement’, ‘during 2nd confinement’, ‘during curfew’, ‘during 3rd confinement’]</p></li>
+<li><p><strong>df_dep</strong> (<em>dataframe</em>) – data on ICU in french departments</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="covidviz.icu.region.icu_reg_all">
+<code class="sig-name descname">icu_reg_all</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df_reg</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.icu.region.icu_reg_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>regroup all the lineplot of intensive care beds occupied
+for different periods in Covid crisis in french departments</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>df_reg</strong> (<em>dataframe</em>) – data covid filtred by region</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="covidviz.icu.region.icu_reg_display">
+<code class="sig-name descname">icu_reg_display</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">period</span></em>, <em class="sig-param"><span class="n">df_reg</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.icu.region.icu_reg_display" title="Permalink to this definition">¶</a></dt>
+<dd><p>icu_dep_display</p>
+<p>Return the lineplot of intensive care beds occupied
+in french departments for period selected.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>period</strong> (<em>str</em>) – period in [‘since 1st confinement’, ‘during 1st confinement’, ‘during deconfinement’, ‘during 2nd confinement’, ‘during curfew’, ‘during 3rd confinement’]</p></li>
+<li><p><strong>df_dep</strong> (<em>dataframe</em>) – data on ICU in french departments</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="covidviz.icu.region.icu_reg_repartition">
+<code class="sig-name descname">icu_reg_repartition</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df_reg</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.icu.region.icu_reg_repartition" title="Permalink to this definition">¶</a></dt>
+<dd><p>A pie chart whos shows the repartition of patients in ICU by regions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>df_reg</strong> (<em>dataframe</em>) – covid data filtred by region</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="covidviz.icu.region.regroup_by_reg">
+<code class="sig-name descname">regroup_by_reg</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df_reg</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.icu.region.regroup_by_reg" title="Permalink to this definition">¶</a></dt>
+<dd><p>We regroup the data on ICU by region using dictionary type</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>df_reg</strong> (<em>dataframe</em>) – data covid filtred by region</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>dict_reg</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
-<div class="section" id="department-region">
-<h2>Department &amp; Region<a class="headerlink" href="#department-region" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-covidviz.icu.link_dep_reg">
+<span id="department-region"></span><h2>Department &amp; Region<a class="headerlink" href="#module-covidviz.icu.link_dep_reg" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="covidviz.icu.link_dep_reg.link_dep_reg">
+<code class="sig-name descname">link_dep_reg</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df_dep</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.icu.link_dep_reg.link_dep_reg" title="Permalink to this definition">¶</a></dt>
+<dd><p>ICU data for each region with their departments in a dictionnary (one key is one region)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>df_dep</strong> (<em>dataframe</em>) – covid data filtred by department</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
 </div>
 
@@ -200,7 +494,7 @@
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
         <a href="screening.html" class="btn btn-neutral float-right" title="Screening" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="covidtime.html" class="btn btn-neutral float-left" title="Covid time" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="demographicfactors.html" class="btn btn-neutral float-left" title="Demographic factors" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
