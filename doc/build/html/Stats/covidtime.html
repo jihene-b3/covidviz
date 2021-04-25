@@ -59,6 +59,9 @@
           
 
           
+            
+            <img src="../_static/map_departments.png" class="logo" alt="Logo"/>
+          
           </a>
 
           
@@ -107,7 +110,7 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Covid time</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#module-covidviz.covidtime.plot_covidtracker">Covidtracker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#analysis-of-covid-19-progression-in-france">Analysis of COVID-19 progression in France</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-covidviz.covidtime.viz_epidemio">Analysis of COVID-19 progression in France</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-covidviz.covidtime.time_gif">Gifs</a></li>
 </ul>
 </li>
@@ -207,9 +210,9 @@
 </dd></dl>
 
 </div>
-<div class="section" id="analysis-of-covid-19-progression-in-france">
-<h2>Analysis of COVID-19 progression in France<a class="headerlink" href="#analysis-of-covid-19-progression-in-france" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="module-covidviz.covidtime.viz_epidemio"></span><dl class="py function">
+<div class="section" id="module-covidviz.covidtime.viz_epidemio">
+<span id="analysis-of-covid-19-progression-in-france"></span><h2>Analysis of COVID-19 progression in France<a class="headerlink" href="#module-covidviz.covidtime.viz_epidemio" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
 <dt id="covidviz.covidtime.viz_epidemio.axis_date_limits">
 <code class="sig-name descname">axis_date_limits</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">axs</span></em>, <em class="sig-param"><span class="n">min_date</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">max_date</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">format_date</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.covidtime.viz_epidemio.axis_date_limits" title="Permalink to this definition">¶</a></dt>
 <dd><p>Tailor axis limits</p>
@@ -238,7 +241,7 @@ plotting</p>
 
 <dl class="py function">
 <dt id="covidviz.covidtime.viz_epidemio.plot_field_loops">
-<code class="sig-name descname">plot_field_loops</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fra</span><span class="p">:</span> <span class="n">pandas.core.frame.DataFrame</span></em>, <em class="sig-param"><span class="n">field</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">smoothing</span><span class="p">:</span> <span class="n">List<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">[7, 2, 3]</span></em>, <em class="sig-param"><span class="n">maille_active</span><span class="o">=</span><span class="default_value">''</span></em>, <em class="sig-param"><span class="n">start_date</span><span class="o">=</span><span class="default_value">'2020-03-09'</span></em>, <em class="sig-param"><span class="n">end_date</span><span class="o">=</span><span class="default_value">datetime.datetime(2021, 4, 20, 22, 32, 18, 621953)</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.covidtime.viz_epidemio.plot_field_loops" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">plot_field_loops</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fra</span><span class="p">:</span> <span class="n">pandas.core.frame.DataFrame</span></em>, <em class="sig-param"><span class="n">field</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">smoothing</span><span class="p">:</span> <span class="n">List<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">[7, 2, 3]</span></em>, <em class="sig-param"><span class="n">maille_active</span><span class="o">=</span><span class="default_value">''</span></em>, <em class="sig-param"><span class="n">start_date</span><span class="o">=</span><span class="default_value">'2020-03-09'</span></em>, <em class="sig-param"><span class="n">end_date</span><span class="o">=</span><span class="default_value">datetime.datetime(2021, 4, 20, 22, 47, 48, 748491)</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.covidtime.viz_epidemio.plot_field_loops" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plots the day on day delta of a field of ‘fra’ against 
 Args:</p>
 <blockquote>

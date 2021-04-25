@@ -9,7 +9,7 @@ Covidtracker
 
 
 Analysis of COVID-19 progression in France 
-^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. automodule:: covidviz.covidtime.viz_epidemio
     :members:
 
