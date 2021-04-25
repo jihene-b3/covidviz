@@ -91,7 +91,7 @@ class Dashapp:
 
 
 def callback(id_input, prop_input, id_output, prop_output):
-    """ 
+    '''
     Callbacks
     
     :param id_input: id of input component, for example 'selector'
@@ -103,7 +103,7 @@ def callback(id_input, prop_input, id_output, prop_output):
     :type prop_input: string
     :type id_output: string
     :type prop_output: string
-    """
+    '''
 
     @app.callback(Output(id_output, prop_input),[Input(id_input, prop_input)])
 
