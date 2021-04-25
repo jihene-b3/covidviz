@@ -13,7 +13,7 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css\custom.css" type="text/css" />
 
   
   
@@ -40,7 +40,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="ICU" href="icu.html" />
+    <link rel="next" title="Demographic factors" href="demographicfactors.html" />
     <link rel="prev" title="Graph" href="../sparse/graph.html" /> 
 </head>
 
@@ -106,11 +106,12 @@
 <p class="caption"><span class="caption-text">Statistics</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Covid time</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#covidtracker">Covidtracker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-covidviz.covidtime.plot_covidtracker">Covidtracker</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#analysis-of-covid-19-progression-in-france">Analysis of COVID-19 progression in France</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#gifs">Gifs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-covidviz.covidtime.time_gif">Gifs</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="demographicfactors.html">Demographic factors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="icu.html">ICU</a></li>
 <li class="toctree-l1"><a class="reference internal" href="screening.html">Screening</a></li>
 </ul>
@@ -182,14 +183,97 @@
             
   <div class="section" id="covid-time">
 <h1>Covid time<a class="headerlink" href="#covid-time" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="covidtracker">
-<h2>Covidtracker<a class="headerlink" href="#covidtracker" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-covidviz.covidtime.plot_covidtracker">
+<span id="covidtracker"></span><h2>Covidtracker<a class="headerlink" href="#module-covidviz.covidtime.plot_covidtracker" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="covidviz.covidtime.plot_covidtracker.ratio">
+<code class="sig-name descname">ratio</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">gb_data</span></em>, <em class="sig-param"><span class="n">data_depcode</span></em>, <em class="sig-param"><span class="n">data_ratio_hospitalises</span></em>, <em class="sig-param"><span class="n">current_date</span></em>, <em class="sig-param"><span class="n">data_hospitalises</span></em>, <em class="sig-param"><span class="n">current_date_file</span></em>, <em class="sig-param"><span class="n">min_value_80p</span></em>, <em class="sig-param"><span class="n">nbhospitalises_80p</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.covidtime.plot_covidtracker.ratio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates an updated chart of the ratio of in-hospital deaths to hospitalizations in french departments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gb_data</strong> (<em>dataframe</em>) – dataframe with covid data</p></li>
+<li><p><strong>data_depcode</strong> (<em>list</em>) – column ‘maille_nom’ of the dataframe</p></li>
+<li><p><strong>data_ratio_hospitalises</strong> (<em>str</em>) – (gb_data[‘deces’] / (gb_data[‘hospitalises’] + gb_data[‘gueris’])) * 100</p></li>
+</ul>
+</dd>
+</dl>
+<p>:param current_date : gives the maximum date of the dataframe
+:type current_date : timestamp
+:param min_value_80p : 
+:type min_value_80p
+:param nbhospitalises_80p
+:type nbhospitalises_80p</p>
+</dd></dl>
+
 </div>
 <div class="section" id="analysis-of-covid-19-progression-in-france">
 <h2>Analysis of COVID-19 progression in France<a class="headerlink" href="#analysis-of-covid-19-progression-in-france" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-covidviz.covidtime.viz_epidemio"></span><dl class="py function">
+<dt id="covidviz.covidtime.viz_epidemio.axis_date_limits">
+<code class="sig-name descname">axis_date_limits</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">axs</span></em>, <em class="sig-param"><span class="n">min_date</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">max_date</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">format_date</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.covidtime.viz_epidemio.axis_date_limits" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tailor axis limits</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="covidviz.covidtime.viz_epidemio.data_preparation">
+<code class="sig-name descname">data_preparation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">maille_code</span></em>, <em class="sig-param"><span class="n">rows</span><span class="o">=</span><span class="default_value">['t', 'deces', 'deces_ehpad', 'reanimation', 'hospitalises', 'nouvelles_reanimations', 'nouvelles_hospitalisations']</span></em>, <em class="sig-param"><span class="n">no_negatives</span><span class="o">=</span><span class="default_value">['deces', 'deces_ehpad']</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.covidtime.viz_epidemio.data_preparation" title="Permalink to this definition">¶</a></dt>
+<dd><p>-Format data 
+-Adds colummns : reanimation_cumul, hospitalises_cumul,reanimation_solde_vivant_jour,reanimation_solde_vivant_jour_jour
+-Does a rolling average over data of hospitalization, deaths</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="covidviz.covidtime.viz_epidemio.download_france_data">
+<code class="sig-name descname">download_france_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.covidtime.viz_epidemio.download_france_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download and merges data from OpenCovid19-fr and data.gouv.fr</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="covidviz.covidtime.viz_epidemio.enable_time_series_plot">
+<code class="sig-name descname">enable_time_series_plot</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">in_df</span></em>, <em class="sig-param"><span class="n">timein_field</span><span class="o">=</span><span class="default_value">'time'</span></em>, <em class="sig-param"><span class="n">timeseries_field_out</span><span class="o">=</span><span class="default_value">'date'</span></em>, <em class="sig-param"><span class="n">date_format</span><span class="o">=</span><span class="default_value">'%Y-%m-%d'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.covidtime.viz_epidemio.enable_time_series_plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Small tool to add a field to a dataframe which can be used for time series
+plotting</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="covidviz.covidtime.viz_epidemio.plot_field_loops">
+<code class="sig-name descname">plot_field_loops</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fra</span><span class="p">:</span> <span class="n">pandas.core.frame.DataFrame</span></em>, <em class="sig-param"><span class="n">field</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">smoothing</span><span class="p">:</span> <span class="n">List<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">[7, 2, 3]</span></em>, <em class="sig-param"><span class="n">maille_active</span><span class="o">=</span><span class="default_value">''</span></em>, <em class="sig-param"><span class="n">start_date</span><span class="o">=</span><span class="default_value">'2020-03-09'</span></em>, <em class="sig-param"><span class="n">end_date</span><span class="o">=</span><span class="default_value">datetime.datetime(2021, 4, 20, 20, 17, 17, 789166)</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.covidtime.viz_epidemio.plot_field_loops" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots the day on day delta of a field of ‘fra’ against 
+Args:</p>
+<blockquote>
+<div><p>fra ([type]): [description]
+field ([type]): [description]
+smoothing (list, optional): [description]. Defaults to [7, 2, 3].
+maille_active (str, optional): [description]. Defaults to “”.
+start_date (str, optional): [description]. Defaults to “2020-03-09”.
+end_date ([type], optional): [description]. Defaults to last_tuesday().</p>
+</div></blockquote>
+</dd></dl>
+
 </div>
-<div class="section" id="gifs">
-<h2>Gifs<a class="headerlink" href="#gifs" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-covidviz.covidtime.time_gif">
+<span id="gifs"></span><h2>Gifs<a class="headerlink" href="#module-covidviz.covidtime.time_gif" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="covidviz.covidtime.time_gif.adapt_time">
+<code class="sig-name descname">adapt_time</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.covidtime.time_gif.adapt_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes the date given with a wrong foramt 
+Chnages dates into timestamp format</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="covidviz.covidtime.time_gif.data_treatment_by_option">
+<code class="sig-name descname">data_treatment_by_option</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data_granu</span></em>, <em class="sig-param"><span class="n">option</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.covidtime.time_gif.data_treatment_by_option" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adjusts dataframe to set pandas_alive package requirements as arguments 
+Resamples data so we take into acount rows with option =! 0</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="covidviz.covidtime.time_gif.plot_animation">
+<code class="sig-name descname">plot_animation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df_clean</span></em>, <em class="sig-param"><span class="n">granu</span></em>, <em class="sig-param"><span class="n">option</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.covidtime.time_gif.plot_animation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot an animation….</p>
+</dd></dl>
+
 </div>
 </div>
 
@@ -199,7 +283,7 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="icu.html" class="btn btn-neutral float-right" title="ICU" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="demographicfactors.html" class="btn btn-neutral float-right" title="Demographic factors" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="../sparse/graph.html" class="btn btn-neutral float-left" title="Graph" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 

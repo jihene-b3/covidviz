@@ -15,7 +15,7 @@ The goal of this project is to analyze the spreading of the covid19 disease in F
 Then we'll produce various charts and gif to illustrate how the covid19 affect population, for instance by age (e.g. a dashboard with various statistical features). 
 
 
-![Map- Animated map](covid-19-h-bar-cases_departement.png)
+![gif- Animated gif](temp/covid-19-h-bar-cases_departement.png)
 
 
 
