@@ -104,8 +104,7 @@ def callback(id_input, prop_input, id_output, prop_output):
     :type prop_output: string
     """
 
-    @app.callback(Output(id_output, prop_input),
-              [Input(id_input, prop_input)])
+    #@app.callback(Output(id_output, prop_input),[Input(id_input, prop_input)])
 
 
 @app.callback(Output('id of output component', 'property of output component'),
