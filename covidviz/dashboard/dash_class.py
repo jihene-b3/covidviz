@@ -100,9 +100,8 @@ def callback(id_input, prop_input, id_output, prop_output):
 
     :type id_input: string
     :type prop_input: string
-    :type id_output string
+    :type id_output: string
     :type prop_output: string
-
     """
 
     @app.callback(Output(id_output, prop_input),
