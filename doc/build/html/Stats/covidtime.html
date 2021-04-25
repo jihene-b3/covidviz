@@ -200,10 +200,10 @@
 </dl>
 <p>:param current_date : gives the maximum date of the dataframe
 :type current_date : timestamp
-:param min_value_80p : 
-:type min_value_80p
-:param nbhospitalises_80p
-:type nbhospitalises_80p</p>
+:param min_value_80p : data_hospitalises.loc[data_hospitalises[data_hospitalises.sort_values(ascending=False).cumsum() &lt;= nbhospitalises_80p].index].min()
+:type min_value_80p : list 
+:param nbhospitalises_80p : data_hospitalises.sum() * 0.80
+:type nbhospitalises_80p : int</p>
 </dd></dl>
 
 </div>
@@ -238,7 +238,7 @@ plotting</p>
 
 <dl class="py function">
 <dt id="covidviz.covidtime.viz_epidemio.plot_field_loops">
-<code class="sig-name descname">plot_field_loops</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fra</span><span class="p">:</span> <span class="n">pandas.core.frame.DataFrame</span></em>, <em class="sig-param"><span class="n">field</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">smoothing</span><span class="p">:</span> <span class="n">List<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">[7, 2, 3]</span></em>, <em class="sig-param"><span class="n">maille_active</span><span class="o">=</span><span class="default_value">''</span></em>, <em class="sig-param"><span class="n">start_date</span><span class="o">=</span><span class="default_value">'2020-03-09'</span></em>, <em class="sig-param"><span class="n">end_date</span><span class="o">=</span><span class="default_value">datetime.datetime(2021, 4, 20, 22, 2, 46, 575706)</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.covidtime.viz_epidemio.plot_field_loops" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">plot_field_loops</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fra</span><span class="p">:</span> <span class="n">pandas.core.frame.DataFrame</span></em>, <em class="sig-param"><span class="n">field</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">smoothing</span><span class="p">:</span> <span class="n">List<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">[7, 2, 3]</span></em>, <em class="sig-param"><span class="n">maille_active</span><span class="o">=</span><span class="default_value">''</span></em>, <em class="sig-param"><span class="n">start_date</span><span class="o">=</span><span class="default_value">'2020-03-09'</span></em>, <em class="sig-param"><span class="n">end_date</span><span class="o">=</span><span class="default_value">datetime.datetime(2021, 4, 20, 22, 28, 11, 166620)</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.covidtime.viz_epidemio.plot_field_loops" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plots the day on day delta of a field of ‘fra’ against 
 Args:</p>
 <blockquote>
@@ -258,7 +258,7 @@ end_date ([type], optional): [description]. Defaults to last_tuesday().</p>
 <dt id="covidviz.covidtime.time_gif.adapt_time">
 <code class="sig-name descname">adapt_time</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.covidtime.time_gif.adapt_time" title="Permalink to this definition">¶</a></dt>
 <dd><p>Removes the date given with a wrong foramt 
-Chnages dates into timestamp format</p>
+Changes dates into timestamp format</p>
 </dd></dl>
 
 <dl class="py function">
