@@ -6,6 +6,8 @@ from covidviz.preprocess.clean_df import choose_columns, choose_granularity
 import matplotlib.pyplot as plt 
 import pandas as pd
 import matplotlib.ticker as mtick
+import time
+
 
 def ratio(gb_data, data_depcode, data_ratio_hospitalises,current_date, data_hospitalises, current_date_file, min_value_80p , nbhospitalises_80p) : 
     """Creates an updated chart of the ratio of in-hospital deaths to hospitalizations in french departments.
@@ -24,6 +26,7 @@ def ratio(gb_data, data_depcode, data_ratio_hospitalises,current_date, data_hosp
     :type nbhospitalises_80p
     
     """
+    start = time.time()
     fig, ax = plt.subplots(figsize=(12, 8))
 
     plt.title(f"Ratio of in-hospital deaths to hospitalizations : {current_date}", fontsize=20)
@@ -49,4 +52,6 @@ def ratio(gb_data, data_depcode, data_ratio_hospitalises,current_date, data_hosp
     plt.legend()
 
     current_date_file = gb_data['date'].max().strftime('%Y%m%d')
+    end = time.time()
+    print("Time spent on ratio plot: {0:.5f} s.".format(end - start)) 
     plt.show()

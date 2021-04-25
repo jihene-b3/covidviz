@@ -21,6 +21,6 @@ def format_granularity(df_covid, granularity):
     if granularity == "departement":
         df['maille_code'] = df_covid.loc[:,'maille_code'].map(lambda x: x.lstrip('DEP-') if type(x) == str else -1)
     end = time.time()
-    print("Time spent to load data: {0:.5f} s.".format(end - start)) 
+    print("Time spent to format_granularity: {0:.5f} s.".format(end - start)) 
     return df
 

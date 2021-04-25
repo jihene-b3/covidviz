@@ -1,5 +1,4 @@
-import os.path
-import sys
+import os.path, sys, time
 import pandas as pd
 import numpy as np
 import datetime
@@ -23,6 +22,7 @@ def clean_df_reg(df_reg):
     :return: data covid filtred by region cleaned
     :rtype: dataframe
     """
+    start = time.time()
     df = df_reg.copy()
     df.drop(['granularite', 'maille_code'], axis=1, inplace=True)
     df.loc[df['source_nom'] == "OpenCOVID19-fr", :]
@@ -32,6 +32,8 @@ def clean_df_reg(df_reg):
     df.index = pd.to_datetime(df.index)
     df.fillna(0, inplace=True)
     df['reanimation'] = df['reanimation'].astype(int)
+    end = time.time()
+    print("Time spent on clean_df_reg: {0:.5f} s.".format(end - start))
     return df
 
 
@@ -46,6 +48,7 @@ def regroup_by_reg(df_reg):
     :return: data on UCI filtred by region
     :rtype: dict
     """
+    start = time.time()
     df_reg = clean_df_reg(df_reg)
     dict_reg = {}
     for region in df_reg['maille_nom'].unique().tolist():
@@ -54,6 +57,8 @@ def regroup_by_reg(df_reg):
                        'reanimation']).resample("1D").sum()
         dict_reg[region] = dict_reg[region].rename(
             columns={"reanimation": region})
+    end = time.time()
+    print("Time spent on regroup_by_reg: {0:.5f} s.".format(end - start))
     return dict_reg
 
 
@@ -66,6 +71,7 @@ def create_df_all_reg(df_reg):
     :return: data ICU including all regions
     :rtype: dataframe
     """
+    start = time.time()
     dict_reg = regroup_by_reg(df_reg)
     df_all_reg = pd.DataFrame()
     for region in df_reg['maille_nom'].unique().tolist():
@@ -74,6 +80,8 @@ def create_df_all_reg(df_reg):
     df_all_reg.fillna(0, inplace=True)
     df_all_reg = df_all_reg.astype(int)
     df_all_reg = df_all_reg.reset_index()
+    end = time.time()
+    print("Time spent on create_df_all_reg: {0:.5f} s.".format(end - start))
     return df_all_reg
 
 
@@ -87,6 +95,8 @@ def icu_reg_all(df_reg):
     :param df_reg: data covid filtred by region
     :type df_reg: dataframe
     """
+    start = time.time()
+
     df_all_reg = create_df_all_reg(df_reg)
     dict_plot_reg = {}
 
@@ -136,6 +146,10 @@ def icu_reg_all(df_reg):
         range_x=['2021-04-03', datetime.datetime.today().strftime('%Y-%m-%d')],
         title='Intensive care beds occupied during the 3rd confinement in french regions',
         height=500, width=800)
+    
+    end = time.time()
+    print("Time spent on icu_reg_all: {0:.5f} s.".format(end - start))
+
     return(dict_plot_reg)
 
 
@@ -151,7 +165,10 @@ def icu_reg_display(period, df_reg):
     :param df_dep: data on ICU in french departments
     :type df_dep: dataframe
     """
+    start = time.time()
     dict_plot_reg = icu_reg_all(df_reg)
+    end = time.time()
+    print("Time spent on icu_reg_display: {0:.5f} s.".format(end - start))
     return(dict_plot_reg[period].show())
 
 
@@ -165,6 +182,8 @@ def icu_by_reg_all(region, df_dep):
     :param df_reg: data covid filtred by region
     :type df_reg: dataframe
     """
+    start = time.time()
+
     icu_by_reg = cvz.link_dep_reg(df_dep)
     dict_plot_by_reg = {}
 
@@ -214,6 +233,10 @@ def icu_by_reg_all(region, df_dep):
         range_x=['2021-04-03', datetime.datetime.today().strftime('%Y-%m-%d')],
         title=f'Intensive care beds occupied during the 3rd confinement in {region}',
         height=500, width=800)
+    
+    end = time.time()
+    print("Time spent on icu_by_reg_all: {0:.5f} s.".format(end - start))
+
     return(dict_plot_by_reg)
 
 
@@ -229,7 +252,10 @@ def icu_by_reg_display(period, region, df_dep):
     :param df_dep: data on ICU in french departments
     :type df_dep: dataframe
     """
+    start = time.time()
     dict_plot_by_reg = icu_by_reg_all(region, df_dep)
+    end = time.time()
+    print("Time spent on cicu_by_reg_display: {0:.5f} s.".format(end - start))
     return(dict_plot_by_reg[period].show())
 
 
@@ -242,6 +268,7 @@ def icu_all_reg_display(df_reg):
     :param df_reg: data covid filtred by region
     :type df_reg: dataframe
     """
+    start = time.time()
     df_all_reg = create_df_all_reg(df_reg)
     df_all_reg['Total'] = np.sum(df_all_reg.iloc[:, 1:], axis=1)
     fig = px.bar(
@@ -252,6 +279,8 @@ def icu_all_reg_display(df_reg):
         color='Total',
         labels={'Total': 'Number of patients'},
         height=500, width=800)
+    end = time.time()
+    print("Time spent on icu_all_reg_display: {0:.5f} s.".format(end - start))
     return(fig.show())
 
 
@@ -266,6 +295,8 @@ def change_format_reg(df_reg):
     :return: DOM regrouped in 'Région d'Outre Mer'
     :rtype: dataframe
     """
+    start = time.time()
+
     df_all_reg = create_df_all_reg(df_reg)
     df_all_reg["Régions d'Outre Mer"] = df_all_reg["Guadeloupe"] + df_all_reg['Martinique'] + df_all_reg['Guyane'] + df_all_reg['La Réunion'] + df_all_reg['Mayotte']
     df_all_reg.drop(['Guadeloupe', 'Martinique', 'Guyane', 'La Réunion', 'Mayotte'], axis=1, inplace=True)
@@ -274,6 +305,8 @@ def change_format_reg(df_reg):
                             "Provence-Alpes-Côte d'Azur": "Provence-Alpes-Côte-d'Azur",
                             "Centre-Val de Loire": 'Centre-Val-de-Loire',
                             "Grand Est": "Grand-Est"}, inplace=True)
+    end = time.time()
+    print("Time spent on change_format_reg: {0:.5f} s.".format(end - start))
     return df_all_reg
 
 
@@ -288,9 +321,12 @@ def create_reg_total(df_reg):
     :return: sum of rows, total number of patients in ICU since 1st confinement, by reg
     :rtype: dataframe
     """
+    start = time.time()
     df_all_reg = change_format_reg(df_reg)
     icu_reg_total = pd.DataFrame(np.sum(df_all_reg.iloc[:, 1:15], axis=0))
     icu_reg_total.columns = ['Total number']
+    end = time.time()
+    print("Time spent on create_reg_total: {0:.5f} s.".format(end - start))
     return icu_reg_total
 
 
@@ -303,6 +339,7 @@ def icu_reg_repartition(df_reg):
     :param df_reg: covid data filtred by region
     :type df_reg: dataframe
     """
+    start = time.time()
     icu_reg_total = create_reg_total(df_reg)
     fig = px.pie(
         icu_reg_total,
@@ -311,6 +348,8 @@ def icu_reg_repartition(df_reg):
         title='Regional repartition of ICU during Covid19 crisis',
         color_discrete_sequence=px.colors.sequential.RdBu,
         height=500, width=800)
+    end = time.time()
+    print("Time spent on icu_reg_repartition: {0:.5f} s.".format(end - start))
     return(fig.show())
 
 
@@ -327,6 +366,7 @@ def create_icu_beds_reg(df_reg):
     :param df_reg: covid data filtred by region
     :type df_reg: dataframe
     """
+    start = time.time()
     icu_beds_reg = pd.read_csv('../covidviz/data/bed_rea_reg.csv', delimiter=';')
 
     icu_beds_reg = icu_beds_reg.rename(columns={'Unnamed: 0': 'Région'})
@@ -346,6 +386,10 @@ def create_icu_beds_reg(df_reg):
     for col in icu_beds_reg.index.tolist():
         for row in range(len(icu_beds_reg_prop)):
             icu_beds_reg_prop.loc[row, col] = (icu_beds_reg_prop.loc[row, col]/int(icu_beds_reg.loc[col, 'Nombre de lits']))*100
+    
+    end = time.time()
+    print("Time spent on create_icu_beds_reg: {0:.5f} s.".format(end - start))
+
     return(icu_beds_reg_prop)
 
 
@@ -358,10 +402,16 @@ def heat_map_icu_reg(df_reg):
     :param df_reg: covid data filtred by region
     :type df_reg: dataframe
     """
+    start = time.time()
+
     icu_beds_reg_prop = create_icu_beds_reg(df_reg) 
     fig = px.imshow(
         icu_beds_reg_prop.iloc[:, 1:],
         y=icu_beds_reg_prop['date'],
         title='Regional saturation in % in ICU during Covid19 crisis',
         height=700, width=800)
+
+    end = time.time()
+    print("Time spent on heat_map_icu_reg: {0:.5f} s.".format(end - start))
+
     return(fig.show())

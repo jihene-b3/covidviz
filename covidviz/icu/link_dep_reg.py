@@ -1,6 +1,5 @@
 import pandas as pd
-import os.path
-import sys
+import os.path, sys, time
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + (os.path.sep + '..'))
 import covidviz as cvz
 
@@ -14,6 +13,8 @@ def link_dep_reg(df_dep):
     :return: ICU data for each region with their departments
     :rtype: dict
     """
+    start = time.time()
+
     df_all_dep = cvz.create_df_all_dep(df_dep)
     icu_by_reg = {}
 
@@ -158,4 +159,8 @@ def link_dep_reg(df_dep):
         df_all_dep["Guyane"],
         df_all_dep["La Réunion"],
         df_all_dep["Mayotte"]], axis=1)
+
+    end = time.time()
+    print("Time spent on link_dep_reg: {0:.5f} s.".format(end - start))
+
     return icu_by_reg

@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-import datetime
+import datetime, time
 import plotly.express as px
 
 
@@ -16,6 +16,7 @@ def clean_df_dep(df_dep):
     :return: df_dep cleaned
     :rtype: dataframe
     """
+    start = time.time()
     df = df_dep.copy()
     df.drop('granularite', axis=1, inplace=True)
     df.loc[df['source_nom'] == "Santé publique France Data", :]
@@ -25,6 +26,8 @@ def clean_df_dep(df_dep):
     df.index = pd.to_datetime(df.index)
     df.fillna(0, inplace=True)
     df['reanimation'] = df['reanimation'].astype(int)
+    end = time.time()
+    print("Time spent on clean_df_dep: {0:.5f} s.".format(end - start))
     return df
 
 
@@ -37,6 +40,7 @@ def regroup_by_dep(df_dep):
     :return: data regrouped by department
     :rtype: dict
     """
+    start = time.time()
     df_dep = clean_df_dep(df_dep)
     dict_dep = {}
     for department in df_dep['maille_nom'].unique().tolist():
@@ -45,6 +49,8 @@ def regroup_by_dep(df_dep):
                        'reanimation']).resample("1D").sum()
         dict_dep[department] = dict_dep[department].rename(
             columns={"reanimation": department})
+    end = time.time()
+    print("Time spent on regroup_by_dep: {0:.5f} s.".format(end - start))
     return dict_dep
 
 
@@ -59,7 +65,8 @@ def create_df_all_dep(df_dep):
     :return: all data on ICU in all departments (by columns)
     :rtype: dataframe
     """
-    #df_dep = clean_df_dep(df_dep)
+    start = time.time()
+    # df_dep = clean_df_dep(df_dep)
     dict_dep = regroup_by_dep(df_dep)
     df_all_dep = pd.DataFrame()
     for department in df_dep['maille_nom'].unique().tolist():
@@ -68,6 +75,8 @@ def create_df_all_dep(df_dep):
     df_all_dep.fillna(0, inplace=True)
     df_all_dep = df_all_dep.astype(int)
     df_all_dep = df_all_dep.reset_index()
+    end = time.time()
+    print("Time spent on create_df_all_dep: {0:.5f} s.".format(end - start))
     return df_all_dep
 
 
@@ -82,6 +91,8 @@ def icu_dep_all(df_dep):
     :param df_dep: data on ICU in french departments
     :type df_dep: dataframe
     """
+    start = time.time()
+
     df_all_dep = create_df_all_dep(df_dep)
     dict_plot_dep = {}
 
@@ -131,6 +142,8 @@ def icu_dep_all(df_dep):
         range_x=['2021-04-03', datetime.datetime.today().strftime('%Y-%m-%d')],
         title='Intensive care beds occupied during the 3rd confinement in french departments',
         height=500, width=800)
+    end = time.time()
+    print("Time spent on icu_dep_all: {0:.5f} s.".format(end - start))
     return(dict_plot_dep)
 
 
@@ -146,5 +159,8 @@ def icu_dep_display(period, df_dep):
     :param df_dep: data on ICU in french departments
     :type df_dep: dataframe
     """
+    start = time.time()
     dict_plot_dep = icu_dep_all(df_dep)
+    end = time.time()
+    print("Time spent on icu_dep_display: {0:.5f} s.".format(end - start))
     return(dict_plot_dep[period].show())

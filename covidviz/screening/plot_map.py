@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-import folium
+import folium, time
 
 """
  SCREENING CENTERS IN PUBLIC ACCESS
@@ -17,6 +17,7 @@ def clean_public_centers(depis_grand_public):
     :return: depis_grand_public cleaned
     :rtype: dataframe
     """
+    start = time.time()
     df = depis_grand_public.copy()
     df.drop(['ID', 'finess', 'date_modif'], 1, inplace=True)
     df.drop([2388, 2742], inplace=True)
@@ -48,6 +49,10 @@ def clean_public_centers(depis_grand_public):
 
     for row in range(len(df)):
         df.loc[row, 'dep'] = df.loc[row, 'id_ej'][: 2]
+    
+    end = time.time()
+    print("Time spent on clean_public_centers: {0:.5f} s.".format(end - start))
+
     return df
 
 
@@ -60,11 +65,15 @@ def clean_dep(dep_fr):
     :return: coordonates of french departments (cleaned)
     :rtype: dataframe
     """
+    start = time.time()
     df = dep_fr.copy()
     df.drop(
         ['Unnamed: 4', 'Unnamed: 5', 'Unnamed: 6', 'Unnamed: 7'],
         axis=1,
-        inplace=True)
+        inplace=True
+        )
+    end = time.time()
+    print("Time spent on clean_dep: {0:.5f} s.".format(end - start))
     return df
 
 
@@ -79,6 +88,7 @@ def map_dep(department, dep_fr):
     :return: the french department (or DOM) map selected
     :rtype: Folium Map Object
     """
+    start = time.time()
     df = dep_fr.copy()
     df = clean_dep(df)
     dep_map = folium.Map(
@@ -86,6 +96,8 @@ def map_dep(department, dep_fr):
             df[df['maille_code'] == department]['Latitude'],
             df[df['maille_code'] == department]['Longitude']
             ], zoom_start=8)
+    end = time.time()
+    print("Time spent on map_data: {0:.5f} s.".format(end - start))
     return dep_map
 
 
@@ -98,10 +110,13 @@ def regroup_map(dep_fr):
     :return: all french departments maps regrouped
     :rtype: dict
     """
+    start = time.time()
     df = dep_fr.copy()
     all_map_dep = {}
     for dep_code in df['maille_code'].tolist():
         all_map_dep[f'{dep_code}'] = map_dep(f'{dep_code}', df)
+    end = time.time()
+    print("Time spent on regroup_map: {0:.5f} s.".format(end - start))
     return all_map_dep
 
 
@@ -116,6 +131,7 @@ def regroup_public_center_by_dep(depis_grand_public, dep_fr):
     :return: screening centers in public access by department regrouped
     :rtype: dict
     """
+    start = time.time()
     df = depis_grand_public.copy()
     df = clean_public_centers(df)
     df1 = dep_fr.copy()
@@ -127,8 +143,10 @@ def regroup_public_center_by_dep(depis_grand_public, dep_fr):
 
         depis_department_grand_public[f'{dep_code}'] = depis_department_grand_public[f'{dep_code}'].reset_index()
 
-        depis_department_grand_public[f'{dep_code}'].drop(['level_0', 'index'], axis=1, inplace=True) #clean
-        depis_department_grand_public[f'{dep_code}'].fillna('-', inplace=True) #replace the NaN by '-' for visualization
+        depis_department_grand_public[f'{dep_code}'].drop(['level_0', 'index'], axis=1, inplace=True) # clean
+        depis_department_grand_public[f'{dep_code}'].fillna('-', inplace=True) # replace the NaN by '-' for visualization
+    end = time.time()
+    print("Time spent on regroup_public_center_by_dep: {0:.5f} s.".format(end - start))
     return depis_department_grand_public
 
 
@@ -148,10 +166,13 @@ def clean_private_centers(depis_acces_restreint):
     :return: the dataframe 'depis_acces_restreint' cleaned
     :rtype: dataframe
     """
+    start = time.time()
     df = depis_acces_restreint.copy()
     df.drop(['ID', 'finess', 'date_modif'], 1, inplace=True)
     for row in range(len(df)):
         df.loc[row, 'dep'] = str(df.loc[row, 'id_ej'])[:2]
+    end = time.time()
+    print("Time spent on clean_private_centers: {0:.5f} s.".format(end - start))
     return df
 
 
@@ -166,6 +187,7 @@ def regroup_private_center_by_dep(depis_acces_restreint, dep_fr):
     :return: screening centers in restricted access by department regrouped
     :rtype: dict
     """
+    start = time.time()
     df = depis_acces_restreint.copy()
     df = clean_private_centers(df)
     df1 = dep_fr.copy()
@@ -177,6 +199,8 @@ def regroup_private_center_by_dep(depis_acces_restreint, dep_fr):
         depis_department_acces_restreint[f'{dep_code}'] = depis_department_acces_restreint[f'{dep_code}'].reset_index()
 
         depis_department_acces_restreint[f'{dep_code}'].drop(['index'], axis=1, inplace=True) # clean
+    end = time.time()
+    print("Time spent on regroup_private_center_by_dep: {0:.5f} s.".format(end - start))
     return (depis_department_acces_restreint)
 
 
@@ -202,6 +226,7 @@ def markers_set(dep_fr, depis_grand_public, depis_acces_restreint):
     :return: [description]
     :rtype: [type]
     """
+    start = time.time()
     depis_department_grand_public = regroup_public_center_by_dep(depis_grand_public, dep_fr)
     all_map_dep = regroup_map(dep_fr)
     depis_department_acces_restreint = regroup_private_center_by_dep(depis_acces_restreint, dep_fr)
@@ -318,6 +343,8 @@ def markers_set(dep_fr, depis_grand_public, depis_acces_restreint):
                     icon=folium.Icon(color='red'),
                     popup=popup2,
                     tooltip=tooltip2).add_to(all_map_dep[f'{dep_code}'])
+    end = time.time()
+    print("Time spent on markers_set: {0:.5f} s.".format(end - start))
     return all_map_dep
 
 
@@ -336,5 +363,8 @@ def map_screening(dep_code, dep_fr, depis_grand_public, depis_acces_restreint):
     :return: the department selected map with all markers, with all screening centers informations
     :rtype: Folium Map Object
     """
+    start = time.time()
     all_map_dep = markers_set(dep_fr, depis_grand_public, depis_acces_restreint) 
+    end = time.time()
+    print("Time spent on map_screening: {0:.5f} s.".format(end - start))
     return(all_map_dep[f'{dep_code}'])
