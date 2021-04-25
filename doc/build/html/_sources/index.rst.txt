@@ -44,6 +44,7 @@ Welcome to ProjetCovid's documentation!
    :caption: Statistics
 
    Stats/covidtime
+   Stats/demographicfactors
    Stats/icu
    Stats/screening
 
