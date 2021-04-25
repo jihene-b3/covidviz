@@ -265,7 +265,7 @@ def plot_field_loops(
     axs.append(fig.add_subplot(gs[0, :]))
     axs.append(fig.add_subplot(gs[1:, 0]))
     axs.append(fig.add_subplot(gs[1:, 1]))
-    fig.suptitle(f"Acceleration du nombre de {field} en {maille_active}")
+    fig.suptitle(f"Acceleration of the number of confirmed cases  {field} in {maille_active}")
     fig.set_size_inches(10, 8)
     colors = []
     for c in plt.rcParams["axes.prop_cycle"].by_key()["color"]:
