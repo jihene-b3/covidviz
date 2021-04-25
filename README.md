@@ -4,7 +4,9 @@
 <img src="temp/map_departments.png" style="vertical-align:middle" width="200" height='200' class='center' alt='logo'>
 </p>
 
+Link to to launch the dashboard with instructions :
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/jihene-b3/covidviz/blob/main/covidviz/dashboard/dashboard_notebook.ipynb)
+
 [![Documentation Status](https://readthedocs.org/projects/covidviz/badge/?version=main)](https://covidviz.readthedocs.io/en/main/)
 
 Link to our oral presentation :
