@@ -77,7 +77,7 @@ Then go to the root of the covidviz project cloned and type :
 
 ## Documentation
 
-The documentation of `covidviz` can be found here : [![Documentation Status](https://readthedocs.org/projects/covidviz/badge/?version=latest)](https://covidviz.readthedocs.io/en/latest/?badge=latest)
+The documentation of `covidviz` can be found here : [covidviz doc](https://covidviz.readthedocs.io/en/main/)
 
 
 ## Members
