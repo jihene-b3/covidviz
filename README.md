@@ -48,11 +48,37 @@ You can find a some examples of our visualizations in the `./temp` folder.
 
 ## Installation
 
-The documentation of `covidviz` can be found here : [![Documentation Status](https://readthedocs.org/projects/covidviz/badge/?version=latest)](https://covidviz.readthedocs.io/en/latest/?badge=latest)
+### On Windows 
 
+To install covidviz on Windows open you git manager (`git bash`, `git kraken` or others).
+
+Then clone the following repository with this command :
+
+    $ git clone https://github.com/jihene-b3/covidviz.git
+
+After that, go on Anaconda prompt, go to the root of the covidviz project cloned and type :
+
+
+    $ conda env create -f environment.yml 
+
+
+## On Linux and MAC
+
+
+To install covidviz on Linux go to your terminal and type :
+
+    $ git clone https://github.com/jihene-b3/covidviz.git
+
+Then go to the root of the covidviz project cloned and type :
+
+
+    $ conda env create -f environment.yml 
 
 
 ## Documentation
+
+The documentation of `covidviz` can be found here : [![Documentation Status](https://readthedocs.org/projects/covidviz/badge/?version=latest)](https://covidviz.readthedocs.io/en/latest/?badge=latest)
+
 
 ## Members
 + Jihène Belgaied : jihene.belgaied@etu.umontpellier.fr
