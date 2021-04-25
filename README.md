@@ -6,6 +6,8 @@
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/jihene-b3/covidviz/blob/main/covidviz/dashboard/dashboard.ipynb)
 [![Documentation Status](https://readthedocs.org/projects/covidviz/badge/?version=main)](https://covidviz.readthedocs.io/en/main/)
+
+Link to our oral presentation :
 [![Youtube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtu.be/w1sd-1P-q3c)
 
 
