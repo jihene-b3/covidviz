@@ -24,7 +24,6 @@ def ratio(gb_data, data_depcode, data_ratio_hospitalises,current_date, data_hosp
     :type min_value_80p
     :param nbhospitalises_80p
     :type nbhospitalises_80p
-    
     """
     start = time.time()
     fig, ax = plt.subplots(figsize=(12, 8))

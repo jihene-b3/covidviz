@@ -40,8 +40,13 @@ def data_treatment_by_option(data_granu, option):
     return(df_clean)
 
 def plot_animation(df_clean, granu, option):
-    """
-    Plot an animation....
+    """Creates an animation with pandas_alive package.
+    :param df_clean: dataframe with covid data
+    :type gb_data: dataframe
+    :param granu: column 'maille_nom' of the dataframe
+    :type granu: list
+    :param option : deces or cas_confirmes
+    :type option : list
     """
     start = time.time()
     if granu == "departement" and option == "deces":

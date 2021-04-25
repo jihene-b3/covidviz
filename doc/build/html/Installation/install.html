@@ -13,7 +13,7 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css\custom.css" type="text/css" />
 
   
   
@@ -111,6 +111,7 @@
 <p class="caption"><span class="caption-text">Statistics</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../Stats/covidtime.html">Covid time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Stats/demographicfactors.html">Demographic factors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Stats/icu.html">ICU</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Stats/screening.html">Screening</a></li>
 </ul>
@@ -184,18 +185,35 @@
 <h1>How to install<a class="headerlink" href="#how-to-install" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="on-windows">
 <h2>On Windows<a class="headerlink" href="#on-windows" title="Permalink to this headline">¶</a></h2>
-<p>To install covidmap on Windows…</p>
+<p>To install covidviz on Windows open you git manager (<cite>git bash</cite>, <cite>git kraken</cite> or others).</p>
+<p>Then clone the following repository with this command :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/jihene-b3/covidviz.git
+</pre></div>
+</div>
+<p>After that, go on Anaconda prompt, go to the root of the covidviz project cloned and type :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda env create -f environment.yml
+</pre></div>
+</div>
 </div>
 <div class="section" id="on-linux">
 <h2>On Linux<a class="headerlink" href="#on-linux" title="Permalink to this headline">¶</a></h2>
-<p>To install covidmap on Linux…</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/jihene-b3/ProjetCovid.git
+<p>To install covidviz on Linux go to your terminal and type :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/jihene-b3/covidviz.git
+</pre></div>
+</div>
+<p>Then go to the root of the covidviz project cloned and type :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda env create -f environment.yml
 </pre></div>
 </div>
 </div>
 <div class="section" id="on-mac">
 <h2>On MAC<a class="headerlink" href="#on-mac" title="Permalink to this headline">¶</a></h2>
+<p>To install covidviz on MAC</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>% git clone https://github.com/jihene-b3/ProjetCovid.git
+</pre></div>
+</div>
+<p>Then go to the root of the covidviz project cloned and type :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ conda env create -f environment.yml
 </pre></div>
 </div>
 </div>
