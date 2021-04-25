@@ -1,2 +1,2 @@
-### Demographyfactors
+### Demographic factors
 

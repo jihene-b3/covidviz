@@ -6,6 +6,9 @@ import time
 
 
 def df_plot_rea(df) :
+    """
+    Creates a chart with a time slider of the number of intensive care patients by age group.
+    """
     start = time.time()
     fig = px.bar(df, x="AgeGroup",
         y="nb-rea",
@@ -15,7 +18,7 @@ def df_plot_rea(df) :
         range_y=[0,30])
     fig.update_layout(
         height=600,
-        title_text="Nombre de patients en réanimation par classe d'âge")
+        title_text="Number of intensive care patients by age group")
     end = time.time()
     print("Time spent on plot_rea: {0:.5f} s.".format(end - start))
     return(fig.show())
@@ -28,7 +31,7 @@ def df_plot_hosp(df):
          range_y = [0,150])
     fig.update_layout(
     height = 600,
-    title_text="Nombre de patients hospitalisés par classe d'âge"
+    title_text="Number of patients hospitalized by age group"
     )
     end = time.time()
     print("Time spent on plot_hosp: {0:.5f} s.".format(end - start))
@@ -41,7 +44,7 @@ def df_plot_dec(df):
     # fig.update_layout(hovermode='x unified')
     fig.update_layout(
     height = 600,
-    title_text = "Nombre de patients décédès par classes d'âges"
+    title_text = "NNumber of patients who died because of coronavirus by age group"
     )
     end = time.time()
     print("Time spent on plot_dec: {0:.5f} s.".format(end - start))
