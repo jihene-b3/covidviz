@@ -8,8 +8,8 @@ def preprocess(df,gdf):
     
     :param df: dataset (CSV file)
     :param gdf: GeoJSON file
-    :type df : string
-    :type gdf : string
+    :type df: string
+    :type gdf: string
     """
 
     
