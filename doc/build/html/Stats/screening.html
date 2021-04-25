@@ -33,7 +33,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -188,7 +187,7 @@
 <span id="graphs"></span><h2>Graphs<a class="headerlink" href="#module-covidviz.screening.graphs" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="covidviz.screening.graphs.daily_test">
-<code class="sig-name descname">daily_test</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">age</span></em>, <em class="sig-param"><span class="n">department</span></em>, <em class="sig-param"><span class="n">screening_daily</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.screening.graphs.daily_test" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">daily_test</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">department</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">screening_daily</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.screening.graphs.daily_test" title="Permalink to this definition">¶</a></dt>
 <dd><p>Displays the barplot of screenings performed per day by age group and department.
 The more intense the color of the bar (towards yellow),
 the higher the percentage of number of positive tests (the reference is placed to the right of the graph). 
@@ -209,7 +208,7 @@ The ‘plotly’ package allows you to zoom the desired period.</p>
 
 <dl class="py function">
 <dt id="covidviz.screening.graphs.daily_test_age">
-<code class="sig-name descname">daily_test_age</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">age_class</span></em>, <em class="sig-param"><span class="n">screening_daily</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.screening.graphs.daily_test_age" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">daily_test_age</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">age_class</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">screening_daily</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.screening.graphs.daily_test_age" title="Permalink to this definition">¶</a></dt>
 <dd><p>Displays the barplot of screenings performed per day by age.
 The more intense the color of the bar (towards yellow),
 the higher the percentage of number of positive tests (the reference is placed to the right of the graph). 
@@ -229,7 +228,7 @@ The ‘plotly’ package allows you to zoom the desired period.</p>
 
 <dl class="py function">
 <dt id="covidviz.screening.graphs.daily_test_dep">
-<code class="sig-name descname">daily_test_dep</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">department</span></em>, <em class="sig-param"><span class="n">screening_daily</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.screening.graphs.daily_test_dep" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">daily_test_dep</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">department</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">screening_daily</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.screening.graphs.daily_test_dep" title="Permalink to this definition">¶</a></dt>
 <dd><p>Displays the barplot of screenings performed per day by department.
 The more intense the color of the bar (towards yellow),
 the higher the percentage of number of positive tests (the reference is placed to the right of the graph). 
@@ -249,7 +248,7 @@ The ‘plotly’ package allows you to zoom the desired period.</p>
 
 <dl class="py function">
 <dt id="covidviz.screening.graphs.screening_by_age">
-<code class="sig-name descname">screening_by_age</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">screening_daily</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.screening.graphs.screening_by_age" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">screening_by_age</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screening_daily</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.screening.graphs.screening_by_age" title="Permalink to this definition">¶</a></dt>
 <dd><p>We regroup data by age. We add the columns :</p>
 <blockquote>
 <div><ul class="simple">
@@ -272,7 +271,7 @@ The ‘plotly’ package allows you to zoom the desired period.</p>
 
 <dl class="py function">
 <dt id="covidviz.screening.graphs.screening_by_age_dep">
-<code class="sig-name descname">screening_by_age_dep</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">screening_daily</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.screening.graphs.screening_by_age_dep" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">screening_by_age_dep</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screening_daily</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.screening.graphs.screening_by_age_dep" title="Permalink to this definition">¶</a></dt>
 <dd><p>We regroup data by age (we will filter by department after). We add the columns :</p>
 <blockquote>
 <div><ul class="simple">
@@ -295,7 +294,7 @@ The ‘plotly’ package allows you to zoom the desired period.</p>
 
 <dl class="py function">
 <dt id="covidviz.screening.graphs.screening_by_dep">
-<code class="sig-name descname">screening_by_dep</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">screening_daily</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.screening.graphs.screening_by_dep" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">screening_by_dep</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screening_daily</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.screening.graphs.screening_by_dep" title="Permalink to this definition">¶</a></dt>
 <dd><p>We regroup data by department. We add the columns :</p>
 <blockquote>
 <div><ul class="simple">
@@ -321,7 +320,7 @@ The ‘plotly’ package allows you to zoom the desired period.</p>
 <span id="plot-map"></span><h2>Plot map<a class="headerlink" href="#module-covidviz.screening.plot_map" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="covidviz.screening.plot_map.clean_dep">
-<code class="sig-name descname">clean_dep</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dep_fr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.screening.plot_map.clean_dep" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">clean_dep</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dep_fr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.screening.plot_map.clean_dep" title="Permalink to this definition">¶</a></dt>
 <dd><p>We (quickly) clean the dataframe by deleting the empty columns.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -338,7 +337,7 @@ The ‘plotly’ package allows you to zoom the desired period.</p>
 
 <dl class="py function">
 <dt id="covidviz.screening.plot_map.clean_private_centers">
-<code class="sig-name descname">clean_private_centers</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">depis_acces_restreint</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.screening.plot_map.clean_private_centers" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">clean_private_centers</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">depis_acces_restreint</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.screening.plot_map.clean_private_centers" title="Permalink to this definition">¶</a></dt>
 <dd><p>We clean the dataframe ‘depis_acces_restreint’
 We add a column who indicates the department code.</p>
 <dl class="field-list simple">
@@ -356,7 +355,7 @@ We add a column who indicates the department code.</p>
 
 <dl class="py function">
 <dt id="covidviz.screening.plot_map.clean_public_centers">
-<code class="sig-name descname">clean_public_centers</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">depis_grand_public</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.screening.plot_map.clean_public_centers" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">clean_public_centers</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">depis_grand_public</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.screening.plot_map.clean_public_centers" title="Permalink to this definition">¶</a></dt>
 <dd><p>We clean and complete the dataframe ‘depis_grand_public’ by adding missing informations.
 We add a column who indicates the department code.</p>
 <dl class="field-list simple">
@@ -374,7 +373,7 @@ We add a column who indicates the department code.</p>
 
 <dl class="py function">
 <dt id="covidviz.screening.plot_map.map_dep">
-<code class="sig-name descname">map_dep</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">department</span></em>, <em class="sig-param"><span class="n">dep_fr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.screening.plot_map.map_dep" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">map_dep</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">department</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dep_fr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.screening.plot_map.map_dep" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a map with one department</p>
 <p>We display the french department (or DOM) map selected.</p>
 <dl class="field-list simple">
@@ -395,7 +394,7 @@ We add a column who indicates the department code.</p>
 
 <dl class="py function">
 <dt id="covidviz.screening.plot_map.map_screening">
-<code class="sig-name descname">map_screening</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dep_code</span></em>, <em class="sig-param"><span class="n">dep_fr</span></em>, <em class="sig-param"><span class="n">depis_grand_public</span></em>, <em class="sig-param"><span class="n">depis_acces_restreint</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.screening.plot_map.map_screening" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">map_screening</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dep_code</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dep_fr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depis_grand_public</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depis_acces_restreint</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.screening.plot_map.map_screening" title="Permalink to this definition">¶</a></dt>
 <dd><p>We display the department selected map with all markers, with all screening centers informations.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -417,7 +416,7 @@ We add a column who indicates the department code.</p>
 
 <dl class="py function">
 <dt id="covidviz.screening.plot_map.markers_set">
-<code class="sig-name descname">markers_set</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dep_fr</span></em>, <em class="sig-param"><span class="n">depis_grand_public</span></em>, <em class="sig-param"><span class="n">depis_acces_restreint</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.screening.plot_map.markers_set" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">markers_set</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dep_fr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depis_grand_public</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depis_acces_restreint</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.screening.plot_map.markers_set" title="Permalink to this definition">¶</a></dt>
 <dd><p>We add all the markers in each department map. The markers indicate the screening centers.
 The green markers indicate the public centers.
 The red markers indicate the private centers.</p>
@@ -444,7 +443,7 @@ by deleting the keys of departments without screening centers.</p>
 
 <dl class="py function">
 <dt id="covidviz.screening.plot_map.regroup_map">
-<code class="sig-name descname">regroup_map</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dep_fr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.screening.plot_map.regroup_map" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">regroup_map</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dep_fr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.screening.plot_map.regroup_map" title="Permalink to this definition">¶</a></dt>
 <dd><p>All french departments maps are regrouped in a dictionary.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -461,7 +460,7 @@ by deleting the keys of departments without screening centers.</p>
 
 <dl class="py function">
 <dt id="covidviz.screening.plot_map.regroup_private_center_by_dep">
-<code class="sig-name descname">regroup_private_center_by_dep</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">depis_acces_restreint</span></em>, <em class="sig-param"><span class="n">dep_fr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.screening.plot_map.regroup_private_center_by_dep" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">regroup_private_center_by_dep</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">depis_acces_restreint</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dep_fr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.screening.plot_map.regroup_private_center_by_dep" title="Permalink to this definition">¶</a></dt>
 <dd><p>screening centers in restricted access by department regrouped in a dictionnary.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -481,7 +480,7 @@ by deleting the keys of departments without screening centers.</p>
 
 <dl class="py function">
 <dt id="covidviz.screening.plot_map.regroup_public_center_by_dep">
-<code class="sig-name descname">regroup_public_center_by_dep</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">depis_grand_public</span></em>, <em class="sig-param"><span class="n">dep_fr</span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.screening.plot_map.regroup_public_center_by_dep" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">regroup_public_center_by_dep</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">depis_grand_public</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dep_fr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#covidviz.screening.plot_map.regroup_public_center_by_dep" title="Permalink to this definition">¶</a></dt>
 <dd><p>screening centers in public access by department are regrouped in a dictionnary.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
