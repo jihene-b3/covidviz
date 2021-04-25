@@ -1,24 +1,22 @@
-[![Documentation Status](https://readthedocs.org/projects/covidviz/badge/?version=latest)](https://covidviz.readthedocs.io/en/latest/?badge=latest)
+
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/jihene-b3/covidviz/blob/main/covidviz/dashboard/dashboard.ipynb)
-
-# Spatio-temporal evolution of Covid19 cases in France
-
-## Plot interactive maps
-
-The goal of this project is to analyze the spreading of the covid19 disease in France with an animated map. Which allows to visualize by day covid cases in French departments like that :
+# covidviz module
 
 [<img src="temp/map_departments.png" height="500">]()
 
 
- 
+## Spatio-temporal evolution of Covid19 cases in France
 
-Then we'll produce various charts and gif to illustrate how the covid19 affect population, for instance by age (e.g. a dashboard with various statistical features). 
+In the context of a Software Developpement project we had to analyze the spreading of the covid19 disease in France with an animated map, which allows to visualize by day covid deaths in French departments.\\
 
+Then we had to produce various charts and gif to illustrate how the covid19 affect population, for instance by age (e.g. a dashboard with various statistical features).\\
+
+Here is an exemple of our work : \\
 
 [<img src="temp/covid-19-h-bar-cases_departement.gif" height="500">]()
 
-
+To this aim, we create the module `covidviz`.
 
 
 ## Dataset
@@ -32,6 +30,27 @@ We mainly used data from data.gouv.fr [data.gouv.fr](https://www.data.gouv.fr/en
 We also used geometry data used for maps are from [France geoJSON](https://france-geojson.gregoiredavid.fr).
 
 
+## Module structure
+
+
+The main code can be found in  `./covidviz` folder.
+
+There is a jupyter notebook which contains all our visualizations in the `./report` folder.
+
+You can find a beamer presentation in the `./beamer` folder.
+
+You can find a some examples of our visualizations in the `./temp` folder.
+
+## Installation
+
+
+
+
+## Documentation
+
+The documentation of `covidviz` can be found here : [![Documentation Status](https://readthedocs.org/projects/covidviz/badge/?version=latest)](https://covidviz.readthedocs.io/en/latest/?badge=latest)
+
+
 ## Members
 + Jihène Belgaied : jihene.belgaied@etu.umontpellier.fr
 + Zakaria Laabsi : zakaria.laabsi@etu.umontpellier.fr
@@ -42,7 +61,7 @@ We also used geometry data used for maps are from [France geoJSON](https://franc
 
 + Jihène : spatio-temporal covid19 evolution statistics
 + Zakaria : vaccine statistics and map on a dashboard 
-+ Chloé : covid deaths and covid hospitalized widget maps, unit tests and wheel
++ Chloé : covid deaths and covid hospitalized widget maps, sparse, unit tests and wheel
 + Stephani : icu and screening statistic 
 
 + Everyone : documentation, beamer, module architecture, time and memory efficiency...
