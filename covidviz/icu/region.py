@@ -19,7 +19,7 @@ def clean_df_reg(df_reg):
 
     :param df_reg: data covid filtred by region
     :type df_reg: dataframe
-    :return: data covid filtred by region cleaned
+    :return: df
     :rtype: dataframe
     """
     start = time.time()
@@ -41,11 +41,11 @@ def regroup_by_reg(df_reg):
     """
     regroup_by_reg
 
-    We regroup the data by region using dictionary type
+    We regroup the data on ICU by region using dictionary type
 
     :param df_reg: data covid filtred by region
     :type df_reg: dataframe
-    :return: data on UCI filtred by region
+    :return: dict_reg
     :rtype: dict
     """
     start = time.time()
@@ -66,9 +66,11 @@ def create_df_all_reg(df_reg):
     """
     create_df_all_reg
 
+    We create a dataframe with ICU data including all regions
+
     :param df_reg: data covid filtred by region
     :type df_reg: dataframe
-    :return: data ICU including all regions
+    :return: df_all_reg
     :rtype: dataframe
     """
     start = time.time()
@@ -288,11 +290,12 @@ def change_format_reg(df_reg):
     """
     change_format_reg
 
-    df_reg cleaned in ICU data and we changed the DOM columns, and renamed some name region to be adaptable for later
+    df_reg cleaned in ICU data and we changed the DOM columns (regrouped in 'Région d'Outre Mer'),
+    and renamed some name region to be adaptable for later.
 
     :param df_reg: covid data filtred by region
     :type df_reg: dataframe
-    :return: DOM regrouped in 'Région d'Outre Mer'
+    :return: df_all_reg
     :rtype: dataframe
     """
     start = time.time()
@@ -314,11 +317,11 @@ def create_reg_total(df_reg):
     """
     create_reg_total
 
-    [extended_summary]
+    sum of rows, total number of patients in ICU since 1st confinement, by reg
 
     :param df_reg: covid data filtred by region
     :type df_reg: dataframe
-    :return: sum of rows, total number of patients in ICU since 1st confinement, by reg
+    :return: icu_reg_total
     :rtype: dataframe
     """
     start = time.time()

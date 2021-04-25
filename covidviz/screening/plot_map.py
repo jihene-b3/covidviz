@@ -14,7 +14,7 @@ def clean_public_centers(depis_grand_public):
 
     :param depis_grand_public: all informations about screening centers in public access in France
     :type depis_grand_public: dataframe
-    :return: depis_grand_public cleaned
+    :return: df
     :rtype: dataframe
     """
     start = time.time()
@@ -58,11 +58,11 @@ def clean_public_centers(depis_grand_public):
 
 def clean_dep(dep_fr):
     """
-    We (quickly) clean the dataframe
+    We (quickly) clean the dataframe by deleting the empty columns.
 
     :param dep_fr: coordonates of french departments
     :type dep_fr: dataframe
-    :return: coordonates of french departments (cleaned)
+    :return: df
     :rtype: dataframe
     """
     start = time.time()
@@ -81,11 +81,13 @@ def map_dep(department, dep_fr):
     """
     Create a map with one department
 
+    We display the french department (or DOM) map selected.
+
     :param department: french department or DOM code
     :type department: str
     :param dep_fr: all french departments and DOM coordinates
     :type dep_fr: dataframe
-    :return: the french department (or DOM) map selected
+    :return: dep_map
     :rtype: Folium Map Object
     """
     start = time.time()
@@ -105,9 +107,11 @@ def regroup_map(dep_fr):
     """
     regroup_map
 
+    All french departments maps are regrouped in a dictionary.
+
     :param dep_fr: all french departments and DOM coordinates
     :type dep_fr: dataframe
-    :return: all french departments maps regrouped
+    :return: all_map_dep
     :rtype: dict
     """
     start = time.time()
@@ -124,11 +128,13 @@ def regroup_public_center_by_dep(depis_grand_public, dep_fr):
     """
     regroup_public_center_by_dep
 
+    screening centers in public access by department are regrouped in a dictionnary.
+
     :param depis_grand_public: all informations about screening centers in public access in France
     :type depis_grand_public: dataframe
     :param dep_fr: all french departments and DOM coordinates
     :type dep_fr: dataframe
-    :return: screening centers in public access by department regrouped
+    :return: depis_department_grand_public
     :rtype: dict
     """
     start = time.time()
@@ -158,12 +164,13 @@ def regroup_public_center_by_dep(depis_grand_public, dep_fr):
 def clean_private_centers(depis_acces_restreint):
     """
     clean_private_centers
+
     We clean the dataframe 'depis_acces_restreint'
     We add a column who indicates the department code.
 
     :param depis_acces_restreint: all informtations about screening centers in restricted access in France
     :type depis_acces_restreint: dataframe
-    :return: the dataframe 'depis_acces_restreint' cleaned
+    :return: df
     :rtype: dataframe
     """
     start = time.time()
@@ -180,11 +187,13 @@ def regroup_private_center_by_dep(depis_acces_restreint, dep_fr):
     """
     regroup_private_center_by_dep
 
+    screening centers in restricted access by department regrouped in a dictionnary.
+
     :param depis_acces_restreint: all informtations about screening centers in restricted access in France
     :type depis_acces_restreint: dataframe
     :param dep_fr: all french departments and DOM coordinates
     :type dep_fr: dataframe
-    :return: screening centers in restricted access by department regrouped
+    :return: depis_department_acces_restreint
     :rtype: dict
     """
     start = time.time()
@@ -212,6 +221,10 @@ def markers_set(dep_fr, depis_grand_public, depis_acces_restreint):
     """
     markers_set
 
+    We add all the markers in each department map. The markers indicate the screening centers.
+    The green markers indicate the public centers.
+    The red markers indicate the private centers.
+
     Remark :
     not all departments have restricted access screening centers,
     so we clean the dictionary 'depis_department_acces_restreint' created
@@ -223,8 +236,8 @@ def markers_set(dep_fr, depis_grand_public, depis_acces_restreint):
     :type depis_grand_public: dataframe
     :param depis_acces_restreint: data on screening centers in restricted access in France
     :type depis_acces_restreint: dataframe
-    :return: [description]
-    :rtype: [type]
+    :return: all_map_dep
+    :rtype: dic
     """
     start = time.time()
     depis_department_grand_public = regroup_public_center_by_dep(depis_grand_public, dep_fr)
@@ -352,6 +365,8 @@ def map_screening(dep_code, dep_fr, depis_grand_public, depis_acces_restreint):
     """
     map_screening
 
+    We display the department selected map with all markers, with all screening centers informations.
+
     :param dep_code: french department code like '34' for Hérault
     :type dep_code: str
     :param dep_fr: all french departments coordinates
@@ -360,7 +375,7 @@ def map_screening(dep_code, dep_fr, depis_grand_public, depis_acces_restreint):
     :type depis_grand_public: dataframe
     :param depis_acces_restreint: data on screening centers in restricted access in France
     :type depis_acces_restreint: dataframe
-    :return: the department selected map with all markers, with all screening centers informations
+    :return: all_map_dep[dep_code]
     :rtype: Folium Map Object
     """
     start = time.time()

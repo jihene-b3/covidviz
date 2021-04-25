@@ -8,9 +8,11 @@ def link_dep_reg(df_dep):
     """
     link_dep_reg
 
+    ICU data for each region with their departments in a dictionnary (one key is one region)
+
     :param df_dep: covid data filtred by department
     :type df_dep: dataframe
-    :return: ICU data for each region with their departments
+    :return: 
     :rtype: dict
     """
     start = time.time()

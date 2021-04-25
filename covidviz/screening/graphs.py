@@ -55,7 +55,7 @@ def screening_by_age(screening_daily):
 
     :param screening_daily: data on the number of screenings carried out by age group and / or department
     :type screening_daily: dataframe
-    :return: Daily screenings by age
+    :return: screening_daily_age
     :rtype: dict
     """
     start = time.time()
@@ -94,14 +94,14 @@ def screening_by_age(screening_daily):
 
 def screening_by_dep(screening_daily):
     """
-    We regroup data by dep. We add the columns :
+    We regroup data by department. We add the columns :
 
         - 'Tests cumul' :indicates the number of cumulative screenings since the first day (first line of data), per day.
         - '% positive tests' : indicates the percentage of positive screenings.
 
     :param screening_daily: data on the number of screenings carried out by age group and / or department
     :type screening_daily: dataframe
-    :return: Daily screenings by department
+    :return: screening_daily_dep
     :rtype: dict
     """
     start = time.time()
@@ -156,7 +156,7 @@ def daily_test(age, department, screening_daily):
     :type department: str
     :param screening_daily: data on the number of screenings carried out by age group and / or department
     :type screening_daily: dataframe
-    :return: Daily screenings by age and department
+    :return: bar plot (from plotly)
     """
     start = time.time()
 
@@ -190,7 +190,7 @@ def daily_test_dep(department, screening_daily):
     :type department: str
     :param screening_daily: data on the number of screenings carried out by age group and / or department
     :type screening_daily: dataframe
-    :return: Daily screenings by department
+    :return: bar plot (from plotly)
     """
     start = time.time()
 
@@ -220,7 +220,7 @@ def daily_test_age(age_class, screening_daily):
     :type age: int
     :param screening_daily: data on the number of screenings carried out by age group and / or department
     :type screening_daily: dataframe
-    :return: Daily screenings by age
+    :return: bar plot (from plotly)
     """
     start = time.time()
 

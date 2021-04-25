@@ -9,11 +9,12 @@ def clean_df_dep(df_dep):
     clean_df_dep : ICU IN FRENCH DEPARTMENTS
 
     We generate a first DataFrame of ICU in french departments,
-    with keeping one source : 'Santé publique France Data'
+    with keeping one source : 'Santé publique France Data',
+    We also clean the data
 
     :param df_with_just_dep: data covid in french departments
     :type df_with_just_dep: dataframe
-    :return: df_dep cleaned
+    :return: df
     :rtype: dataframe
     """
     start = time.time()
@@ -35,9 +36,11 @@ def regroup_by_dep(df_dep):
     """
     regroup_by_dep
 
+    data regrouped by department in a dictionnary (one key is one department).
+
     :param df_dep: data on ICU in french departments
     :type df_dep: dataframe
-    :return: data regrouped by department
+    :return: dict_dep
     :rtype: dict
     """
     start = time.time()
@@ -58,11 +61,13 @@ def create_df_all_dep(df_dep):
     """
     create_df_all_dep
 
+    all data on ICU in all departments (by columns)
+
     :param df_dep: data on ICU in french departments
     :type df_dep: dataframe
     :param dict_dep: [description]
     :type dict_dep: dict
-    :return: all data on ICU in all departments (by columns)
+    :return: df_all_dep
     :rtype: dataframe
     """
     start = time.time()
