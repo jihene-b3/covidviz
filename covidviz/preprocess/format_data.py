@@ -8,7 +8,6 @@ def clean_age(df):
     This function reads "AgeGroups.csv" file and reformate data.
 
     """  
-    df = pd.read_csv("covidviz/data/AgeGroups.csv", sep=';')
     df = df.rename(columns={"cl_age90": "age", "jour": "date", "hosp":"nb_hosp", "rea":"nb-rea", "HospConv":"nb_hospconv", "rad":"rad_Tot", "dc":"dec_Tot"})
     df.drop(['autres'], axis = 1, inplace = True) 
     df = df[df['nb_hosp'] > 0]
@@ -21,7 +20,6 @@ def clean_gender(df):
     - renaming columns, 
     - droping a column not needed for this case study,
     """
-    df = pd.read_csv("covidviz/data/age_gender.csv", sep=';')
     df = df.rename(columns={"cl_age90": "age", "P_f":"num_f", "P_h":"num_h", "pop_f":"prooption_f", "pop_h":"prooption_h"})
     df.drop(['fra'], axis = 1, inplace = True) 
     return(df)
