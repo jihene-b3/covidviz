@@ -6,7 +6,8 @@
 
 The goal of this project is to analyze the spreading of the covid19 disease in France with an animated map. Which allows to visualize by day covid cases in French departments like that :
 
-[<img src="temp/map_departments.png" height="500">]()
+
+![Death cases departments - Animated gif](temp/map_departments.png)
 
 
  
