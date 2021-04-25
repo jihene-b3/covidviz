@@ -24,6 +24,14 @@ Here is an exemple of our work :
 
 To this aim, we create the module covidviz.
 
+# Dashboard 
+
+Here is an overview of the dashboard :
+
+[<img src="covidviz/covidviz/dashboard/visualisation/screenshots/dashboard_sample.png" height="500">]()
+
+
+
 
 
 
