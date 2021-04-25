@@ -18,8 +18,10 @@ Then we'll produce various charts to illustrate how the covid19 affect populatio
 ## Dataset
 
 We mainly used data from data.gouv.fr [data.gouv.fr](https://www.data.gouv.fr/en/datasets) which provides a counting of Covid-19 such as :
-> [Data on people vaccinated against Covid-19](https://www.data.gouv.fr/fr/datasets/donnees-relatives-aux-personnes-vaccinees-contre-la-covid-19-1/)
-> [Global Covid-19 data with deads and hospitalized](https://www.data.gouv.fr/en/datasets/chiffres-cles-concernant-lepidemie-de-covid19-en-france/)
+
+> - [Data on people vaccinated against Covid-19](https://www.data.gouv.fr/fr/datasets/donnees-relatives-aux-personnes-vaccinees-contre-la-covid-19-1/)
+
+> - [Global Covid-19 data with deads and hospitalized](https://www.data.gouv.fr/en/datasets/chiffres-cles-concernant-lepidemie-de-covid19-en-france/)
 
 We also used geometry data used for maps are from [France geoJSON](https://france-geojson.gregoiredavid.fr).
 
