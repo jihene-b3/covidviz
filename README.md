@@ -28,7 +28,7 @@ To this aim, we create the module covidviz.
 
 Here is an overview of the dashboard :
 
-[<img src="covidviz/covidviz/dashboard/visualisation/screenshots/dashboard_sample.png" height="500">]()
+[<img src="temp/dashboard_sample.png" height="500">]()
 
 
 
