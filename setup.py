@@ -10,6 +10,6 @@ setup(
   author_email='chloe.serre-combe@etu.umontpellier.fr',
   license='MIT',
   packages=['covidviz', 'covidviz.io', 'covidviz.preprocess', 'covidviz.covidmap', 
-              'covidviz.icu', 'covidviz.sparse', 'covidviz.covidtime', 'covidviz.demographyfactors'],
+              'covidviz.icu', 'covidviz.sparse', 'covidviz.covidtime', 'covidviz.demographicfactors'],
   zip_safe=False
 )
