@@ -4,7 +4,7 @@
 
 The goal of this project is to analyze the spreading of the covid19 disease in France with a heatmap. It allows to visualize by day covid cases in French departments. Then we'll produce various charts to illustrate how the covid19 affect population, for instance by age (e.g. a dashboard with various statistical features). 
 
-[<img src="examples/map_departments.png" height="500">]()
+[<img src="temp/map_departments.png" height="500">]()
 
 
 ## Dataset
