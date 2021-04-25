@@ -10,7 +10,6 @@ import time
 
 
 
-# adapt_time(_data)
 def adapt_time(data):
     """
     Removes the date given with a wrong foramt 
@@ -21,10 +20,10 @@ def adapt_time(data):
     data['date'] = pd.to_datetime(data['date'])
     end = time.time()
     print("Time spent on adapt_time function: {0:.5f} s.".format(end - start)) 
-    return _data
+    return data
 
 # data treatment 
-def data_treatment_by_option(_data_granu, option):
+def data_treatment_by_option(data_granu, option):
     """
     Adjusts dataframe to set pandas_alive package requirements as arguments 
     Resamples data so we take into acount rows with option =! 0
