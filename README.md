@@ -1,9 +1,11 @@
 
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/jihene-b3/covidviz/blob/main/covidviz/dashboard/dashboard.ipynb)
-# covidviz module
 
-[<img src="temp/map_departments.png" height="500">]()
+<p align="center">
+  <strong> COVIDVIZ </strong> <br>
+<img src="./temp/map_departments.png" style="vertical-align:middle" width="300" height='300' class='center' alt='logo'>
+</p>
 
 
 ## Spatio-temporal evolution of Covid19 cases in France
