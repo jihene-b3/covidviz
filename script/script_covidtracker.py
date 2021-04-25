@@ -1,14 +1,14 @@
 #%%
-from covidviz import data 
-from covidviz.preprocess.clean_df import choose_columns, choose_granularity
 import matplotlib.pyplot as plt 
 import pandas as pd
 import matplotlib.ticker as mtick
-from covidviz.covidtime.plot_covidtracker import ratio
 
 import os, sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + (os.path.sep + '..'))
 import covidviz as cvz
+from covidviz.preprocess.clean_df import choose_columns, choose_granularity
+from covidviz.covidtime.plot_covidtracker import ratio
+
 
 # %%
 a = cvz.Load_db.save_as_df()
