@@ -102,7 +102,7 @@ def data_preparation(
     """
     -Format data 
     -Adds colummns : reanimation_cumul, hospitalises_cumul,reanimation_solde_vivant_jour,reanimation_solde_vivant_jour_jour
-    -Does a rolling average over data of hospitalization, deaths
+    -Does a rolling average over data of hospitalization, deaths, reanimations
     """
     start = time.time()
     if maille_code == "FRA":
@@ -189,6 +189,10 @@ def data_preproc(
                 rows=["t", "deces", "deces_ehpad", "reanimation", "hospitalises"],
                 no_negatives=["deces", "deces_ehpad"],
             ):
+    """
+    Prerocesses data
+    """ 
+    
     start = time.time()
     fra, region = data_preparation(data, maille_code, rows, no_negatives)
     fig, axs = get_new_fig()

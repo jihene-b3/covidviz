@@ -25,6 +25,7 @@ def ratio(gb_data, data_depcode, data_ratio_hospitalises,current_date, data_hosp
     :param nbhospitalises_80p : data_hospitalises.sum() * 0.80
     :type nbhospitalises_80p : int 
     
+    :return : graphic
     """
     start = time.time()
     fig, ax = plt.subplots(figsize=(12, 8))
