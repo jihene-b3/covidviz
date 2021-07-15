@@ -16,7 +16,7 @@ Link to our oral presentation :
 # Spatio-temporal evolution of Covid19 cases in France
 
 
-In the context of a Software Developpement project we had to analyze the spreading of the covid19 disease in France with an animated map, which allows to visualize by day covid deaths in French departments.
+In the context of a Software Development project we had to analyze the spreading of the covid19 disease in France with an animated map, which allows to visualize by day covid deaths in French departments.
 
 Then we had to produce various charts and gif to illustrate how the covid19 affect population, for instance by age (e.g. a dashboard with various statistical features).
 
